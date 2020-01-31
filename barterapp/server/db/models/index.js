@@ -13,6 +13,8 @@ const User = require('./user')
  * for example, we can say: const {User} = require('../db/models')
  * instead of: const User = require('../db/models/user')
  */
+
+console.log('testing');
 module.exports = {
   User
 }
