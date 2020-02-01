@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Auction} = require('../server/db/models')
+const {User, Product, Auction, UserAuction, UserOffer} = require('../server/db/models')
 
 
 async function seed() {
@@ -20,19 +20,19 @@ async function seed() {
   const product = await Product.create({name: 'Juicer',status: 'auction',kind: 'item'})
   const product2 = await Product.create({name: 'Not a Juicer',status: 'offer',kind: 'item'})
   const product3 = await Product.create({name: 'Not a Juicer2',status: 'offer',kind: 'item'})
+  const product4 = await Product.create({name: 'Also not a Juicer',status: 'offer',kind: 'item'})
 
 
 
-  await user.addAuction(product)
-  await user2.addOffer(product2)
-  await product2.addAuctionOrigin(product, {through: {status: 'pending'}})
-  await product3.addAuctionOrigin(product, {through: {status: 'pending'}})
-  // await user2.addOffer(product2, {through: {status: 'open'}})
-  // await product2.addAuctionItem(product)
+  await product.setAuctionOwner(user)
+  await product4.setOfferOwner(user)
+  await product2.addAuctionProduct(product, {through: {status: 'pending'}})
+  await product3.addAuctionProduct(product, {through: {status: 'pending'}})
+  const auctions = await product.getAuctionOwner()
+  const offers = await product4.getOfferOwner()
 
-    // BidProduct.create({bidId: 1, productId: 1})
-
-  // console.log(`seeded ${users.length} users`)
+  console.log('these are auctions', auctions)
+  console.log('these are offers', offers)
   console.log(`seeded successfully`)
 }
 

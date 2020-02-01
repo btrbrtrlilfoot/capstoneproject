@@ -2,13 +2,16 @@ const User = require('./user')
 const Product = require('./product')
 const Auction = require('./auction')
 
-User.hasMany(Product, {as: 'Auction'})
-User.hasMany(Product, {as: 'Offer'})
 
-Product.belongsToMany(Product, {as: 'AuctionOrigin', through: Auction})
+User.hasMany(Product)
+const UserAuction = Product.belongsTo(User, {as: 'AuctionOwner',  constraints: false})
+const UserOffer = Product.belongsTo(User, {as: 'OfferOwner',  constraints: false})
+Product.belongsToMany(Product, {as: 'AuctionProduct', through: Auction})
 
 module.exports = {
   User,
   Product,
-  Auction
+  Auction,
+  UserAuction,
+  UserOffer
 }
