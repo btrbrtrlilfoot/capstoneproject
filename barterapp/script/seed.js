@@ -25,8 +25,8 @@ async function seed() {
 
   await user.addAuction(product)
   await user2.addOffer(product2)
-  await product2.addAuctionOrigin(product, {through: {status: 'open'}})
-  await product3.addAuctionOrigin(product, {through: {status: 'open'}})
+  await product2.addAuctionOrigin(product, {through: {status: 'pending'}})
+  await product3.addAuctionOrigin(product, {through: {status: 'pending'}})
   // await user2.addOffer(product2, {through: {status: 'open'}})
   // await product2.addAuctionItem(product)
 
