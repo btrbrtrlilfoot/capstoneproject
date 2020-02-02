@@ -1,14 +1,14 @@
 const Sequelize = require('sequelize')
 const db = require('../db')
 
-const OfferProduct = db.define('offerProduct', {  
+const Auction = db.define('auction', {
     status: {
         type: Sequelize.STRING,
         validate:   {
-            isIn:   [['open','cancelled','accepted']]
+            isIn:   [['rejected', 'pending', 'accepted', 'successful']]
         }
     }
 })
 
 
-module.exports = OfferProduct
+module.exports = Auction
