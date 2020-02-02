@@ -9,6 +9,9 @@ import { HomeComponent } from './home/home.component';
 import { PostBidComponent } from './post-bid/post-bid.component';
 import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
 import { SignupComponent } from './signup/signup.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InMemoryWebApiModule} from 'angular-in-memory-web-api';
+import {BackendService} from './backend.service';
 
 @NgModule({
   declarations: [
@@ -17,12 +20,14 @@ import { SignupComponent } from './signup/signup.component';
     HomeComponent,
     PostBidComponent,
     BidConfirmationComponent,
-    SignupComponent
-  ],
+    SignupComponent  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    InMemoryWebApiModule.forRoot(BackendService)
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

@@ -18,19 +18,19 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
 
-    this.createForm()
+    // this.createForm()
 
 
 }
- createForm()
-  {
-    this.loginForm = new FormGroup({
-      $key: new FormControl(null),
-      name: new FormControl(''),
-      email: new FormControl(''),
-      pasword: new FormControl(''),
-      location: new FormControl('')
+//  createForm()
+//   {
+//     this.loginForm = new FormGroup({
+//       $key: new FormControl(null),
+//       name: new FormControl(''),
+//       email: new FormControl(''),
+//       pasword: new FormControl(''),
+//       location: new FormControl('')
 
-  })
-}
+//   })
+// }
 }

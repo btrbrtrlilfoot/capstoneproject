@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms'
+import {FormGroup, FormControl, FormBuilder} from '@angular/forms';
+import { BidService } from '../bid.service';
+
 //create bid instance here
 @Component({
   selector: 'app-post-bid',
@@ -8,18 +10,27 @@ import {FormGroup, FormControl} from '@angular/forms'
 })
 export class PostBidComponent implements OnInit {
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder, private bidService: BidService) {}
 
   ngOnInit() {
-    this.createForm()
+
   }
-  createForm()
-  {
-    this.loginForm = new FormGroup({
-      $key: new FormControl(null),
-      item: new FormControl(''),
-      description: new FormControl('')
+
+
+  newBid = new FormGroup({
+    $key: new FormControl(null),
+    item: new FormControl(''),
+    description: new FormControl('')
 
   })
+
+  onSubmit()  {
+    console.log(this.newBid.value)
+    this.bidService.postBid(this.newBid.value)
+      .subscribe(
+        response => console.log('success',response),
+        error => console.error('error!',error)
+      )
+  }
 }
-}
+

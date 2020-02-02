@@ -1,10 +1,10 @@
 
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]='newBid' (ngSubmit)="onSubmit()">
   <label>Item</label>
-  <input type='text' placeholder="item" formName='item'>
+  <input type='text' placeholder="item" formControlName='item'>
   <div></div>
   <label>Description</label>
-  <input type='text' placeholder="description" formName='description'>
-  <button routerLink='/bid/confirm'>Submit</button>
+  <input type='text' placeholder="description" formControlName='description'>
+  <button >Submit</button>
 </form>
