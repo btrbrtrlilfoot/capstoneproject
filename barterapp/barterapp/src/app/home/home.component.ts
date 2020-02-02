@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { BidService} from '../bid.service'
+import { AuctionService} from '../auction.service'
 
 
 @Component({
@@ -8,13 +8,13 @@ import { BidService} from '../bid.service'
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  bids: any[] = [];
-  constructor(private bidService: BidService) { }
+  auctions: any[] = [];
+  constructor(private auctionService: AuctionService) { }
 
   ngOnInit() {
-    this.bidService.getBids().subscribe((data: any[])=>{
+    this.auctionService.getAuctions().subscribe((data: any[])=>{
       console.log(data);
-      this.bids = data;
+      this.auctions = data;
     })
   }
 

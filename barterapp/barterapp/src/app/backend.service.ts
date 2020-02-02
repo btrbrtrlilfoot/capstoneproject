@@ -10,12 +10,12 @@ export class BackendService implements InMemoryDbService {
 
   constructor() { }
   createDb()  {
-    let bids = [
+    let auctions = [
       { id: 1, item: 'Juicer', description: 'Juices fruits and veg'}
     ]
     let users = [
       {id: 1, name: 'Rachel', email: 'rtaverna96@gmail.com', password:'password', location: 'NYC'}
     ]
-    return {bids,users}
+    return {auctions,users}
   }
 }

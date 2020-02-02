@@ -1,8 +1,8 @@
-<button routerLink='/bid'>Start a New Bid!</button>
+<button routerLink='/auction'>Start a New Bid!</button>
 
   <h2>Active Bids In ~~user'sCity~~</h2>
 
-  <ul *ngFor="let bid of bids">
-    <li>{{bid.item}}: {{bid.description}}</li>
+  <ul *ngFor="let auction of auctions">
+    <li>{{auction.item}}: {{auction.description}}</li>
 
   </ul>
