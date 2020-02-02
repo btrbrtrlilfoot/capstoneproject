@@ -12,7 +12,7 @@ const Product = db.define('product', {
     status: {
         type: Sequelize.STRING,
         validate:   {
-            isIn: [['bid','offer','pending','completed']]
+            isIn: [['auction','offer','pending','completed']]
         }
     },
     kind: {

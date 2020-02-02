@@ -1,26 +1,38 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Bid, Offer, BidProduct} = require('../server/db/models')
+const {User, Product, Auction, UserAuction, UserOffer} = require('../server/db/models')
 
 
 async function seed() {
   await db.sync({force: true})
   console.log('db synced!')
 
-  const users = await Promise.all([
-    User.create({email: 'cody@email.com', password: '123', location: 'NYC'}),
-    User.create({email: 'murphy@email.com', password: '123', location: 'NYC'}),
-    Bid.create(),
-    Offer.create(),
-    Product.create({name: 'Juicer',status: 'bid',kind: 'item'}),
-    Product.create({name: 'Bike',status: 'bid',kind: 'item'}),
+  // const users = await Promise.all([
+  //   User.create({email: 'cody@email.com', password: '123', location: 'NYC'}),
+  //   User.create({email: 'murphy@email.com', password: '123', location: 'NYC'}),
+  //   Product.create({name: 'Juicer',status: 'bid',kind: 'item'}),
+  //   Product.create({name: 'Bike',status: 'bid',kind: 'item'}),
 
-    // BidProduct.create({bidId: 1, productId: 1})
-    
-  ])
+  const user = await User.create({email: 'cody@email.com', password: '123', location: 'NYC'})
+  const user2 = await User.create({email: 'cody2@email.com', password: '123', location: 'NYC'})
+  const user3 = await User.create({email: 'cody3@email.com', password: '123', location: 'NYC'})
+  const product = await Product.create({name: 'Juicer',status: 'auction',kind: 'item'})
+  const product2 = await Product.create({name: 'Not a Juicer',status: 'offer',kind: 'item'})
+  const product3 = await Product.create({name: 'Not a Juicer2',status: 'offer',kind: 'item'})
+  const product4 = await Product.create({name: 'Also not a Juicer',status: 'offer',kind: 'item'})
 
-  console.log(`seeded ${users.length} users`)
+
+
+  await product.setAuctionOwner(user)
+  await product4.setOfferOwner(user)
+  await product2.addAuctionProduct(product, {through: {status: 'pending'}})
+  await product3.addAuctionProduct(product, {through: {status: 'pending'}})
+  const auctions = await product.getAuctionOwner()
+  const offers = await product4.getOfferOwner()
+
+  console.log('these are auctions', auctions)
+  console.log('these are offers', offers)
   console.log(`seeded successfully`)
 }
 
