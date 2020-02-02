@@ -1,0 +1,15 @@
+
+
+
+<div >Tell Us About Yourself!</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  <input type='text' formControName='name' placeholder="name" >
+  <p></p>
+  <input type='text' formControName='email' placeholder="email" >
+  <p></p>
+  <input type='text' formControName='password' placeholder="password" >
+  <p></p>
+  <input type='text' formControName='location' placeholder="city" >
+  <p></p>
+  <button>Make My Account</button>
+  </form>
