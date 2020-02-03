@@ -9,6 +9,8 @@ import { HomeComponent } from './home/home.component';
 import { PostBidComponent } from './post-bid/post-bid.component';
 import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
 import { SignupComponent } from './signup/signup.component';
+import { OfferFormComponent } from './offer-form/offer-form.component';
+
 
 @NgModule({
   declarations: [
@@ -17,7 +19,8 @@ import { SignupComponent } from './signup/signup.component';
     HomeComponent,
     PostBidComponent,
     BidConfirmationComponent,
-    SignupComponent
+    SignupComponent,
+    OfferFormComponent
   ],
   imports: [
     BrowserModule,

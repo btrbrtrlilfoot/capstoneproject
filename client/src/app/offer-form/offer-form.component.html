@@ -1,9 +1,17 @@
 <div>
   <h1>Offer Submission Form</h1>
   <form #offerForm="ngForm">
+    <!-- {{offerForm.value | json}} -->
+    <!-- {{offerModel | json}} -->
     <div class="form-group">
       <label>Offer</label>
-      <input >
+      <input type="text" required #offer="ngModel" [class.is-invalid]="offer.invalid && offer.touched" class="form-control" name="offer" [(ngModel)]="offerModel.offer" />
     </div>
+    <!-- {{offer.valid}} -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea rows="5" required #description="ngModel" [class.is-invalid]="description.invalid && description.touched" class="form-control" name="description" [(ngModel)]="offerModel.description" ></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit Offer</button>
   </form>
 </div>
