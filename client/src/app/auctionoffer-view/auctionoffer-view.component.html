@@ -1,0 +1,16 @@
+
+<div>
+
+  <p>auctionoffer-view works! on auction: {{id}} </p>
+  <h1>Offers</h1>
+  <ul>
+
+    <li *ngFor="let offer of offers">
+      <h2>{{offer.name}}</h2>
+      <p>{{offer.kind}} from {{offer.OfferOwnerId}}</p>
+
+    </li>
+
+  </ul>
+
+</div>

@@ -6,6 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PostBidComponent } from './post-bid/post-bid.component';
 import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
+import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -14,7 +15,7 @@ const routes: Routes = [
   { path: 'bid', component: PostBidComponent },
   { path: 'bid/confirm', component: BidConfirmationComponent },
   { path: 'offerform', component: OfferFormComponent },
-
+  {path: 'bid/confirm', component: BidConfirmationComponent}, {path: 'auctions/:id', component: AuctionofferViewComponent}
 ];
 
 @NgModule({

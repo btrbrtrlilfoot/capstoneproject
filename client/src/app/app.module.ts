@@ -11,6 +11,7 @@ import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.co
 import { SignupComponent } from './signup/signup.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { HttpClientModule } from '@angular/common/http'
+import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { HttpClientModule } from '@angular/common/http'
     PostBidComponent,
     BidConfirmationComponent,
     SignupComponent,
-    OfferFormComponent
+    OfferFormComponent,
+    AuctionofferViewComponent
   ],
   imports: [
     BrowserModule,
