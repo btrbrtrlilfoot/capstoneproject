@@ -6,7 +6,7 @@ import { HomeComponent } from './home/home.component';
 import { PostBidComponent } from './post-bid/post-bid.component';
 import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
-import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component';
+import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },

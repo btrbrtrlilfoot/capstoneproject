@@ -6,18 +6,12 @@ module.exports = router
 router.get('/:auctionId', async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId
-    const offers = await Auction.findAll({
-      where: {AuctionProductId: auctionId}
+    const product = await Product.findOne({
+      where: {id: auctionId},
+      include: { model: Product, as: 'Offer' }
     })
-    let products = []
-    for(let offer in offers){
-      const product = await Product.findOne({
-        where: { id: offers[offer].productId}
-      })
-      products.push(product)
-    }
 
-    res.json(products)
+    res.json(product)
   } catch (err) {
     next(err)
   }

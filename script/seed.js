@@ -1,7 +1,7 @@
 'use strict'
 
 const db = require('../server/db')
-const {User, Product, Auction, UserAuction, UserOffer} = require('../server/db/models')
+const {User, Product, Offer} = require('../server/db/models')
 
 
 async function seed() {
@@ -17,22 +17,23 @@ async function seed() {
   const user = await User.create({email: 'cody@email.com', password: '123', location: 'NYC'})
   const user2 = await User.create({email: 'cody2@email.com', password: '123', location: 'NYC'})
   const user3 = await User.create({email: 'cody3@email.com', password: '123', location: 'NYC'})
-  const product = await Product.create({name: 'Juicer',status: 'auction (open)',kind: 'item'})
-  const product2 = await Product.create({name: 'Not a Juicer',status: 'offer',kind: 'item'})
-  const product3 = await Product.create({name: 'Not a Juicer2',status: 'offer',kind: 'item'})
-  const product4 = await Product.create({name: 'Also not a Juicer',status: 'offer',kind: 'item'})
+  const product = await Product.create({name: 'Juicer',kind: 'item', type: 'auction'})
+  const product2 = await Product.create({name: 'Not a Juicer',kind: 'item', type: 'offer'})
+  const product3 = await Product.create({name: 'Not a Juicer2',kind: 'item'})
+  const product4 = await Product.create({name: 'Also not a Juicer',kind: 'item'})
 
 
 
-  await product.setAuctionOwner(user)
-  await product4.setOfferOwner(user)
-  await product2.addAuctionProduct(product, {through: {status: 'pending'}})
-  await product3.addAuctionProduct(product, {through: {status: 'pending'}})
-  const auctions = await product.getAuctionOwner()
-  const offers = await product4.getOfferOwner()
+  await user.addProduct(product)
+  await product.addOffer(product2, {through: {status: 'pending'}})
+  // await
+  // await product2.addAuctionProduct(product, {through: {status: 'pending'}})
+  // await product3.addAuctionProduct(product, {through: {status: 'pending'}})
+  // const auctions = await product.getAuctionOwner()
+  // const offers = await product4.getOfferOwner()
 
-  console.log('these are auctions', auctions)
-  console.log('these are offers', offers)
+  // console.log('these are auctions', auctions)
+  // console.log('these are offers', offers)
   console.log(`seeded successfully`)
 }
 
