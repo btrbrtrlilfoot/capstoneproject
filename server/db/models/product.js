@@ -9,17 +9,17 @@ const Product = db.define('product', {
             notEmpty: true
         }
     },
-    status: {
-        type: Sequelize.STRING,
-        validate:   {
-            isIn: [['auction (open)', 'auction (closed)','offer','pending','completed']]
-        }
-    },
     kind: {
         type: Sequelize.STRING,
         validate:   {
             isIn: [['service','item']]
         }
-    }
+    },
+    type: {
+      type: Sequelize.STRING,
+      validate:   {
+          isIn: [['offer','auction']]
+      }
+  }
 })
 module.exports = Product

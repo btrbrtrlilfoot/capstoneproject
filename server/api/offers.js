@@ -1,9 +1,22 @@
 const router = require('express').Router();
 const {User, Auction, Product} = require('../db/models')
 
+
 router.get('/:auctionId', async (req, res, next) => {
-  // get all offers for an auction
-});
+  try {
+    const auctionId = req.params.auctionId
+    const offers = await Auction.findAll({
+      where: {AuctionProductId: auctionId}
+    })
+    res.json(products)
+  } catch (err) {
+    next(err)
+  }
+})
+
+// router.get('/:auctionId', async (req, res, next) => {
+//   // get all offers for an auction
+// });
 
 router.get('/:id', async (req, res, next) => {
   // get one offer
