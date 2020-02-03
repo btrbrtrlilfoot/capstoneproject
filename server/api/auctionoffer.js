@@ -2,86 +2,79 @@ const router = require('express').Router()
 const {User, Auction, Product} = require('../db/models')
 module.exports = router
 
-//get offers associated with an auctionProductID
-router.get('/:auctionId', async (req, res, next) => {
+//get offers associated with an auction productid
+router.get('/:id', async (req, res, next) => {
   try {
-    const auctionId = req.params.auctionId
-    const product = await Product.findOne({
+    const auctionId = req.params.id
+    const products = await Product.findOne({
       where: {id: auctionId},
       include: { model: Product, as: 'Offer' }
-    })
-
-    res.json(product)
+    }) //Base eagerloading. Returns the Auction Product and Offers in an array under the key: Offer
+    res.json(products)
   } catch (err) {
     next(err)
   }
 })
 
-///Update auction based on selected offer
-//should reject all other offers
-router.put('/:auctionId/', async (req, res, next) => {
+// /Update auction based on selected offer
+// should reject all other offers
+router.put('/:id/', async (req, res, next) => {
   try {
-    //Grab product thats being put up for auction, set status as closed auction
-    //this is so that we can differentiate auctions later
-    const auctionId = req.params.auctionId
-    const auction = await Product.findByPk(auctionId)
-    auction.status = 'auction (closed)'
-    await auction.save();
+    const auctionId = req.params.id
     const selectedId = req.body.offerId
-    const acceptedOffer =  await Product.findByPk(selectedId)
-    //req.body should contin keyvalue pair of
-    // {offerId: <productId>} of the accepted product
-    //find the accepted offer product, return it from this request
-
-    //update related offers in the auction table as accepted/rejected
-    const offers = await Auction.findAll({
-      where: {AuctionProductId: auctionId}
+    const products = await Product.findOne({
+      where: {id: auctionId},
+      include: { model: Product, as: 'Offer' }
     })
-    for(let idx in offers){
-      if(offers[idx].productId === selectedId)
-      { offers[idx].status = 'accepted' }
+    products.type = 'auction (closed)'  //updates an auction as closed, necessary for differentiating auction states.
+    products.save()
+    for(let idx in products.Offer){ //search for accepted offer based on offerId sent in body, updates entire array of offers
+      if(products.Offer[idx].id === selectedId)
+      { products.Offer[idx].offer.status = 'accepted' }
       else {
-        offers[idx].status = 'rejected'
+        products.Offer[idx].offer.status = 'rejected'
       }
-      await offers[idx].save()
+      await products.Offer[idx].offer.save()
     }
 
-    res.json(acceptedOffer)
+    res.json(products)
   } catch (err) {
     next(err)
   }
 })
 
 //verify exchange has been made
-router.put('/:auctionId/verified', async (req, res, next) => {
+router.get('/:id/verified', async (req, res, next) => {
   try {
-    //Grab product thats being put up for auction, set status as closed auction
-    //this is so that we can differentiate auctions later
-    const auctionId = req.params.auctionId
-    const auction = await Product.findByPk(auctionId)
-    auction.status = 'auction (closed)'
-    await auction.save();
-    const selectedId = req.body.offerId
-    const acceptedOffer =  await Product.findByPk(selectedId)
-    //req.body should contin keyvalue pair of
-    // {offerId: <productId>} of the accepted product
-    //find the accepted offer product, return it from this request
-
-    //update related offers in the auction table as accepted/rejected
-    const offers = await Auction.findAll({
-      where: {AuctionProductId: auctionId}
-    })
-    for(let idx in offers){
-      if(offers[idx].productId === selectedId)
-      { offers[idx].status = 'accepted' }
-      else {
-        offers[idx].status = 'rejected'
-      }
-      await offers[idx].save()
-    }
-
-    res.json(acceptedOffer)
+    const auctionId = req.params.id
+    const products = await Product.findOne({
+      where: {id: auctionId},
+      include: { model: Product, as: 'Offer', through: {where: {status: 'accepted'}} }
+    }) //only returns an array with the accepted offer product and the auction product
+    products.Offer[0].offer.status = 'successful'
+    products.Offer[0].offer.save()
+    res.json(products)
   } catch (err) {
     next(err)
   }
 })
+
+//delete auction and related offers
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const auctionId = req.params.id
+    const products = await Product.findOne({
+      where: {id: auctionId},
+      include: { model: Product, as: 'Offer'}
+    })
+    while(products.Offer.length > 0){ //deletes products in array related to auction product
+      const offer = products.Offer.pop()
+      await offer.destroy()
+    }
+    await products.destroy() //deletes product
+    res.send('Auction Has Been Deleted. All Offers Are Gone')
+  } catch (err) {
+    next(err)
+  }
+})
+
