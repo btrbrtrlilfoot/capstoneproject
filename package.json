@@ -3,7 +3,8 @@
   "version": "2.0.0",
   "description": "Some boilerplate code to get you started - get shakin'!",
   "engines": {
-    "node": ">= 7.0.0"
+    "node": ">= 7.0.0",
+    "npm": "6.13.4"
   },
   "main": "index.js",
   "scripts": {
@@ -15,6 +16,7 @@
     "lint": "eslint ./ --ignore-path .gitignore",
     "lint-fix": "npm run lint -- --fix",
     "prepare": "if [ -d .git ]; then npm-merge-driver install; fi",
+    "heroku-postbuild": "ng build --prod",
     "postinstall": "touch secrets.js",
     "prettify": "prettier --write \"**/*.{js,jsx,json,css,scss,md,ts,tsx}\"",
     "seed": "node script/seed.js",
@@ -38,6 +40,9 @@
   "author": "Fullstack Academy of Code",
   "license": "MIT",
   "dependencies": {
+    "typescript": "~3.5.3",
+    "@angular/cli": "~8.3.24",
+    "@angular/compiler-cli": "~8.2.14",
     "@angular/animations": "~8.2.14",
     "@angular/common": "~8.2.14",
     "@angular/compiler": "~8.2.14",
@@ -78,6 +83,7 @@
     "axios-mock-adapter": "^1.16.0",
     "chai": "^4.2.0",
     "codelyzer": "^5.0.0",
+    "enhanced-resolve": "^3.3.0",
     "eslint": "^5.16.0",
     "eslint-config-fullstack": "^6.0.0",
     "eslint-config-prettier": "^4.1.0",
@@ -101,7 +107,6 @@
     "supertest": "^4.0.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
-    "typescript": "~3.5.3",
     "webpack": "^4.41.5",
     "yaml": "^1.6.0"
   }
