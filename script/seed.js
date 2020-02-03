@@ -17,15 +17,16 @@ async function seed() {
   const user = await User.create({email: 'cody@email.com', password: '123', location: 'NYC'})
   const user2 = await User.create({email: 'cody2@email.com', password: '123', location: 'NYC'})
   const user3 = await User.create({email: 'cody3@email.com', password: '123', location: 'NYC'})
-  const product = await Product.create({name: 'Juicer',kind: 'item', type: 'auction'})
+  const product = await Product.create({name: 'Juicer',kind: 'item', type: 'auction (open)'})
   const product2 = await Product.create({name: 'Not a Juicer',kind: 'item', type: 'offer'})
-  const product3 = await Product.create({name: 'Not a Juicer2',kind: 'item'})
+  const product3 = await Product.create({name: 'Not a Juicer2',kind: 'item', type: 'offer'})
   const product4 = await Product.create({name: 'Also not a Juicer',kind: 'item'})
 
 
 
   await user.addProduct(product)
   await product.addOffer(product2, {through: {status: 'pending'}})
+  await product.addOffer(product3, {through: {status: 'pending'}})
   // await
   // await product2.addAuctionProduct(product, {through: {status: 'pending'}})
   // await product3.addAuctionProduct(product, {through: {status: 'pending'}})
