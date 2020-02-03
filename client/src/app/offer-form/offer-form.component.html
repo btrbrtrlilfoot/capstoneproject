@@ -1,0 +1,19 @@
+<div>
+  <h1>Offer Submission Form</h1>
+  <form #offerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+    <!-- {{offerForm.value | json}} -->
+    <!-- {{offerModel | json}} -->
+    <div class="form-group">
+      <label>Offer</label>
+      <input type="text" required #offer="ngModel" [class.is-invalid]="offer.invalid && offer.touched" class="form-control" name="offer" [(ngModel)]="offerModel.offer" />
+      <small class="text-danger" [class.d-none]="offer.valid || offer.untouched">offer is required</small>
+    </div>
+    <!-- {{offer.valid}} -->
+    <div class="form-group">
+      <label>Description</label>
+      <textarea rows="5" required #description="ngModel" [class.is-invalid]="description.invalid && description.touched" class="form-control" name="description" [(ngModel)]="offerModel.description" ></textarea>
+      <small class="text-danger" [class.d-none]="description.valid || description.untouched">description is required</small>
+    </div>
+    <button [disabled]="offerForm.form.invalid" type="submit" class="btn btn-primary">Submit Offer</button>
+  </form>
+</div>

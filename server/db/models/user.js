@@ -28,7 +28,9 @@ const User = db.define('user', {
   location: {
     type: Sequelize.STRING,
     allowNull: false,
-    notEmpty: true
+    validate: {
+      notEmpty: true
+    }
   },
   googleId: {
     type: Sequelize.STRING
