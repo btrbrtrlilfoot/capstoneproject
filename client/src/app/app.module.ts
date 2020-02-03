@@ -10,7 +10,7 @@ import { PostBidComponent } from './post-bid/post-bid.component';
 import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
 import { SignupComponent } from './signup/signup.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
-
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import { OfferFormComponent } from './offer-form/offer-form.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,ReactiveFormsModule
+    FormsModule,ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]
