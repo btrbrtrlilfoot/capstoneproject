@@ -1,4 +1,5 @@
 const router = require('express').Router();
+const {User, Auction, Product} = require('../db/models')
 
 router.get('/:auctionId', async (req, res, next) => {
   // get all offers for an auction
