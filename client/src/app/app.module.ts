@@ -6,8 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { PostBidComponent } from './post-bid/post-bid.component';
-import { BidConfirmationComponent } from './bid-confirmation/bid-confirmation.component';
+import { PostAuctionComponent } from './post-auction/post-auction.component';
+import { AuctionConfirmationComponent } from './auction-confirmation/auction-confirmation.component';
 import { SignupComponent } from './signup/signup.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { HttpClientModule } from '@angular/common/http'
@@ -18,8 +18,8 @@ import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view
     AppComponent,
     LoginComponent,
     HomeComponent,
-    PostBidComponent,
-    BidConfirmationComponent,
+    PostAuctionComponent,
+    AuctionConfirmationComponent,
     SignupComponent,
     OfferFormComponent,
     AuctionofferViewComponent

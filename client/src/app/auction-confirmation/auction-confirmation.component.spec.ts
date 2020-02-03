@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostBidComponent } from './post-bid.component';
+import { AuctionConfirmationComponent } from './auction-confirmation.component';
 
-describe('PostBidComponent', () => {
-  let component: PostBidComponent;
-  let fixture: ComponentFixture<PostBidComponent>;
+describe('BidConfirmationComponent', () => {
+  let component: AuctionConfirmationComponent;
+  let fixture: ComponentFixture<AuctionConfirmationComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ PostBidComponent ]
+      declarations: [ AuctionConfirmationComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostBidComponent);
+    fixture = TestBed.createComponent(AuctionConfirmationComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
