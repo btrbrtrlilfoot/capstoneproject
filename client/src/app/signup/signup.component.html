@@ -2,14 +2,14 @@
 
 
 <div >Tell Us About Yourself!</div>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
-  <input type='text' formControName='name' placeholder="name" >
+<form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
+  <input type='text' formControlName='name' placeholder="name" >
   <p></p>
-  <input type='text' formControName='email' placeholder="email" >
+  <input type='text' formControlName='email' placeholder="email" >
   <p></p>
-  <input type='text' formControName='password' placeholder="password" >
+  <input type='text' formControlName='password' placeholder="password" >
   <p></p>
-  <input type='text' formControName='location' placeholder="city" >
+  <input type='text' formControlName='location' placeholder="city" >
   <p></p>
   <button>Make My Account</button>
   </form>
