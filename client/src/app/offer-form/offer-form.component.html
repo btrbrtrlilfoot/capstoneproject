@@ -8,6 +8,7 @@
       <input type="text" required #offer="ngModel" [class.is-invalid]="offer.invalid && offer.touched" class="form-control" name="offer" [(ngModel)]="offerModel.offer" />
       <small class="text-danger" [class.d-none]="offer.valid || offer.untouched">offer is required</small>
     </div>
+
     <!-- {{offer.valid}} -->
     <div class="form-group">
       <label>Description</label>
