@@ -18,7 +18,7 @@ const Product = db.define('product', {
     type: {
       type: Sequelize.STRING,
       validate:   {
-          isIn: [['offer','auction']]
+          isIn: [['offer','auction (open)', 'auction (closed)']]
       }
   }
 })
