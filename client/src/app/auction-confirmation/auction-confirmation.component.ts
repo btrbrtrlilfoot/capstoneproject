@@ -10,7 +10,7 @@ import {PostAuctionComponent} from '../post-auction/post-auction.component';
   styleUrls: ['./auction-confirmation.component.css']
 })
 export class AuctionConfirmationComponent implements OnInit {
-  @Input() auction: object;
+  @Input() auction: PostAuctionComponent;
   
   
 constructor() {}

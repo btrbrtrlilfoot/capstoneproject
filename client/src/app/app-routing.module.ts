@@ -12,10 +12,11 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'signup', component: SignupComponent },
   { path: 'home', component: HomeComponent },
-  { path: 'auction', component: PostAuctionComponent },
-  { path: 'auction/confirm', component: AuctionConfirmationComponent },
+  { path: 'auction', component: PostAuctionComponent, pathMatch: 'full' },
+  {path: 'auction/confirm', component: PostAuctionComponent}, 
+  {path: 'auction/:id', component: AuctionofferViewComponent},
   { path: 'offerform', component: OfferFormComponent },
-  {path: 'auction/confirm', component: AuctionConfirmationComponent}, {path: 'auctions/:id', component: AuctionofferViewComponent}
+  
 ];
 
 @NgModule({
