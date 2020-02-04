@@ -12,6 +12,7 @@ import { SignupComponent } from './signup/signup.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { HttpClientModule } from '@angular/common/http'
 import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component'
+import { SingleOfferComponent } from './single-offer/single-offer.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view
     AuctionConfirmationComponent,
     SignupComponent,
     OfferFormComponent,
-    AuctionofferViewComponent
+    AuctionofferViewComponent,
+    SingleOfferComponent
   ],
   imports: [
     BrowserModule,

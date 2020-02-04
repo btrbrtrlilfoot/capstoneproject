@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SingleOfferService } from './single-offer.service'
 
 @Component({
   selector: 'app-single-offer',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SingleOfferComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _singleOfferService: SingleOfferService) { }
 
   ngOnInit() {
+    this._singleOfferService.getOffers(1).subscribe( data => {
+      return data
+    }
+
+    )
   }
 
 }

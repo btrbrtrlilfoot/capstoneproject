@@ -1,19 +1,19 @@
 const router = require('express').Router();
 const { User, Offer, Product } = require('../db/models');
 
-//get all offers
+//get all offers on an auction
 router.get('/:auctionId', async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const product = await Product.findByPk(auctionId, {
       include: { model: Product, as: 'Offer' }
     });
-
     res.json(product.Offer);
   } catch (err) {
     next(err);
   }
 });
+
 
 router.post('/:auctionId', async (req, res, next) => {
   // create a new offer
