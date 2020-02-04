@@ -1,10 +1,26 @@
 
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <label>Item</label>
-  <input type='text' placeholder="item" formName='item'>
+<form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
+ <table>
+  <label>What's the name of the item or service that you'd like to auction?</label>
+  <input type='text' placeholder="item" formControlName='item'>
   <div></div>
-  <label>Description</label>
-  <input type='text' placeholder="description" formName='description'>
-  <button routerLink='/bid/confirm'>Submit</button>
+  
+  <label>Give bidders a brief description</label>
+  <input type='text' placeholder="description" formControlName='description'>
+ <p>I would classify this as a:</p>
+  <div ><label class="container">Item
+    <input type="checkbox" >
+    <span class="checkmark"></span>
+  </label>
+  
+  <label class="container">Service
+    <input type="checkbox">
+    <span class="checkmark"></span>
+  </label>
+</div>
+  <button type='submit'>Submit</button>
+ </table>
 </form>
+
+

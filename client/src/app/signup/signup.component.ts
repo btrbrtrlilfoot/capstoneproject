@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class SignupComponent implements OnInit {
   user: any;
-  constructor(private formBuilder: FormBuilder, private http: HttpClient) { }
+  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) { }
   
   ngOnInit()  {}
   userForm = new FormGroup({
@@ -26,6 +26,7 @@ export class SignupComponent implements OnInit {
 
     this.http.post('/auth/signup', Form).subscribe((data:any) =>  {
       this.user = data;
+      this.router.navigate(['/home'])
     }, error => { console.log('oops', error)})
     
   }

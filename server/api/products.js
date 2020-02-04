@@ -14,9 +14,12 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const product = await Product.create({
-      name: req.body.name,
-      kind: req.body.kind,
-      type: req.body.type
+      name: req.body.item,
+      // kind: req.body.kind,
+      description: req.body.description,
+      type: 'auction (open)',
+      userId: req.session.passport.user
+
     });
 
     res.send(product);
