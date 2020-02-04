@@ -8,18 +8,26 @@ import { HttpClient } from '@angular/common/http';
 
 export class AuctionViewService {
   _url = '/api/auctions';
+  auction: any;
+  empty: boolean = true;
   constructor(private _http: HttpClient) {}
 
 
   //Returns Auction and Products in an Object
   getAuctionProducts(id: number) {
     let url = `${this._url}/${id}`;
-    return this._http.get<any>(url)
+    this.auction = this._http.get<any>(url);
+    return this.auction;
   }
 
   selectOffer(auctionId, offerId){
     let url = `${this._url}/${auctionId}`;
-    return this._http.put<any>(url, {offerId: offerId})
+    this.auction = this._http.put<any>(url, {offerId: offerId});
+    return this.auction;
+  }
+
+  returnAuction(){
+    return this.auction;
   }
 
 }

@@ -17,7 +17,7 @@ export class AuctionofferViewComponent implements OnInit {
   auction: any;
   auctionStatus: string;
   buttonDisable: boolean;
-  userId: number;
+  userId: number =  1;
   selectedOffer: number;
   private sub: any;
   //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
@@ -33,8 +33,6 @@ export class AuctionofferViewComponent implements OnInit {
     }); //Get URL Id
     this.auctionView.getAuctionProducts(this.id).subscribe(data => {
     //service function. lets me access the data returned by my http req
-
-
       this.auction = data;
      //This redirects the user away from looking up offers under the Auction url
      if(this.auction.type !== 'auction (closed)' && this.auction.type !== 'auction (open)'){
