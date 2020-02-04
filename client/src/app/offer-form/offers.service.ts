@@ -6,10 +6,11 @@ import { Offer } from './offer';
   providedIn: 'root'
 })
 export class OffersService {
-  _url = '/offers';
+  _url = '/api/offers';
   constructor(private _http: HttpClient) {}
 
-  postOffer(offer: Offer) {
-    return this._http.post<any>(this._url, offer);
+  postOffer(offer: Offer, auctionId: number) {
+    let url = `${this._url}/${auctionId}`;
+    return this._http.post<any>(url, offer);
   }
 }

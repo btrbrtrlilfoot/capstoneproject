@@ -1,6 +1,7 @@
 export class Offer {
   constructor(
-    public offer: string,
+    public name: string,
+    public kind: string,
     public description: string
   ) {}
 }
