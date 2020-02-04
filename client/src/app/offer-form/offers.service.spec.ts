@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { OffersService } from './offer-form/offers.service';
+import { OffersService } from './offers.service';
 
 describe('OffersService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

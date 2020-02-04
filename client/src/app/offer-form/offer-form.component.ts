@@ -8,17 +8,15 @@ import { OffersService } from './offers.service';
   styleUrls: ['./offer-form.component.css']
 })
 export class OfferFormComponent {
-  offerModel = new Offer(
-    'do dishes for two hours',
-    'This is some description about the offer I am making'
-  );
+  offerModel = new Offer('', 'service', '');
 
   constructor(private _offerService: OffersService) {}
 
   onSubmit() {
-    this._offerService.postOffer(this.offerModel).subscribe(
+    this._offerService.postOffer(this.offerModel, 1).subscribe(
       data => console.log('We posted successfully'),
       error => console.log('There was an error')
     );
+    console.log(this.offerModel);
   }
 }
