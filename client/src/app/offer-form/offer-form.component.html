@@ -4,9 +4,9 @@
     <!-- {{offerForm.value | json}} -->
     <!-- {{offerModel | json}} -->
     <div class="form-group">
-      <label>Offer</label>
-      <input type="text" required #offer="ngModel" [class.is-invalid]="offer.invalid && offer.touched" class="form-control" name="offer" [(ngModel)]="offerModel.offer" />
-      <small class="text-danger" [class.d-none]="offer.valid || offer.untouched">offer is required</small>
+      <label>Name</label>
+      <input type="text" required #name="ngModel" [class.is-invalid]="name.invalid && name.touched" class="form-control" name="name" [(ngModel)]="offerModel.name" />
+      <small class="text-danger" [class.d-none]="name.valid || name.untouched">name is required</small>
     </div>
 
     <!-- {{offer.valid}} -->
