@@ -1,34 +1,78 @@
 const router = require('express').Router();
-const {User, Auction, Product} = require('../db/models')
+const { User, Offer, Product } = require('../db/models');
 
-
+//get all offers
 router.get('/:auctionId', async (req, res, next) => {
   try {
-    const auctionId = req.params.auctionId
-    const offers = await Auction.findAll({
-      where: {AuctionProductId: auctionId}
-    })
-    res.json(products)
+    const auctionId = req.params.auctionId;
+    const product = await Product.findByPk(auctionId, {
+      include: { model: Product, as: 'Offer' }
+    });
+
+    res.json(product.Offer);
   } catch (err) {
-    next(err)
+    next(err);
   }
-})
-
-// router.get('/:auctionId', async (req, res, next) => {
-//   // get all offers for an auction
-// });
-
-router.get('/:id', async (req, res, next) => {
-  // get one offer
 });
 
-router.post('/', async (req, res, next) => {
-    // create a new offer
+router.post('/:auctionId', async (req, res, next) => {
+  // create a new offer
+  try {
+    const auctionProduct = await Product.findByPk(req.params.auctionId);
+    const product = await Product.create({
+      name: req.body.name,
+      kind: req.body.kind,
+      type: 'offer'
+    });
+
+    const offer = await auctionProduct.addOffer(product, {
+      through: { status: 'pending' }
+    });
+
+    res.send(offer);
+  } catch (error) {
+    next(error);
+  }
 });
 
 //verify exchange has been made
-router.put('/:id', async (req, res, next) => {});
+router.put('/:auctionId/:offerId', async (req, res, next) => {
+  try {
+    const auctionId = req.params.auctionId;
+    const offerId = req.params.offerId;
 
-router.delete('/:id', async (req, res, next) => {});
+    const offer = await Offer.findOne({
+      where: {
+        productId: auctionId,
+        OfferId: offerId
+      }
+    });
+
+    offer.status = req.body.status;
+    res.send(offer);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete('/:auctionId/:offerId', async (req, res, next) => {
+  try {
+    const auctionId = req.params.auctionId;
+    const offerId = req.params.offerId;
+
+    const offer = await Offer.findOne({
+      where: {
+        productId: auctionId,
+        OfferId: offerId
+      }
+    });
+    if(offer){
+      await offer.destroy();
+    }
+    res.sendStatus(204)
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;
