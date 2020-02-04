@@ -1,6 +1,9 @@
 <button routerLink='/auction/'>Start a New Bid!</button>
 
-  <div>if bids exist nearby we will render this otherwise, it will say no local bids cuurently</div>
-  <h2>Active Bids In Your City:</h2>
-  
+  <div *ngIf='bids'>
+  <h2>Active Bids In Your City~~</h2>
+  <ul>
+    
+  </ul>
+</div>
 

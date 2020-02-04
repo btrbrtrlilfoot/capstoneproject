@@ -10,10 +10,15 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
   userId: number;
+  bids: [];
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
-    this.http.get('/api/products')
-  }
+    this.http.get('/api/products').subscribe((data:any) =>  {
+      console.log('dataa',data)
+      
+
+    }, error => { console.log('oops', error)})
+      }
 
 }

@@ -1,6 +1,24 @@
 const router = require('express').Router();
 const { User, Product } = require('../db/models');
 
+
+router.get('/', async (req, res, next) => {
+  try {
+    console.log('reqqq',req.session)
+    const products = await Product.findAll({
+      where:  {
+        type: 'auction (open)'
+      },
+        include:  [{model: User}]
+
+      
+    });
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get('/:id', async (req, res, next) => {
   try {
     const id = req.params.id;
