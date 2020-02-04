@@ -11,7 +11,10 @@ import { AuctionConfirmationComponent } from './auction-confirmation/auction-con
 import { SignupComponent } from './signup/signup.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { HttpClientModule } from '@angular/common/http'
-import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component'
+import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { MatRadioModule } from '@angular/material/radio';
+import { AuctionClosedPageComponent } from './auction-closed-page/auction-closed-page.component';
 
 @NgModule({
   declarations: [
@@ -22,13 +25,16 @@ import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view
     AuctionConfirmationComponent,
     SignupComponent,
     OfferFormComponent,
-    AuctionofferViewComponent
+    AuctionofferViewComponent,
+    AuctionClosedPageComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatRadioModule
   ],
   providers: [LoginComponent],
   bootstrap: [AppComponent]

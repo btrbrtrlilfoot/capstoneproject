@@ -1,16 +1,24 @@
 
 <div>
+ <!-- {{<expressions, you can put ur variables or make calculations. idk if for loops work in them tho>}
 
-  <p>auctionoffer-view works! on auction: {{id}} </p>
-  <h1>Offers</h1>
-  <ul>
+*ngFor >>> for loopig through an array
+*ngIf >>>> Conditional, if false it wont show that element + its stuff
+>>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
+} -->
+  <p>auctionoffer-view works! on auction: {{}} </p>
+  <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}</h1>
+  <div>
+    <mat-radio-group [(ngModel)]="selectedOffer">
+      <div  *ngFor="let offer of offers"  >
+        <p *ngIf="userId === auction.userId">  <mat-radio-button [value]="offer.id"></mat-radio-button> </p>
+        {{offer.name}}
+        <p>{{offer.kind}} from {{offer.userId}}</p>
+        <p>Currently: {{offer.offer.status}}</p>
+    </div>
+    </mat-radio-group>
+  </div>
+  <button *ngIf="userId === auction.userId" [disabled]="buttonDisable" (click)="onSubmit(selectedOffer)">Click me!</button>
 
-    <li *ngFor="let offer of offers">
-      <h2>{{offer.name}}</h2>
-      <p>{{offer.kind}} from {{offer.OfferOwnerId}}</p>
-
-    </li>
-
-  </ul>
 
 </div>
