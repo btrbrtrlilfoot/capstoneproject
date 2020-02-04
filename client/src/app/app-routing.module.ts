@@ -7,6 +7,7 @@ import { PostAuctionComponent } from './post-auction/post-auction.component';
 import { AuctionConfirmationComponent } from './auction-confirmation/auction-confirmation.component';
 import { OfferFormComponent } from './offer-form/offer-form.component';
 import { AuctionofferViewComponent } from './auctionoffer-view/auctionoffer-view.component'
+import { AuctionClosedPageComponent  } from './auction-closed-page/auction-closed-page.component'
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'auction', component: PostAuctionComponent },
   { path: 'auction/confirm', component: AuctionConfirmationComponent },
   { path: 'offerform', component: OfferFormComponent },
-  {path: 'auction/confirm', component: AuctionConfirmationComponent}, {path: 'auctions/:id', component: AuctionofferViewComponent}
+  {path: 'auction/confirm', component: AuctionConfirmationComponent}, {path: 'auctions/:id', component: AuctionofferViewComponent},
+  {path: 'auctions/:id/success', component: AuctionClosedPageComponent}
 ];
 
 @NgModule({
