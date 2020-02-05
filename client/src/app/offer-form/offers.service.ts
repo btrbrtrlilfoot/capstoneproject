@@ -1,12 +1,12 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Offer } from './offer';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Offer } from "./offer";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class OffersService {
-  _url = '/api/offers';
+  _url = "/api/offers";
   constructor(private _http: HttpClient) {}
 
   postOffer(offer: Offer, auctionId: number) {

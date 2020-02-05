@@ -1,5 +1,20 @@
+
 <div>
-  <h1>Single Offer</h1>
-  <img src="some.jpg" alt="Italian Trulli">
-  <button type="submit">Accept Offer</button>
+  <div *ngIf="error; else body">
+   <p> No offer found!</p>
+  </div>
+
+  <ng-template #body>
+    <p>One of the offers for auction {{auctionId}}</p>
+    <p>Offer name : {{offer.name}}</p>
+    <img src="" alt="image of the offer">
+    <br/>
+    <button type="submit">Accept Offer</button>
+  </ng-template>
 </div>
+
+<hr />
+
+
+
+
