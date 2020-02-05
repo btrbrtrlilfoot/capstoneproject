@@ -12,9 +12,13 @@ import { Router } from "@angular/router";
 export class SignupComponent implements OnInit {
   user: any;
 
-  constructor(private formBuilder: FormBuilder, private router: Router, private http: HttpClient) { }
-  
-  ngOnInit()  {}
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
+
+  ngOnInit() {}
 
   userForm = new FormGroup({
     $key: new FormControl(null),
@@ -26,14 +30,15 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     let Form = this.userForm.value;
 
-    this.http.post('/auth/signup', Form).subscribe((data:any) =>  {
-      this.user = data;
-      this.router.navigate(['/home'])
-    }, error => { console.log('oops', error)})
-    
-  }
-
-   
+    this.http.post("/auth/signup", Form).subscribe(
+      (data: any) => {
+        this.user = data;
+        this.router.navigate(["/home"]);
+      },
+      error => {
+        console.log("oops", error);
+      }
+    );
   }
 }
 
