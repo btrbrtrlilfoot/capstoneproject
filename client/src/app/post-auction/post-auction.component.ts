@@ -49,10 +49,4 @@ export class PostAuctionComponent implements OnInit {
       }
     );
   }
-
-  loginForm = new FormGroup({
-    $key: new FormControl(null),
-    item: new FormControl(""),
-    description: new FormControl("")
-  });
 }

@@ -1,7 +1,7 @@
-import { Component, OnInit, createPlatformFactory } from "@angular/core";
+import { Input, Component, OnInit, createPlatformFactory } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
-import {Router} from '@angular/router';
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 //set user info here
 @Component({
@@ -10,33 +10,34 @@ import {Router} from '@angular/router';
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  user: any;
-  constructor(private formBuilder: FormBuilder, private router: Router,private http: HttpClient) {}
-
-  
-  ngOnInit() {
-  }
-
- 
-  
+  @Input() user: any;
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private http: HttpClient
+  ) {}
   loginForm = new FormGroup({
     $key: new FormControl(null),
-    
-    email: new FormControl(''),
-    password: new FormControl('')
-    
-    })
 
-    onSubmit() {
-      let Form = this.loginForm.value;
-      console.log('form',Form)
-      this.http.post('/auth/login', Form).subscribe((data:any) =>  {
-        this.user = data;
-        this.router.navigate(['home'])
+    email: new FormControl(""),
+    password: new FormControl("")
+  });
 
-      }, error => { console.log('oops', error)})
-      
-    
-    }
+  ngOnInit() {
+    console.log("user", this.user);
   }
 
+  onSubmit() {
+    let Form = this.loginForm.value;
+    this.http.post("/auth/login", Form).subscribe(
+      (data: any) => {
+        this.user = data;
+        console.log("user", this.user);
+        // this.router.navigate(['home', {user: this.user}])
+      },
+      error => {
+        console.log("oops", error);
+      }
+    );
+  }
+}

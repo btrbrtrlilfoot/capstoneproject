@@ -11,7 +11,7 @@ import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view
 import { FeedComponent } from "./feed/feed.component";
 
 const routes: Routes = [
-  { path: "", component: FeedComponent },
+  { path: "", component: HomeComponent },
 
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
