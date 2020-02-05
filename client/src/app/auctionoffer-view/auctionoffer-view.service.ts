@@ -1,25 +1,21 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
-
 export class AuctionViewService {
-  _url = '/api/auctions';
+  _url = "/api/auctions";
   constructor(private _http: HttpClient) {}
-
 
   //Returns Auction and Products in an Object
   getAuctionProducts(id: number) {
     let url = `${this._url}/${id}`;
-    return this._http.get<any>(url)
+    return this._http.get<any>(url);
   }
 
-  selectOffer(auctionId, offerId){
+  selectOffer(auctionId, offerId) {
     let url = `${this._url}/${auctionId}`;
-    return this._http.put<any>(url, {offerId: offerId})
+    return this._http.put<any>(url, { offerId: offerId });
   }
-
 }

@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AuctionClosedPageComponent } from './auction-closed-page.component';
+import { AuctionClosedPageComponent } from "./auction-closed-page.component";
 
-describe('AuctionClosedPageComponent', () => {
+describe("AuctionClosedPageComponent", () => {
   let component: AuctionClosedPageComponent;
   let fixture: ComponentFixture<AuctionClosedPageComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AuctionClosedPageComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [AuctionClosedPageComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AuctionClosedPageComponent);
@@ -19,7 +20,7 @@ describe('AuctionClosedPageComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

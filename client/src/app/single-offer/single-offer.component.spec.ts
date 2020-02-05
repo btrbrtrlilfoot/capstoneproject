@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { SingleOfferComponent } from './single-offer.component';
+import { SingleOfferComponent } from "./single-offer.component";
 
-describe('SingleOfferComponent', () => {
+describe("SingleOfferComponent", () => {
   let component: SingleOfferComponent;
   let fixture: ComponentFixture<SingleOfferComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ SingleOfferComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [SingleOfferComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(SingleOfferComponent);
@@ -19,7 +20,7 @@ describe('SingleOfferComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

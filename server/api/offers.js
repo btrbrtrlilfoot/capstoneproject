@@ -1,12 +1,12 @@
-const router = require('express').Router();
-const { User, Offer, Product } = require('../db/models');
+const router = require("express").Router();
+const { User, Offer, Product } = require("../db/models");
 
 //get all offers on an auction
-router.get('/:auctionId', async (req, res, next) => {
+router.get("/:auctionId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const product = await Product.findByPk(auctionId, {
-      include: { model: Product, as: 'Offer' }
+      include: { model: Product, as: "Offer" }
     });
     res.json(product.Offer);
   } catch (err) {
@@ -25,18 +25,18 @@ router.get('/:auctionId', async (req, res, next) => {
 //   }
 // });
 
-router.post('/:auctionId', async (req, res, next) => {
+router.post("/:auctionId", async (req, res, next) => {
   // create a new offer
   try {
     const auctionProduct = await Product.findByPk(req.params.auctionId);
     const product = await Product.create({
       name: req.body.name,
       kind: req.body.kind,
-      type: 'offer'
+      type: "offer"
     });
 
     const offer = await auctionProduct.addOffer(product, {
-      through: { status: 'pending' }
+      through: { status: "pending" }
     });
 
     res.send(offer);
@@ -46,7 +46,7 @@ router.post('/:auctionId', async (req, res, next) => {
 });
 
 //verify exchange has been made
-router.put('/:auctionId/:offerId', async (req, res, next) => {
+router.put("/:auctionId/:offerId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const offerId = req.params.offerId;
@@ -65,7 +65,7 @@ router.put('/:auctionId/:offerId', async (req, res, next) => {
   }
 });
 
-router.delete('/:auctionId/:offerId', async (req, res, next) => {
+router.delete("/:auctionId/:offerId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const offerId = req.params.offerId;

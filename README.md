@@ -33,14 +33,6 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-
-
-
-
-
-
-
-
 ## Customize
 
 Now that you've got the code, follow these steps to get acclimated:
@@ -228,6 +220,3 @@ production server to be cluttered up with dev dependencies like
 git-tracking to be cluttered with production build files like
 `bundle.js`! By doing these steps, we make sure our development and
 production environments both stay nice and clean!
-
-
-

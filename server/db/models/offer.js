@@ -1,11 +1,11 @@
-const Sequelize = require('sequelize');
-const db = require('../db');
+const Sequelize = require("sequelize");
+const db = require("../db");
 
-const Offer = db.define('offer', {
+const Offer = db.define("offer", {
   status: {
     type: Sequelize.STRING,
     validate: {
-      isIn: [['rejected', 'pending', 'accepted', 'successful']]
+      isIn: [["rejected", "pending", "accepted", "successful"]]
     }
   }
 });

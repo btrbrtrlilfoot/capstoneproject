@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { OfferFormComponent } from './offer-form.component';
+import { OfferFormComponent } from "./offer-form.component";
 
-describe('OfferFormComponent', () => {
+describe("OfferFormComponent", () => {
   let component: OfferFormComponent;
   let fixture: ComponentFixture<OfferFormComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ OfferFormComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [OfferFormComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(OfferFormComponent);
@@ -19,7 +20,7 @@ describe('OfferFormComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });
