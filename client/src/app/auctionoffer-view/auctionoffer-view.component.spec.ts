@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { AuctionofferViewComponent } from './auctionoffer-view.component';
+import { AuctionofferViewComponent } from "./auctionoffer-view.component";
 
-describe('AuctionofferViewComponent', () => {
+describe("AuctionofferViewComponent", () => {
   let component: AuctionofferViewComponent;
   let fixture: ComponentFixture<AuctionofferViewComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ AuctionofferViewComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [AuctionofferViewComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AuctionofferViewComponent);
@@ -19,7 +20,7 @@ describe('AuctionofferViewComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

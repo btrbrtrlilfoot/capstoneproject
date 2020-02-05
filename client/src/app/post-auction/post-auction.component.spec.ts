@@ -1,17 +1,18 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PostAuctionComponent } from './post-auction.component';
+import { PostAuctionComponent } from "./post-auction.component";
 
-describe('PostBidComponent', () => {
+describe("PostBidComponent", () => {
   let component: PostAuctionComponent;
   let fixture: ComponentFixture<PostAuctionComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ PostAuctionComponent ]
+  beforeEach(
+    async(() => {
+      TestBed.configureTestingModule({
+        declarations: [PostAuctionComponent]
+      }).compileComponents();
     })
-    .compileComponents();
-  }));
+  );
 
   beforeEach(() => {
     fixture = TestBed.createComponent(PostAuctionComponent);
@@ -19,7 +20,7 @@ describe('PostBidComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it("should create", () => {
     expect(component).toBeTruthy();
   });
 });

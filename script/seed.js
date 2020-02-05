@@ -1,12 +1,11 @@
-'use strict'
+"use strict";
 
-const db = require('../server/db')
-const {User, Product, Offer} = require('../server/db/models')
-
+const db = require("../server/db");
+const { User, Product, Offer } = require("../server/db/models");
 
 async function seed() {
-  await db.sync({force: true})
-  console.log('db synced!')
+  await db.sync({ force: true });
+  console.log("db synced!");
 
   // const users = await Promise.all([
   //   User.create({email: 'cody@email.com', password: '123', location: 'NYC'}),
@@ -14,19 +13,44 @@ async function seed() {
   //   Product.create({name: 'Juicer',status: 'bid',kind: 'item'}),
   //   Product.create({name: 'Bike',status: 'bid',kind: 'item'}),
 
-  const user = await User.create({email: 'cody@email.com', password: '123', location: 'NYC'})
-  const user2 = await User.create({email: 'cody2@email.com', password: '123', location: 'NYC'})
-  const user3 = await User.create({email: 'cody3@email.com', password: '123', location: 'NYC'})
-  const product = await Product.create({name: 'Juicer',kind: 'item', type: 'auction (open)'})
-  const product2 = await Product.create({name: 'Not a Juicer',kind: 'item', type: 'offer'})
-  const product3 = await Product.create({name: 'Not a Juicer2',kind: 'item', type: 'offer'})
-  const product4 = await Product.create({name: 'Also not a Juicer',kind: 'item'})
+  const user = await User.create({
+    email: "cody@email.com",
+    password: "123",
+    location: "NYC"
+  });
+  const user2 = await User.create({
+    email: "cody2@email.com",
+    password: "123",
+    location: "NYC"
+  });
+  const user3 = await User.create({
+    email: "cody3@email.com",
+    password: "123",
+    location: "NYC"
+  });
+  const product = await Product.create({
+    name: "Juicer",
+    kind: "item",
+    type: "auction (open)"
+  });
+  const product2 = await Product.create({
+    name: "Not a Juicer",
+    kind: "item",
+    type: "offer"
+  });
+  const product3 = await Product.create({
+    name: "Not a Juicer2",
+    kind: "item",
+    type: "offer"
+  });
+  const product4 = await Product.create({
+    name: "Also not a Juicer",
+    kind: "item"
+  });
 
-
-
-  await user.addProduct(product)
-  await product.addOffer(product2, {through: {status: 'pending'}})
-  await product.addOffer(product3, {through: {status: 'pending'}})
+  await user.addProduct(product);
+  await product.addOffer(product2, { through: { status: "pending" } });
+  await product.addOffer(product3, { through: { status: "pending" } });
   // await
   // await product2.addAuctionProduct(product, {through: {status: 'pending'}})
   // await product3.addAuctionProduct(product, {through: {status: 'pending'}})
@@ -35,23 +59,23 @@ async function seed() {
 
   // console.log('these are auctions', auctions)
   // console.log('these are offers', offers)
-  console.log(`seeded successfully`)
+  console.log(`seeded successfully`);
 }
 
 // We've separated the `seed` function from the `runSeed` function.
 // This way we can isolate the error handling and exit trapping.
 // The `seed` function is concerned only with modifying the database.
 async function runSeed() {
-  console.log('seeding...')
+  console.log("seeding...");
   try {
-    await seed()
+    await seed();
   } catch (err) {
-    console.error(err)
-    process.exitCode = 1
+    console.error(err);
+    process.exitCode = 1;
   } finally {
-    console.log('closing db connection')
-    await db.close()
-    console.log('db connection closed')
+    console.log("closing db connection");
+    await db.close();
+    console.log("db connection closed");
   }
 }
 
@@ -59,8 +83,8 @@ async function runSeed() {
 // `Async` functions always return a promise, so we can use `catch` to handle
 // any errors that might occur inside of `seed`.
 if (module === require.main) {
-  runSeed()
+  runSeed();
 }
 
 // we export the seed function for testing purposes (see `./seed.spec.js`)
-module.exports = seed
+module.exports = seed;

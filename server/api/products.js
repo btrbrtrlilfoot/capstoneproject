@@ -1,7 +1,7 @@
-const router = require('express').Router();
-const { User, Product } = require('../db/models');
+const router = require("express").Router();
+const { User, Product } = require("../db/models");
 
-router.get('/:id', async (req, res, next) => {
+router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     const product = await Product.findByPk(id);
@@ -11,7 +11,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const product = await Product.create({
       name: req.body.name,
@@ -25,7 +25,7 @@ router.post('/', async (req, res, next) => {
   }
 });
 
-router.put('/', async (req, res, next) => {
+router.put("/", async (req, res, next) => {
   try {
     const product = await Product.update(req.body);
     res.send(product);
@@ -34,7 +34,7 @@ router.put('/', async (req, res, next) => {
   }
 });
 
-router.delete('/:id', async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     await Product.destroy({ where: { id: id } });
@@ -43,6 +43,5 @@ router.delete('/:id', async (req, res, next) => {
     next(error);
   }
 });
-
 
 module.exports = router;
