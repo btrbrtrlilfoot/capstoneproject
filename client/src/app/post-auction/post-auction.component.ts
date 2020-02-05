@@ -42,7 +42,7 @@ export class PostAuctionComponent implements OnInit {
       (data: any) => {
         this.auction = data;
         console.log("biddddd", this.auction);
-        this.router.navigate(["/auction/confirm", { auction: this.auction }]);
+        // this.router.navigate(["/auction/confirm", { auction: this.auction }]);
       },
       error => {
         console.log("oops", error);

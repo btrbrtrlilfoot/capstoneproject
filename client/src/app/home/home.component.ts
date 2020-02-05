@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
     this.http.get("/api/products").subscribe(
       (data: any) => {
         console.log("dataa", data);
+        this.bids = data;
       },
       error => {
         console.log("oops", error);

@@ -1,9 +1,9 @@
 <button routerLink='/auction/'>Start a New Bid!</button>
 
   <div *ngIf='bids'>
-  <h2>Active Bids In Your City~~</h2>
-  <ul>
-    
-  </ul>
-</div>
+    <h2>Active Bids In Your City</h2>
+    <div *ngFor="let bid of bids"  >
+      <a>{{bid.name}}</a>
+    </div>
+  </div>
 
