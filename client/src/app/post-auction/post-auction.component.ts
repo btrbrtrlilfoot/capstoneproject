@@ -1,16 +1,19 @@
+
 import { Component, OnInit, Output } from '@angular/core';
 import {FormGroup, FormControl} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import {AuctionConfirmationComponent} from '../auction-confirmation/auction-confirmation.component';
+
 //create bid instance here
 @Component({
-  selector: 'app-post-auction',
-  templateUrl: './post-auction.component.html',
-  styleUrls: ['./post-auction.component.css']
+  selector: "app-post-auction",
+  templateUrl: "./post-auction.component.html",
+  styleUrls: ["./post-auction.component.css"]
 })
 export class PostAuctionComponent implements OnInit {
+
   id: number;
   auction: any;
   private sub: any;
@@ -47,4 +50,11 @@ export class PostAuctionComponent implements OnInit {
     
   }
 
+
+  loginForm = new FormGroup({
+    $key: new FormControl(null),
+    item: new FormControl(""),
+    description: new FormControl("")
+  });
+  onSubmit() {}
 }

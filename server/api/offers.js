@@ -1,32 +1,42 @@
-const router = require('express').Router();
-const { User, Offer, Product } = require('../db/models');
+const router = require("express").Router();
+const { User, Offer, Product } = require("../db/models");
 
-//get all offers
-router.get('/:auctionId', async (req, res, next) => {
+//get all offers on an auction
+router.get("/:auctionId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const product = await Product.findByPk(auctionId, {
-      include: { model: Product, as: 'Offer' }
+      include: { model: Product, as: "Offer" }
     });
-
     res.json(product.Offer);
   } catch (err) {
     next(err);
   }
 });
 
-router.post('/:auctionId', async (req, res, next) => {
+// //get one offer on an auction
+// router.get('/singleOffer/:id', async (req, res, next) => {
+//   try {
+//     const offerId = req.params.id;
+//     const offer = await Product.findByPk(offerId);
+//     res.send(offer);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
+
+router.post("/:auctionId", async (req, res, next) => {
   // create a new offer
   try {
     const auctionProduct = await Product.findByPk(req.params.auctionId);
     const product = await Product.create({
       name: req.body.name,
       kind: req.body.kind,
-      type: 'offer'
+      type: "offer"
     });
 
     const offer = await auctionProduct.addOffer(product, {
-      through: { status: 'pending' }
+      through: { status: "pending" }
     });
 
     res.send(offer);
@@ -36,7 +46,7 @@ router.post('/:auctionId', async (req, res, next) => {
 });
 
 //verify exchange has been made
-router.put('/:auctionId/:offerId', async (req, res, next) => {
+router.put("/:auctionId/:offerId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const offerId = req.params.offerId;
@@ -55,7 +65,7 @@ router.put('/:auctionId/:offerId', async (req, res, next) => {
   }
 });
 
-router.delete('/:auctionId/:offerId', async (req, res, next) => {
+router.delete("/:auctionId/:offerId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
     const offerId = req.params.offerId;
@@ -66,10 +76,10 @@ router.delete('/:auctionId/:offerId', async (req, res, next) => {
         OfferId: offerId
       }
     });
-    if(offer){
+    if (offer) {
       await offer.destroy();
     }
-    res.sendStatus(204)
+    res.sendStatus(204);
   } catch (error) {
     next(error);
   }

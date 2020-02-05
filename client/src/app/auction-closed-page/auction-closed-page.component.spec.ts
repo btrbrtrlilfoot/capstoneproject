@@ -1,21 +1,21 @@
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { PostAuctionComponent } from "./post-auction.component";
+import { AuctionClosedPageComponent } from "./auction-closed-page.component";
 
-describe("PostBidComponent", () => {
-  let component: PostAuctionComponent;
-  let fixture: ComponentFixture<PostAuctionComponent>;
+describe("AuctionClosedPageComponent", () => {
+  let component: AuctionClosedPageComponent;
+  let fixture: ComponentFixture<AuctionClosedPageComponent>;
 
   beforeEach(
     async(() => {
       TestBed.configureTestingModule({
-        declarations: [PostAuctionComponent]
+        declarations: [AuctionClosedPageComponent]
       }).compileComponents();
     })
   );
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(PostAuctionComponent);
+    fixture = TestBed.createComponent(AuctionClosedPageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

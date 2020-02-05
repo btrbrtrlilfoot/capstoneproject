@@ -1,16 +1,19 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http'
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SingleOfferService {
+  _url = "/api/offers";
+  constructor(private _http: HttpClient) {}
 
-  private _url = '/offers/:id'
-
-  constructor(private http: HttpClient) { }
-
-  getSingleOffer(){
-    return this.http.get(this._url)
+  async getSingleOffer(auctionId: string, offerId: string) {
+    let url = `${this._url}/${auctionId}`;
+    let response = await this._http.get<any>(url).toPromise();
+    let singleOffer = response.find(offer => {
+      return Number(offerId) === offer.id;
+    });
+    return singleOffer;
   }
 }
