@@ -19,10 +19,10 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log("userhome", this.user);
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;
+        console.log("bids", this.bids);
       },
       error => {
         console.log("oops", error);

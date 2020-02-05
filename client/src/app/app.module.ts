@@ -17,6 +17,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
 import { FeedComponent } from "./feed/feed.component";
+import { LogoutComponent } from "./logout/logout.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { FeedComponent } from "./feed/feed.component";
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
-    FeedComponent
+    FeedComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,

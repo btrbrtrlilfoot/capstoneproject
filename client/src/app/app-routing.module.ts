@@ -8,7 +8,6 @@ import { AuctionConfirmationComponent } from "./auction-confirmation/auction-con
 import { OfferFormComponent } from "./offer-form/offer-form.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
-import { FeedComponent } from "./feed/feed.component";
 
 const routes: Routes = [
   { path: "", component: HomeComponent },

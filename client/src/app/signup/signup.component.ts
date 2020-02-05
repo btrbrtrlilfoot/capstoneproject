@@ -33,7 +33,17 @@ export class SignupComponent implements OnInit {
     this.http.post("/auth/signup", Form).subscribe(
       (data: any) => {
         this.user = data;
-        this.router.navigate(["/home"]);
+        // this.router.navigate(["/home"]);
+      },
+      error => {
+        console.log("oops", error);
+      }
+    );
+    this.http.post("/auth/login", this.user).subscribe(
+      (data: any) => {
+        this.user = data;
+        console.log("user", this.user);
+        this.router.navigate(["home"]);
       },
       error => {
         console.log("oops", error);

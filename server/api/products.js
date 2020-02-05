@@ -1,26 +1,26 @@
 const router = require("express").Router();
 const { User, Product } = require("../db/models");
 
-
-router.get('/', async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
-    console.log('reqqq',req.session)
     const products = await Product.findAll({
-      where:  {
-        type: 'auction (open)'
+      where: {
+        type: "auction (open)"
       },
-        include:  [{model: User}]
-
-      
+      include: [{ model: User }]
     });
-    res.send(products);
+    console.log("products", products[0].user.location);
+    console.log("reqqquser", req.user.location);
+    let city = req.user.location;
+    console.log("????", city);
+    let result = products.filter(product => product.user.location == city);
+    res.send(result);
   } catch (error) {
     next(error);
   }
 });
 
-router.get('/:id', async (req, res, next) => {
-
+router.get("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     const product = await Product.findByPk(id);
@@ -34,11 +34,10 @@ router.post("/", async (req, res, next) => {
   try {
     const product = await Product.create({
       name: req.body.item,
-      // kind: req.body.kind,
+      location: req.body.location,
       description: req.body.description,
-      type: 'auction (open)',
+      type: "auction (open)",
       userId: req.session.passport.user
-
     });
 
     res.send(product);

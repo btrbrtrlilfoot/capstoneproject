@@ -32,3 +32,19 @@ router.get("/:id", async (req, res, next) => {
     next(err);
   }
 });
+router.put("/:id", async (req, res, next) => {
+  try {
+    const user = await User.findOne({
+      where: {
+        id: req.user.id
+      }
+    });
+    if (user) {
+      res.json(user);
+    } else {
+      res.json(null);
+    }
+  } catch (err) {
+    next(err);
+  }
+});

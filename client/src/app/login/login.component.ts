@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
       (data: any) => {
         this.user = data;
         console.log("user", this.user);
-        // this.router.navigate(['home', {user: this.user}])
+        // this.router.navigate(['home'])
       },
       error => {
         console.log("oops", error);
