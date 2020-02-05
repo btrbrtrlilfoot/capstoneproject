@@ -10,15 +10,18 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
 
 const routes: Routes = [
-  { path: "home", component: HomeComponent },
-  { path: "login", component: LoginComponent },
-  { path: "signup", component: SignupComponent },
-  { path: "auction", component: PostAuctionComponent },
-  { path: "offerform", component: OfferFormComponent },
+
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'auction', component: PostAuctionComponent, pathMatch: 'full' },
+  {path: 'auction/confirm', component: PostAuctionComponent}, 
+  {path: 'auction/:id', component: AuctionofferViewComponent},
+  { path: 'offerform', component: OfferFormComponent },
   { path: "auctions/:auctionId/offers/:id", component: SingleOfferComponent },
-  { path: "auction/confirm", component: AuctionConfirmationComponent },
-  { path: "auctions/:id", component: AuctionofferViewComponent }
-];
+
+  
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
