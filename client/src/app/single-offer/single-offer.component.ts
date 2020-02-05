@@ -12,6 +12,7 @@ import { ActivatedRoute } from "@angular/router";
 export class SingleOfferComponent implements OnInit {
   offer: any = {};
   auctionId: string = "";
+  error = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -30,9 +31,12 @@ export class SingleOfferComponent implements OnInit {
         auctionId,
         offerId
       );
-
-      this.offer = singleOffer;
-      this.auctionId = auctionId;
+      if (singleOffer !== undefined) {
+        this.offer = singleOffer;
+        this.auctionId = auctionId;
+      } else {
+        this.error = true;
+      }
     });
   }
 }
