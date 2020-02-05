@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormGroup, FormControl} from '@angular/forms'
+import { FormGroup, FormControl } from '@angular/forms';
 //create bid instance here
 @Component({
   selector: 'app-post-auction',
@@ -7,18 +7,14 @@ import {FormGroup, FormControl} from '@angular/forms'
   styleUrls: ['./post-auction.component.css']
 })
 export class PostAuctionComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
+  ngOnInit() {}
 
-  ngOnInit() {
-    
-  }
- 
-    loginForm = new FormGroup({
-      $key: new FormControl(null),
-      item: new FormControl(''),
-      description: new FormControl('')
-
-  })
-
+  loginForm = new FormGroup({
+    $key: new FormControl(null),
+    item: new FormControl(''),
+    description: new FormControl('')
+  });
+  onSubmit() {}
 }
