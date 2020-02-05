@@ -14,6 +14,16 @@ router.get('/:auctionId', async (req, res, next) => {
   }
 });
 
+// //get one offer on an auction
+// router.get('/singleOffer/:id', async (req, res, next) => {
+//   try {
+//     const offerId = req.params.id;
+//     const offer = await Product.findByPk(offerId);
+//     res.send(offer);
+//   } catch (error) {
+//     next(error);
+//   }
+// });
 
 router.post('/:auctionId', async (req, res, next) => {
   // create a new offer
@@ -66,10 +76,10 @@ router.delete('/:auctionId/:offerId', async (req, res, next) => {
         OfferId: offerId
       }
     });
-    if(offer){
+    if (offer) {
       await offer.destroy();
     }
-    res.sendStatus(204)
+    res.sendStatus(204);
   } catch (error) {
     next(error);
   }

@@ -2,24 +2,26 @@ const router = require('express').Router()
 const {User, Auction, Product} = require('../db/models')
 module.exports = router
 
+
+
 //get offers associated with an auction productid
 router.get('/:id', async (req, res, next) => {
   try {
     const auctionId = req.params.id
-    const products = await Product.findOne({
+    const auction = await Product.findOne({
       where: {id: auctionId},
       include: { model: Product, as: 'Offer' }
     }) //Base eagerloading. Returns the Auction Product and Offers in an array under the key: Offer
-    res.json(products)
+    console.log('u made it')
+    res.json(auction)
   } catch (err) {
     next(err)
   }
 })
 
-// /Update auction based on selected offer
-// should reject all other offers
-router.put('/:id/', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
+    console.log('this is in req.bodyy', req.body)
     const auctionId = req.params.id
     const selectedId = req.body.offerId
     const products = await Product.findOne({

@@ -8,8 +8,12 @@ export class SingleOfferService {
   _url = '/api/offers';
   constructor(private _http: HttpClient) {}
 
-  getOffers(auctionId: number) {
+  async getSingleOffer(auctionId: string, offerId: string) {
     let url = `${this._url}/${auctionId}`;
-    return this._http.get(url);
+    let response = await this._http.get<any>(url).toPromise();
+    let singleOffer = response.find(offer => {
+      return Number(offerId) === offer.id;
+    });
+    return singleOffer;
   }
 }

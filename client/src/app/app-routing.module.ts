@@ -15,7 +15,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'auction', component: PostAuctionComponent },
   { path: 'offerform', component: OfferFormComponent },
-  {path: 'singleoffer', component: SingleOfferComponent},
+  {path: 'auctions/:auctionId/offers/:id', component: SingleOfferComponent},
   {path: 'auction/confirm', component: AuctionConfirmationComponent}, {path: 'auctions/:id', component: AuctionofferViewComponent}
 ];
 

@@ -20,16 +20,28 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
+        test: /\.html$/,
+        loader: 'html-loader'
       },
       {
-        test: /\.(ttf)$/,
-        use: {
-          loader: 'url-loader'
-        }
+        test: /\.(scss|sass)$/,
+        use: [
+          'to-string-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       }
-    ]
+    ],
+    // include
   }
-}
+};
