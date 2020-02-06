@@ -5,7 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class UserProfileService {
-  _url = "api/products";
+  _url = "api/products/allproducts";
   _url2 = "auth/me";
   _users = "api/users";
 
@@ -14,7 +14,7 @@ export class UserProfileService {
   async getAllProducts() {
     let url = `${this._url}`;
     let products = await this._http.get<any>(url).toPromise();
-    console.log(products);
+    console.log(products, "This is products from user-profile");
     return products;
   }
 

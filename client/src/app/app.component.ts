@@ -1,7 +1,5 @@
-
-
-import { Component } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-root",
@@ -18,6 +16,5 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
     this.user = user;
-
   }
 }
