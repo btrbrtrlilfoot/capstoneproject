@@ -12,6 +12,7 @@ import { LoginComponent } from "../login/login.component";
 export class HomeComponent implements OnInit {
   @Input() user: LoginComponent;
   bids: [];
+  searchText;
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -22,7 +23,7 @@ export class HomeComponent implements OnInit {
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;
-        console.log("bids", this.bids);
+        console.log("An array of bids", this.bids);
       },
       error => {
         console.log("oops", error);
