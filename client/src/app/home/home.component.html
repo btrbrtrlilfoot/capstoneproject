@@ -1,6 +1,9 @@
 <div *ngIf="user">
   <h1>Welcome, {{ user.name }}!</h1>
 </div>
+
+<br>
+
 <div>
   <div>
     <input
@@ -12,7 +15,7 @@
       placeholder="Start searching for a bid"
     />
   </div>
-
+<br>
   <div *ngIf="bids">
     <h2>Active Bids In Your City</h2>
     <div className="scrollBox" *ngFor="let bid of bids | filter: searchText">
