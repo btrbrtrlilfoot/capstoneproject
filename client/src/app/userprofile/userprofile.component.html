@@ -1,0 +1,29 @@
+<div>
+  <h1>User Name: {{user.name}}</h1>
+  <h3>Here's Your Transaction History</h3>
+  <hr />
+
+  <h3>User Auctions History</h3>
+
+  <div>
+    <ul *ngFor="let auction of userAuctions">
+      <li>
+        <p>Auction {{auction.name}} created on {{auction.createdAt}}</p>
+        <p>Auction type: {{auction.kind}}</p>
+        <p>open/closed: {{auction.type}}</p>
+      </li>
+    </ul>
+  </div>
+
+  <h3>User Offers History</h3>
+
+  <div>
+    <ul *ngFor="let offer of userOffers">
+      <li>
+        <p>Offer {{offer.name}} created on {{offer.createdAt}}</p>
+        <p>Offer type: {{offer.kind}}</p>
+      </li>
+    </ul>
+  </div>
+
+</div>

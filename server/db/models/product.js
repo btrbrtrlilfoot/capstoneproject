@@ -20,6 +20,17 @@ const Product = db.define("product", {
     validate: {
       isIn: [["offer", "auction (open)", "auction (closed)"]]
     }
+  },
+  imageUrl: {
+    type: Sequelize.STRING,
+    defaultValue: "default.jpg"
+  },
+  description: {
+    type: Sequelize.TEXT,
+    allowNull: false,
+    validate: {
+      notEmpty: true
+    }
   }
 });
 module.exports = Product;

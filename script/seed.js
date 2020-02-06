@@ -6,59 +6,296 @@ const { User, Product, Offer } = require("../server/db/models");
 async function seed() {
   await db.sync({ force: true });
   console.log("db synced!");
-
-  // const users = await Promise.all([
-  //   User.create({email: 'cody@email.com', password: '123', location: 'NYC'}),
-  //   User.create({email: 'murphy@email.com', password: '123', location: 'NYC'}),
-  //   Product.create({name: 'Juicer',status: 'bid',kind: 'item'}),
-  //   Product.create({name: 'Bike',status: 'bid',kind: 'item'}),
-
-  const user = await User.create({
-    email: "cody@email.com",
+  //dummy users
+  const user1 = await User.create({
+    firstName: "Kiana",
+    lastName: "W",
+    email: "kiana@email.com",
     password: "123",
-    location: "NYC"
+    location: "NYC",
+    isAdmin: true
   });
   const user2 = await User.create({
-    email: "cody2@email.com",
+    firstName: "Rachel",
+    lastName: "T",
+    email: "rachel@email.com",
     password: "123",
-    location: "NYC"
+    location: "NYC",
+    isAdmin: true
   });
   const user3 = await User.create({
-    email: "cody3@email.com",
+    firstName: "Tashi",
+    lastName: "D",
+    email: "tashi@email.com",
     password: "123",
-    location: "NYC"
+    location: "NYC",
+    isAdmin: true
   });
-  const product = await Product.create({
+  const user4 = await User.create({
+    firstName: "Cody",
+    lastName: "N",
+    email: "cody@email.com",
+    password: "123",
+    location: "NYC",
+    isAdmin: false
+  });
+  const user5 = await User.create({
+    firstName: "Murphy",
+    lastName: "M",
+    email: "murphy@email.com",
+    password: "123",
+    location: "NYC",
+    isAdmin: false
+  });
+
+  //fake products
+  const product1 = await Product.create({
     name: "Juicer",
     kind: "item",
-    type: "auction (open)"
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   });
   const product2 = await Product.create({
-    name: "Not a Juicer",
+    name: "i-phone 10",
     kind: "item",
-    type: "offer"
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   });
   const product3 = await Product.create({
-    name: "Not a Juicer2",
+    name: "Mac Book Air 2015",
     kind: "item",
-    type: "offer"
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   });
   const product4 = await Product.create({
-    name: "Also not a Juicer",
-    kind: "item"
+    name: "Sony Headphones",
+    kind: "item",
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product5 = await Product.create({
+    name: "Pack of Pokemon Cards",
+    kind: "item",
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product6 = await Product.create({
+    name: "Samsung TV set",
+    kind: "item",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product7 = await Product.create({
+    name: "Rayban Glasses",
+    kind: "item",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product8 = await Product.create({
+    name: "Nike Hoodie",
+    kind: "item",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product9 = await Product.create({
+    name: "Adidas Sports Bag",
+    kind: "item",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product10 = await Product.create({
+    name: "Ramen Noodles",
+    kind: "item",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product11 = await Product.create({
+    name: "Clock",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   });
 
-  await user.addProduct(product);
-  await product.addOffer(product2, { through: { status: "pending" } });
-  await product.addOffer(product3, { through: { status: "pending" } });
-  // await
-  // await product2.addAuctionProduct(product, {through: {status: 'pending'}})
-  // await product3.addAuctionProduct(product, {through: {status: 'pending'}})
-  // const auctions = await product.getAuctionOwner()
-  // const offers = await product4.getOfferOwner()
+  const product12 = await Product.create({
+    name: "Xbox 360",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product13 = await Product.create({
+    name: "Bike",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product14 = await Product.create({
+    name: "Lightsaber",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
 
-  // console.log('these are auctions', auctions)
-  // console.log('these are offers', offers)
+  const product15 = await Product.create({
+    name: "Printer",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product16 = await Product.create({
+    name: "wash dishes for an hour",
+    kind: "service",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product17 = await Product.create({
+    name: "make lunch for you",
+    kind: "service",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product18 = await Product.create({
+    name: "look after your pet",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product19 = await Product.create({
+    name: "help with your assignment",
+    kind: "service",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+  const product20 = await Product.create({
+    name: "teach you basic German",
+    kind: "service",
+    type: "auction (closed)",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product21 = await Product.create({
+    name: "Calculator",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product22 = await Product.create({
+    name: "Pen",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product23 = await Product.create({
+    name: "Novel",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product24 = await Product.create({
+    name: "Selfie Stick",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  const product25 = await Product.create({
+    name: "Bracelet",
+    kind: "item",
+    type: "offer",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
+  });
+
+  //open auctions
+  await user4.addProduct(product1);
+  await product1.addOffer(product11, { through: { status: "pending" } });
+  await product1.addOffer(product12, { through: { status: "pending" } });
+
+  await user4.addProduct(product2);
+  await product2.addOffer(product13, { through: { status: "pending" } });
+  await product2.addOffer(product14, { through: { status: "pending" } });
+
+  await user4.addProduct(product3);
+  await product3.addOffer(product13, { through: { status: "pending" } });
+  await product3.addOffer(product14, { through: { status: "pending" } });
+
+  await user5.addProduct(product4);
+  await product4.addOffer(product15, { through: { status: "pending" } });
+  await product4.addOffer(product16, { through: { status: "pending" } });
+
+  await user5.addProduct(product5);
+  await product5.addOffer(product17, { through: { status: "pending" } });
+  await product5.addOffer(product19, { through: { status: "pending" } });
+
+  //closed auction
+  await user5.addProduct(product6);
+  await product6.addOffer(product21, { through: { status: "accepted" } });
+
+  await user4.addProduct(product7);
+  await product7.addOffer(product17, { through: { status: "rejected" } });
+  await product7.addOffer(product19, { through: { status: "rejected" } });
+
+  await user5.addProduct(product8);
+  await product8.addOffer(product15, { through: { status: "rejected" } });
+  await product8.addOffer(product16, { through: { status: "rejected" } });
+
+  await user4.addProduct(product9);
+  await product9.addOffer(product22, { through: { status: "accepted" } });
+  await product9.addOffer(product23, { through: { status: "rejected" } });
+
+  await user5.addProduct(product10);
+  await product10.addOffer(product23, { through: { status: "accepted" } });
+
+  await user4.addProduct(product18);
+  await product18.addOffer(product24, { through: { status: "rejected" } });
+
+  await user5.addProduct(product20);
+  await product20.addOffer(product25, { through: { status: "accepted" } });
+
+  //offers
+  await user1.addProduct(product11);
+  await user2.addProduct(product12);
+  await user3.addProduct(product13);
+  await user1.addProduct(product14);
+  await user2.addProduct(product15);
+  await user3.addProduct(product16);
+  await user1.addProduct(product17);
+  await user2.addProduct(product19);
+  await user3.addProduct(product21);
+  await user1.addProduct(product22);
+  await user2.addProduct(product23);
+  await user3.addProduct(product24);
+  await user3.addProduct(product25);
+
   console.log(`seeded successfully`);
 }
 
