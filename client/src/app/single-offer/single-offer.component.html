@@ -5,9 +5,11 @@
   </div>
 
   <ng-template #body>
-    <p>One of the offers for auction {{auctionId}}</p>
-    <p>Offer name : {{offer.name}}</p>
+    <h2>Offer on Auction {{auctionId}}</h2>
+    <h3>{{offer.name}}</h3>
     <img src="{{offer.imageUrl}}" >
+    <p>{{offer.description}}</p>
+
 
     <br/>
 
