@@ -9,6 +9,9 @@ const Product = db.define("product", {
       notEmpty: true
     }
   },
+  description: {
+    type: Sequelize.STRING
+  },
   kind: {
     type: Sequelize.STRING,
     validate: {

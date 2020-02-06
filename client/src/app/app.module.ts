@@ -16,8 +16,13 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatRadioModule } from "@angular/material/radio";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
+
+import { FeedComponent } from "./feed/feed.component";
+import { LogoutComponent } from "./logout/logout.component";
+
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
+
 
 @NgModule({
   declarations: [
@@ -31,8 +36,12 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
+    feed-page
+    FeedComponent,
+    LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent
+   
   ],
   imports: [
     BrowserModule,

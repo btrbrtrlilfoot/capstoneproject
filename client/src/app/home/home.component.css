@@ -1,0 +1,9 @@
+.scrollBox {
+  display: flex;
+  border-width: 10px;
+  outline-style: solid;
+}
+
+h3.scrollBox {
+  background-color: aqua;
+}

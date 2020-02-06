@@ -1,5 +1,11 @@
 
+<div *ngIf="auction; else elseBlock">
+  <app-auction-confirmation [auction]="auction"></app-auction-confirmation> 
 
+
+</div>
+
+<ng-template #elseBlock>
 <form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
  <table>
   <label>What's the name of the item or service that you'd like to auction?</label>
@@ -22,8 +28,8 @@
   <button type='submit' >Submit</button>
  </table>
 </form>
+</ng-template>
 
-<app-auction-confirmation [auction]="auction"></app-auction-confirmation>
 
 
 

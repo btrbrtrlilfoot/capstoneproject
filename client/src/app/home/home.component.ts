@@ -1,7 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { LoginComponent } from "../login/login.component";
 
 @Component({
   selector: "app-home",
@@ -9,7 +10,7 @@ import { Router } from "@angular/router";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  userId: number;
+  @Input() user: LoginComponent;
   bids: [];
   constructor(
     private route: ActivatedRoute,
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.http.get("/api/products").subscribe(
       (data: any) => {
-        console.log("dataa", data);
+        this.bids = data;
+        console.log("bids", this.bids);
       },
       error => {
         console.log("oops", error);

@@ -13,7 +13,5 @@ export class AuctionConfirmationComponent implements OnInit {
   @Input() auction: PostAuctionComponent;
 
   constructor() {}
-  ngOnInit() {
-    console.log("bid", this.auction);
-  }
+  ngOnInit() {}
 }

@@ -12,6 +12,8 @@ import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 
 const routes: Routes = [
+  { path: "", component: HomeComponent },
+
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },

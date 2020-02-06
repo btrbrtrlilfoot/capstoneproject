@@ -1,3 +1,5 @@
+
+
 import { Component } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
 
@@ -6,8 +8,9 @@ import { UserProfileService } from "./common/user-profile.service";
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.css"]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = "BetterBartr";
+
   user = {};
 
   constructor(private _userProfileService: UserProfileService) {}
@@ -15,5 +18,6 @@ export class AppComponent {
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
     this.user = user;
+
   }
 }
