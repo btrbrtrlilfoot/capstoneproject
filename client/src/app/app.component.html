@@ -34,8 +34,15 @@
     />
   </svg>
 
-  <a routerLink="/login">Login</a>
-  <a routerLink="/signup">Signup</a>
+  <div *ngIf="user.id; else loginAndSignup">
+    <a routerLink="/userprofile">Profile</a>
+    <a routerLink="/logout">Logout</a>
+   </div>
+
+   <ng-template #loginAndSignup>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/signup">Signup</a>
+  </ng-template>
 
   <!-- <a routerLink="/userprofile">Signup</a> -->
 
