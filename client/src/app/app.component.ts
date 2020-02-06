@@ -1,5 +1,4 @@
-
-
+import { OnInit } from "@angular/core";
 import { Component } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
 
@@ -18,6 +17,5 @@ export class AppComponent implements OnInit {
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
     this.user = user;
-
   }
 }

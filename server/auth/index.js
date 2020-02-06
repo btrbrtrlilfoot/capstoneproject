@@ -22,6 +22,7 @@ router.post("/login", async (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
+    console.log("this is body", req.body);
     const user = await User.create(req.body);
     req.login(user, err => (err ? next(err) : res.json(user)));
   } catch (err) {

@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
+} from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
@@ -11,44 +16,85 @@ import { Router } from "@angular/router";
 })
 export class SignupComponent implements OnInit {
   user: any;
-
+  latlng: any;
+  userForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private http: HttpClient
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userForm = new FormGroup({
+      $key: new FormControl(null),
+      image: new FormControl(""),
+      name: new FormControl("", Validators.minLength(1)),
+      email: new FormControl("", Validators.email),
+      password: new FormControl("", Validators.minLength(1)),
+      location: new FormControl("", Validators.minLength(1))
+    });
+  }
 
-  userForm = new FormGroup({
-    $key: new FormControl(null),
-    name: new FormControl(""),
-    email: new FormControl(""),
-    password: new FormControl(""),
-    location: new FormControl("")
-  });
+  findMe() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.latlng = `${position.coords.latitude},${
+          position.coords.longitude
+        }`;
+
+        this.http
+          .get<any>(
+            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${
+              this.latlng
+            }&key=AIzaSyAB2g8hlk5lD0gVBQBQ2-5DwmGMznAuKUA
+       `
+          )
+          .subscribe(data => {
+            this.userForm.patchValue({
+              location: data.results[0].formatted_address
+            });
+          });
+      });
+    }
+  }
+
+  getGeocode(location) {
+    this.http
+      .get<any>(
+        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}key=AIzaSyAB2g8hlk5lD0gVBQBQ2-5DwmGMznAuKUA
+      `
+      )
+      .subscribe(data => {
+        if (data) {
+          this.userForm.patchValue({
+            location: `${data.results[0].geometry.location.lat},${
+              data.results[0].geometry.location.lng
+            }`
+          });
+        }
+      });
+  }
+
   onSubmit() {
-    let Form = this.userForm.value;
+    if (this.latlng) {
+      this.userForm.patchValue({
+        location: this.latlng
+      });
+    } else {
+      this.getGeocode(this.userForm.value.location);
+    }
 
+    let Form = this.userForm.value;
     this.http.post("/auth/signup", Form).subscribe(
       (data: any) => {
         this.user = data;
-        // this.router.navigate(["/home"]);
       },
       error => {
         console.log("oops", error);
       }
     );
-    this.http.post("/auth/login", this.user).subscribe(
-      (data: any) => {
-        this.user = data;
-        console.log("user", this.user);
-        this.router.navigate(["home"]);
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
+
+    this.router.navigate(["home"]);
   }
 }
 
