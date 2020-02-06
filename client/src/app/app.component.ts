@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { UserProfileService } from "./common/user-profile.service";
 
 @Component({
   selector: "app-root",
@@ -7,4 +8,12 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "BetterBartr";
+  user = {};
+
+  constructor(private _userProfileService: UserProfileService) {}
+
+  async ngOnInit() {
+    const user = await this._userProfileService.getUser();
+    this.user = user;
+  }
 }

@@ -11,6 +11,7 @@ export class SingleOfferService {
   async getSingleOffer(auctionId: string, offerId: string) {
     let url = `${this._url}/${auctionId}`;
     let response = await this._http.get<any>(url).toPromise();
+    console.log(response);
     let singleOffer = response.find(offer => {
       return Number(offerId) === offer.id;
     });

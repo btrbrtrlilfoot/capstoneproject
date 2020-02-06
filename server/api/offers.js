@@ -8,22 +8,11 @@ router.get("/:auctionId", async (req, res, next) => {
     const product = await Product.findByPk(auctionId, {
       include: { model: Product, as: "Offer" }
     });
-    res.json(product.Offer);
+    res.send(product.Offer);
   } catch (err) {
     next(err);
   }
 });
-
-// //get one offer on an auction
-// router.get('/singleOffer/:id', async (req, res, next) => {
-//   try {
-//     const offerId = req.params.id;
-//     const offer = await Product.findByPk(offerId);
-//     res.send(offer);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
 
 router.post("/:auctionId", async (req, res, next) => {
   // create a new offer

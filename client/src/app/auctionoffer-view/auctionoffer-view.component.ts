@@ -12,11 +12,11 @@ import { AuctionViewService } from "./auctionoffer-view.service";
 export class AuctionofferViewComponent implements OnInit {
   //These Are States, you can call them in your HTML as their variable names
   id: number;
-  offers: any;
-  auction: any;
+  offers: any = {};
+  auction: any = {};
   auctionStatus: string;
   buttonDisable: boolean;
-  userId: number =  1;
+  userId: number = 1;
   selectedOffer: number;
   private sub: any;
   //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
@@ -34,13 +34,17 @@ export class AuctionofferViewComponent implements OnInit {
       //the + is to coerce it from string to numerical
     }); //Get URL Id
 
-    this.auctionView.getAuctionProducts(this.id).subscribe(data => {
-    //service function. lets me access the data returned by my http req
-      this.auction = data;
-     //This redirects the user away from looking up offers under the Auction url
-     if(this.auction.type !== 'auction (closed)' && this.auction.type !== 'auction (open)'){
-      this.router.navigateByUrl('/');
-     }
+    this.auctionView.getAuctionProducts(this.id).subscribe(
+      data => {
+        //service function. lets me access the data returned by my http req
+        this.auction = data;
+        //This redirects the user away from looking up offers under the Auction url
+        if (
+          this.auction.type !== "auction (closed)" &&
+          this.auction.type !== "auction (open)"
+        ) {
+          this.router.navigateByUrl("/");
+        }
 
         this.offers = data.Offer; //offers array on auction
 

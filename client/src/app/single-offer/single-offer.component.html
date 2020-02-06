@@ -5,16 +5,14 @@
   </div>
 
   <ng-template #body>
-    <p>One of the offers for auction {{auctionId}}</p>
-    <p>Offer name : {{offer.name}}</p>
-    <img src="" alt="image of the offer">
+    <h2>Offer on Auction {{auctionId}}</h2>
+    <h3>{{offer.name}}</h3>
+    <img src="{{offer.imageUrl}}" >
+    <p>{{offer.description}}</p>
+
+
     <br/>
-    <button type="submit">Accept Offer</button>
+
+    <button type="button" (click)="goBack()">Back</button>
   </ng-template>
 </div>
-
-<hr />
-
-
-
-
