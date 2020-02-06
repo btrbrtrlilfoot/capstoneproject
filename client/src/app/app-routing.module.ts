@@ -9,6 +9,7 @@ import { OfferFormComponent } from "./offer-form/offer-form.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
+import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 
 const routes: Routes = [
   { path: "login", component: LoginComponent },
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: "auction/:id", component: AuctionofferViewComponent },
   { path: "offerform", component: OfferFormComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
-  { path: "profile/:id", component: UserProfileComponent }
+  { path: "profile/:id", component: UserProfileComponent },
+  { path: "history", component: TransactionHistoryComponent }
 ];
 
 @NgModule({

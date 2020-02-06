@@ -17,6 +17,7 @@ import { MatRadioModule } from "@angular/material/radio";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
+import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { UserProfileComponent } from "./userprofile/userprofile.component";
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    TransactionHistoryComponent
   ],
   imports: [
     BrowserModule,
