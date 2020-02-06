@@ -12,7 +12,7 @@ import { LoginComponent } from "../login/login.component";
 export class HomeComponent implements OnInit {
   @Input() user: LoginComponent;
   bids: [];
-  searchText;
+  searchText: string;
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
