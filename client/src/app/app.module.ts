@@ -23,7 +23,6 @@ import { LogoutComponent } from "./logout/logout.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,12 +35,9 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
-    feed-page
-    FeedComponent,
     LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent
-   
   ],
   imports: [
     BrowserModule,

@@ -10,10 +10,11 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
+import { LogoutComponent } from "./logout/logout.component";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-
+  { path: "logout", component: LogoutComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },

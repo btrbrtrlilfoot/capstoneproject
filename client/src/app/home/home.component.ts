@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { AppComponent } from "../app.component";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { LoginComponent } from "../login/login.component";
+import { UserProfileService } from "../common/user-profile.service";
 
 @Component({
   selector: "app-home",
@@ -13,20 +14,27 @@ export class HomeComponent implements OnInit {
   @Input() user: LoginComponent;
   bids: [];
   constructor(
-    private route: ActivatedRoute,
+    private _userProfileService: UserProfileService,
     private http: HttpClient,
     private router: Router
   ) {}
 
-  ngOnInit() {
-    this.http.get("/api/products").subscribe(
-      (data: any) => {
-        this.bids = data;
-        console.log("bids", this.bids);
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
+  async ngOnInit() {
+    console.log("user", this.user);
+    AppComponent;
+
+    const user = await this._userProfileService.getUser();
+    if (user.hasOwnProperty("id")) {
+      this.user = user;
+    }
+    // this.http.get("/api/products").subscribe(
+    //   (data: any) => {
+    //     this.bids = data;
+    //     console.log("bids", this.bids);
+    //   },
+    //   error => {
+    //     console.log("oops", error);
+    //   }
+    // );
   }
 }
