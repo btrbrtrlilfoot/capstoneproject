@@ -43,14 +43,7 @@ p {
   height: 40px;
   margin: 0 16px;
 }
-.scrollBox {
-  display: flex;
-  border-width: 10px;
-}
 
-h3.scrollBox {
-  background-color: aqua;
-}
 .toolbar #twitter-logo:hover {
   opacity: 0.8;
 }

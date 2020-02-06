@@ -3,6 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { UserProfileService } from "../common/user-profile.service";
 
 @Component({
   selector: "app-signup",
@@ -14,6 +15,7 @@ export class SignupComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
+    private _userProfileService: UserProfileService,
     private router: Router,
     private http: HttpClient
   ) {}
@@ -27,30 +29,37 @@ export class SignupComponent implements OnInit {
     password: new FormControl(""),
     location: new FormControl("")
   });
-  onSubmit() {
+  async onSubmit() {
     let Form = this.userForm.value;
-
-    this.http.post("/auth/signup", Form).subscribe(
-      (data: any) => {
-        this.user = data;
-        // this.router.navigate(["/home"]);
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
-    this.http.post("/auth/login", this.user).subscribe(
-      (data: any) => {
-        this.user = data;
-        console.log("user", this.user);
-        this.router.navigate(["home"]);
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
+    try {
+      this.user = await this._userProfileService.signUp(Form);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
+
+//     this.http.post("/auth/signup", Form).subscribe(
+//       (data: any) => {
+//         this.user = data;
+//         // this.router.navigate(["/home"]);
+//       },
+//       error => {
+//         console.log("oops", error);
+//       }
+//     );
+//     this.http.post("/auth/login", this.user).subscribe(
+//       (data: any) => {
+//         this.user = data;
+//         console.log("user", this.user);
+//         this.router.navigate(["home"]);
+//       },
+//       error => {
+//         console.log("oops", error);
+//       }
+//     );
+//   }
+// }
 
 // onSubmit =  async (req,res,next) =>{
 //   console.log('event')

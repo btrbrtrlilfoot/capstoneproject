@@ -19,6 +19,9 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
 
+  onClick(bidId) {
+    this.router.navigate([`../auction/${bidId}`]);
+  }
   async ngOnInit() {
     console.log("user", this.user);
     AppComponent;
@@ -27,14 +30,18 @@ export class HomeComponent implements OnInit {
     if (user.hasOwnProperty("id")) {
       this.user = user;
     }
-    // this.http.get("/api/products").subscribe(
-    //   (data: any) => {
-    //     this.bids = data;
-    //     console.log("bids", this.bids);
-    //   },
-    //   error => {
-    //     console.log("oops", error);
-    //   }
-    // );
+
+    const bids = await this._userProfileService.getAllProducts();
+    this.bids = bids;
   }
+
+  // this.http.get("/api/products").subscribe(
+  //   (data: any) => {
+  //     this.bids = data;
+  //     console.log("bids", this.bids);
+  //   },
+  //   error => {
+  //     console.log("oops", error);
+  //   }
+  // );
 }

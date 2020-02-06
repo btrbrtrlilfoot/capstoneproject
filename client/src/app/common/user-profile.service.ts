@@ -11,6 +11,7 @@ export class UserProfileService {
   _url2 = "auth/me";
   _url3 = "auth/login";
   _url4 = "auth/logout";
+  _url5 = "auth/signup";
   _users = "api/users";
 
   constructor(private _http: HttpClient) {
@@ -55,6 +56,13 @@ export class UserProfileService {
   //sign user in
   async logIn(form) {
     let user = await this._http.post(this._url3, form).toPromise();
+    this.currentUser = user;
+    this.isLoggedIn = true;
+    return user || {};
+  }
+
+  async signUp(form) {
+    let user = await this._http.post(this._url5, form).toPromise();
     this.currentUser = user;
     this.isLoggedIn = true;
     return user || {};
