@@ -13,7 +13,6 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
 
 const routes: Routes = [
   { path: "", component: HomeComponent },
-  { path: "**", component: LoginComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },
@@ -23,7 +22,8 @@ const routes: Routes = [
   { path: "offerform", component: OfferFormComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
   { path: "profile/:id", component: UserProfileComponent },
-  { path: "history", component: TransactionHistoryComponent }
+  { path: "history", component: TransactionHistoryComponent },
+  { path: "**", component: HomeComponent }
 ];
 
 @NgModule({
