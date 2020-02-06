@@ -12,7 +12,7 @@ const User = db.define("user", {
   },
   imageUrl: {
     type: Sequelize.STRING,
-    defaultValue: "default.jpg"
+    defaultValue: "user-default.jpg"
   },
   email: {
     type: Sequelize.STRING,
