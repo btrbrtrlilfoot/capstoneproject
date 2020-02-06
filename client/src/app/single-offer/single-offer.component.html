@@ -7,8 +7,9 @@
   <ng-template #body>
     <p>One of the offers for auction {{auctionId}}</p>
     <p>Offer name : {{offer.name}}</p>
-    <img src="" alt="image of the offer">
+
     <br/>
-    <button type="button">Back</button>
+
+    <button type="button" (click)="goBack()">Back</button>
   </ng-template>
 </div>

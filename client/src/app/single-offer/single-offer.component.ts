@@ -3,6 +3,7 @@ import { SingleOfferService } from "./single-offer.service";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-single-offer",
@@ -18,7 +19,8 @@ export class SingleOfferComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private _singleOfferService: SingleOfferService
+    private _singleOfferService: SingleOfferService,
+    private location: Location
   ) {}
 
   async ngOnInit() {
@@ -38,5 +40,9 @@ export class SingleOfferComponent implements OnInit {
         this.error = true;
       }
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 }
