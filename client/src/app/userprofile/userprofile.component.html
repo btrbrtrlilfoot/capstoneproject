@@ -1,39 +1,8 @@
-<div>
-  <h1>{{ user.name }}</h1>
-  <h3>Transaction History</h3>
-
-  <hr />
-
-  <div>
-    <ul class="list-group">
-      <li class="list-group-item active"><h3>Past Auctions</h3></li>
-      <li
-        class="list-group-item"
-        routerLink="/auction/{{ auction.id }}"
-        routerLinkActive="active"
-        *ngFor="let auction of userAuctions"
-      >
-        <p>Auction {{ auction.name }} created on {{ auction.createdAt }}</p>
-        <p>Auction type: {{ auction.kind }}</p>
-        <p>open/closed: {{ auction.type }}</p>
-      </li>
-    </ul>
+<br>
+<div class="card mx-auto" style="width: 18rem;">
+  <img src="{{user.imageUrl}}" class="card-img-top" >
+  <div class="card-body">
+    <h5 class="card-title">{{user.name}}</h5>
+    <p class="card-text">{{user.location}}</p>
   </div>
-
-  <br />
-  <div>
-    <ul class="list-group">
-      <li class="list-group-item active"><h3>Past Offers</h3></li>
-      <li
-        routerLink="/auction/{{ offer.id }}"
-        routerLinkActive="active"
-        class="list-group-item"
-        *ngFor="let offer of userOffers"
-      >
-        <p>Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
-        <p>Offer type: {{ offer.kind }}</p>
-      </li>
-    </ul>
-  </div>
-  <br />
 </div>

@@ -18,6 +18,13 @@ export class UserProfileService {
     return products;
   }
 
+  async getAllAuction() {
+    let url = `${this._url}`;
+    let products = await this._http.get<any>(url).toPromise();
+    console.log(products);
+    return products;
+  }
+
   /**
    *  Fetch the currently signed in user
    */

@@ -5,12 +5,14 @@
   </a>
   <ul class="nav justify-content-end">
     <li class="nav-item" *ngIf="user.id">
+      <a class="nav-link" routerLink="/history">History</a>
+    </li>
+    <li class="nav-item" *ngIf="user.id">
       <a class="nav-link" routerLink="/profile/{{user.id}}">Profile</a>
     </li>
     <li class="nav-item" *ngIf="user.id">
       <a class="nav-link" routerLink="/logout">Logout</a>
     </li>
-
     <li class="nav-item" *ngIf="!user.id">
       <a class="nav-link" routerLink="/login">Login</a>
     </li>
