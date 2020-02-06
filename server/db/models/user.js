@@ -46,11 +46,17 @@ const User = db.define("user", {
     }
   },
   googleId: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING,
+    get() {
+      return () => this.getDataValue("googleId");
+    }
   },
   isAdmin: {
     type: Sequelize.BOOLEAN,
-    defaultValue: false
+    defaultValue: false,
+    get() {
+      return () => this.getDataValue("isAdmin");
+    }
   }
 });
 

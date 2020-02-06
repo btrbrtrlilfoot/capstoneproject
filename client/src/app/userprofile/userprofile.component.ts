@@ -9,10 +9,11 @@ import { ActivatedRoute } from "@angular/router";
   templateUrl: "./userprofile.component.html",
   styleUrls: ["./userprofile.component.css"]
 })
-export class UserprofileComponent implements OnInit {
+export class UserProfileComponent implements OnInit {
   userOffers: any;
   userAuctions: any;
-  user: any;
+  user: any = {};
+  private sub: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -22,34 +23,41 @@ export class UserprofileComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const products = await this._userProfileService.getAllProducts();
-    const user = await this._userProfileService.getUser();
-    this.user = user;
-    console.log("----------->User", user);
-    if (user !== undefined) {
-      const userId = user.id;
+    this.sub = this.route.params.subscribe(async params => {
+      let id = Number(params["id"]);
+      const user = await this._userProfileService.getUserById(id);
+      this.user = user;
 
-      const userProducts = products.filter(product => {
-        return product.userId === userId;
-      });
-      console.log(userProducts);
+      console.log("UserProfileComponent:ngOnInit:", user);
 
-      const userOffers = userProducts.filter(product => {
-        return product.type === "offer";
-      });
-      this.userOffers = userOffers;
+      if (user !== undefined) {
+        const userId = user.id;
+        const products = await this._userProfileService.getAllProducts();
 
-      console.log(userOffers);
+        const userProducts = products.filter(product => {
+          return product.userId === userId;
+        });
+        console.log(userProducts);
 
-      const userAuctions = userProducts.filter(product => {
-        return (
-          product.type === "auction (open)" ||
-          product.type === "auction (closed)"
-        );
-      });
-      this.userAuctions = userAuctions;
+        const userOffers = userProducts.filter(product => {
+          return product.type === "offer";
+        });
+        this.userOffers = userOffers;
 
-      console.log(userAuctions, "----------->");
-    }
+        console.log(userOffers);
+
+        const userAuctions = userProducts.filter(product => {
+          return (
+            product.type === "auction (open)" ||
+            product.type === "auction (closed)"
+          );
+        });
+        this.userAuctions = userAuctions;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
