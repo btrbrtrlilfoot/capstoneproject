@@ -26,6 +26,22 @@ async function seed() {
     email: "tashi@email.com",
     password: "123",
     location: "NYC",
+    isAdmin: true
+  });
+
+  const user4 = await User.create({
+    name: "Cody",
+    email: "cody@email.com",
+    password: "123",
+    location: "NYC",
+    isAdmin: false
+  });
+
+  const user5 = await User.create({
+    name: "Murphy",
+    email: "murphy@email.com",
+    password: "123",
+    location: "NYC",
     isAdmin: false
   });
 
