@@ -16,7 +16,6 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatRadioModule } from "@angular/material/radio";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
-import { TransactionConfirmationComponent } from "./transaction-confirmation/transaction-confirmation.component";
 import { UserprofileComponent } from "./userprofile/userprofile.component";
 
 @NgModule({
@@ -31,7 +30,6 @@ import { UserprofileComponent } from "./userprofile/userprofile.component";
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
-    TransactionConfirmationComponent,
     UserprofileComponent
   ],
   imports: [

@@ -8,7 +8,6 @@ import { AuctionConfirmationComponent } from "./auction-confirmation/auction-con
 import { OfferFormComponent } from "./offer-form/offer-form.component";
 import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
-import { TransactionConfirmationComponent } from "./transaction-confirmation/transaction-confirmation.component";
 import { UserprofileComponent } from "./userprofile/userprofile.component";
 
 const routes: Routes = [
@@ -19,11 +18,7 @@ const routes: Routes = [
   { path: "auction/confirm", component: AuctionConfirmationComponent },
   { path: "auction/:id", component: AuctionofferViewComponent },
   { path: "offerform", component: OfferFormComponent },
-  { path: "auctions/:auctionId/offers/:id", component: SingleOfferComponent },
-  {
-    path: "transaction-confirmation",
-    component: TransactionConfirmationComponent
-  },
+  { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
   { path: "userprofile", component: UserprofileComponent }
 ];
 

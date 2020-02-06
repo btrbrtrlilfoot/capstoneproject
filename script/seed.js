@@ -8,41 +8,22 @@ async function seed() {
   console.log("db synced!");
   //dummy users
   const user1 = await User.create({
-    firstName: "Kiana",
-    lastName: "W",
+    name: "Kiana",
     email: "kiana@email.com",
     password: "123",
     location: "NYC",
     isAdmin: true
   });
   const user2 = await User.create({
-    firstName: "Rachel",
-    lastName: "T",
+    name: "Rachel",
     email: "rachel@email.com",
     password: "123",
     location: "NYC",
     isAdmin: true
   });
   const user3 = await User.create({
-    firstName: "Tashi",
-    lastName: "D",
+    name: "Tashi",
     email: "tashi@email.com",
-    password: "123",
-    location: "NYC",
-    isAdmin: true
-  });
-  const user4 = await User.create({
-    firstName: "Cody",
-    lastName: "N",
-    email: "cody@email.com",
-    password: "123",
-    location: "NYC",
-    isAdmin: false
-  });
-  const user5 = await User.create({
-    firstName: "Murphy",
-    lastName: "M",
-    email: "murphy@email.com",
     password: "123",
     location: "NYC",
     isAdmin: false
@@ -235,52 +216,6 @@ async function seed() {
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"
   });
 
-  //open auctions
-  await user4.addProduct(product1);
-  await product1.addOffer(product11, { through: { status: "pending" } });
-  await product1.addOffer(product12, { through: { status: "pending" } });
-
-  await user4.addProduct(product2);
-  await product2.addOffer(product13, { through: { status: "pending" } });
-  await product2.addOffer(product14, { through: { status: "pending" } });
-
-  await user4.addProduct(product3);
-  await product3.addOffer(product13, { through: { status: "pending" } });
-  await product3.addOffer(product14, { through: { status: "pending" } });
-
-  await user5.addProduct(product4);
-  await product4.addOffer(product15, { through: { status: "pending" } });
-  await product4.addOffer(product16, { through: { status: "pending" } });
-
-  await user5.addProduct(product5);
-  await product5.addOffer(product17, { through: { status: "pending" } });
-  await product5.addOffer(product19, { through: { status: "pending" } });
-
-  //closed auction
-  await user5.addProduct(product6);
-  await product6.addOffer(product21, { through: { status: "accepted" } });
-
-  await user4.addProduct(product7);
-  await product7.addOffer(product17, { through: { status: "rejected" } });
-  await product7.addOffer(product19, { through: { status: "rejected" } });
-
-  await user5.addProduct(product8);
-  await product8.addOffer(product15, { through: { status: "rejected" } });
-  await product8.addOffer(product16, { through: { status: "rejected" } });
-
-  await user4.addProduct(product9);
-  await product9.addOffer(product22, { through: { status: "accepted" } });
-  await product9.addOffer(product23, { through: { status: "rejected" } });
-
-  await user5.addProduct(product10);
-  await product10.addOffer(product23, { through: { status: "accepted" } });
-
-  await user4.addProduct(product18);
-  await product18.addOffer(product24, { through: { status: "rejected" } });
-
-  await user5.addProduct(product20);
-  await product20.addOffer(product25, { through: { status: "accepted" } });
-
   //offers
   await user1.addProduct(product11);
   await user2.addProduct(product12);
@@ -295,6 +230,52 @@ async function seed() {
   await user2.addProduct(product23);
   await user3.addProduct(product24);
   await user3.addProduct(product25);
+
+  //open auctions
+  await user1.addProduct(product1);
+  await product1.addOffer(product12, { through: { status: "pending" } });
+  await product1.addOffer(product13, { through: { status: "pending" } });
+
+  await user2.addProduct(product2);
+  await product2.addOffer(product14, { through: { status: "pending" } });
+  await product2.addOffer(product15, { through: { status: "pending" } });
+
+  await user3.addProduct(product3);
+  await product3.addOffer(product16, { through: { status: "pending" } });
+  await product3.addOffer(product17, { through: { status: "pending" } });
+
+  await user1.addProduct(product4);
+  await product4.addOffer(product19, { through: { status: "pending" } });
+  await product4.addOffer(product21, { through: { status: "pending" } });
+
+  await user2.addProduct(product5);
+  await product5.addOffer(product22, { through: { status: "pending" } });
+  await product5.addOffer(product23, { through: { status: "pending" } });
+
+  //closed auction
+  await user3.addProduct(product6);
+  await product6.addOffer(product24, { through: { status: "accepted" } });
+
+  await user1.addProduct(product7);
+  await product7.addOffer(product17, { through: { status: "rejected" } });
+  await product7.addOffer(product19, { through: { status: "rejected" } });
+
+  await user2.addProduct(product8);
+  await product8.addOffer(product15, { through: { status: "rejected" } });
+  await product8.addOffer(product16, { through: { status: "rejected" } });
+
+  await user3.addProduct(product9);
+  await product9.addOffer(product25, { through: { status: "accepted" } });
+  await product9.addOffer(product23, { through: { status: "rejected" } });
+
+  await user1.addProduct(product10);
+  await product10.addOffer(product23, { through: { status: "rejected" } });
+
+  await user2.addProduct(product18);
+  await product18.addOffer(product24, { through: { status: "rejected" } });
+
+  await user3.addProduct(product20);
+  await product20.addOffer(product25, { through: { status: "rejected" } });
 
   console.log(`seeded successfully`);
 }
