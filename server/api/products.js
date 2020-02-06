@@ -4,9 +4,12 @@ const { User, Product } = require("../db/models");
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
+
       where: {
         type: "auction (open)"
       },
+
+
       include: [{ model: User }]
     });
     console.log("products", products[0].user.location);

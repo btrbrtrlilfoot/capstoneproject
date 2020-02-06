@@ -15,6 +15,17 @@
       <textarea rows="5" required #description="ngModel" [class.is-invalid]="description.invalid && description.touched" class="form-control" name="description" [(ngModel)]="offerModel.description" ></textarea>
       <small class="text-danger" [class.d-none]="description.valid || description.untouched">description is required</small>
     </div>
+
+    <div class="form-group">
+      <label>Offer Type</label>
+      <select class="form-control" (change)="onKindSelected($event.target.value)">
+        <option value="item">Item</option>
+        <option value="service">Service</option>
+      </select>
+    </div>
+
     <button [disabled]="offerForm.form.invalid" type="submit" class="btn btn-primary">Submit Offer</button>
+
+
   </form>
 </div>

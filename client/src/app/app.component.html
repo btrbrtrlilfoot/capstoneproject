@@ -1,53 +1,28 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<!-- Toolbar -->
-<div class="toolbar" role="banner" color="#ede1c0">
-  <img
-    width="40"
-    alt="Angular Logo"
-    src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/11/attachment_78456430-e1541654366936.jpeg?auto=format&q=60&w=1000&h=1000&fit=crop&crop=faces"
-  />
-  <span>Welcome to BrtrBttr</span>
-  <div class="spacer"></div>
+<nav class="navbar navbar-light" style="background-color: #ede1c0;">
+  <a class="navbar-brand" routerLink="/">
+    <img src="https://99designs-blog.imgix.net/blog/wp-content/uploads/2018/11/attachment_78456430-e1541654366936.jpeg?auto=format&q=60&w=1000&h=1000&fit=crop&crop=faces" width="40" height="40" class="d-inline-block align-top" alt="">
+    BrtrBttr
+  </a>
+  <ul class="nav justify-content-end">
+    <li class="nav-item" *ngIf="user.id">
+      <a class="nav-link" routerLink="/history">History</a>
+    </li>
+    <li class="nav-item" *ngIf="user.id">
+      <a class="nav-link" routerLink="/profile/{{user.id}}">Profile</a>
+    </li>
+    <li class="nav-item" *ngIf="user.id">
+      <a class="nav-link" routerLink="/logout">Logout</a>
+    </li>
+    <li class="nav-item" *ngIf="!user.id">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li class="nav-item" *ngIf="!user.id">
+      <a class="nav-link" routerLink="/signup">Signup</a>
+    </li>
+  </ul>
+</nav>
 
-  <svg
-    id="rocket-smoke"
-    alt="Rocket Ship Smoke"
-    xmlns="http://www.w3.org/2000/svg"
-    width="516.119"
-    height="1083.632"
-    viewBox="0 0 516.119 1083.632"
-  >
-    <path
-      id="Path_40"
-      data-name="Path 40"
-      d="M644.6,141S143.02,215.537,147.049,870.207s342.774,201.755,342.774,201.755S404.659,847.213,388.815,762.2c-27.116-145.51-11.551-384.124,271.9-609.1C671.15,139.365,644.6,141,644.6,141Z"
-      transform="translate(-147.025 -140.939)"
-      fill="#f5f5f5"
-    />
-  </svg>
-  
-  <a routerLink="/login">Login</a>
- 
-
-  <!-- Next Steps -->
-
-  <input type="hidden" #selection />
-
-  <div class="card-container"></div>
-</div>
-
-<!-- Terminal -->
-
-<!-- Footer -->
-<footer></footer>
 
 <svg
   id="clouds"
@@ -65,14 +40,6 @@
     fill="#eee"
   />
 </svg>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 <div class="container">
   <router-outlet></router-outlet>

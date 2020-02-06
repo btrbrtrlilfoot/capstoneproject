@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { User, Auction, Product } = require("../db/models");
+const { Op } = require("sequelize");
+
 module.exports = router;
 
 //get offers associated with an auction productid

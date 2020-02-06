@@ -8,9 +8,13 @@ import { OffersService } from "./offers.service";
   styleUrls: ["./offer-form.component.css"]
 })
 export class OfferFormComponent {
-  offerModel = new Offer("", "service", "");
+  offerModel = new Offer("", "item", "");
 
   constructor(private _offerService: OffersService) {}
+
+  onKindSelected(value: string) {
+    this.offerModel.kind = value;
+  }
 
   onSubmit() {
     this._offerService

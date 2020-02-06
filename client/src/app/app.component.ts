@@ -1,5 +1,7 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+
+
+import { Component } from "@angular/core";
+import { UserProfileService } from "./common/user-profile.service";
 
 @Component({
   selector: "app-root",
@@ -8,14 +10,14 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
   title = "BetterBartr";
-  user: any;
 
-  constructor(private http: HttpClient) {}
+  user = {};
 
-  ngOnInit() {
-    this.http.put("/api/users/:id", {}).subscribe((data: any) => {
-      this.user = data;
-      console.log("user", this.user);
-    });
+  constructor(private _userProfileService: UserProfileService) {}
+
+  async ngOnInit() {
+    const user = await this._userProfileService.getUser();
+    this.user = user;
+
   }
 }

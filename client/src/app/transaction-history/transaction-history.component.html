@@ -1,0 +1,35 @@
+<div>
+  <br>
+  <h3>My History</h3>
+  <hr>
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>Past Auctions</h4></li>
+      <li
+        class="list-group-item"
+        routerLink="/auction/{{ auction.id }}"
+        routerLinkActive="active"
+        *ngFor="let auction of userAuctions"
+      >
+        <p>Auction {{ auction.name }} created on {{ auction.createdAt }}</p>
+        <p>Auction type: {{ auction.kind }}</p>
+        <p>open/closed: {{ auction.type }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <br />
+  <div>
+    <ul class="list-group">
+      <li class="list-group-item active"><h4>Past Offers</h4></li>
+      <li
+        class="list-group-item"
+        *ngFor="let offer of userOffers"
+      >
+        <p>Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
+        <p>Offer type: {{ offer.kind }}</p>
+      </li>
+    </ul>
+  </div>
+  <br />
+</div>
