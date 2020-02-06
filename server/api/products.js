@@ -1,14 +1,24 @@
 const router = require("express").Router();
 const { User, Product } = require("../db/models");
 
+//using this route in user-profile service file
+router.get("/allproducts", async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      include: [{ model: User }]
+    });
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
-
       where: {
         type: "auction (open)"
       },
-
 
       include: [{ model: User }]
     });
