@@ -30,17 +30,14 @@ export class TransactionHistoryComponent implements OnInit {
     if (user.id !== undefined) {
       const userId = user.id;
       const products = await this._userProfileService.getAllProducts();
-      console.log(products, "PRODUCTSSSSS");
 
       const userProducts = products.filter(product => {
         return product.userId === userId;
       });
-      console.log(userProducts, "------------> This is userproducts");
 
       const userOffers = userProducts.filter(product => {
         return product.type === "offer";
       });
-      console.log(userOffers, "THIS IS USEROFFERS!!!!!!!");
 
       this.userOffers = userOffers;
 
@@ -50,7 +47,6 @@ export class TransactionHistoryComponent implements OnInit {
           product.type === "auction (closed)"
         );
       });
-      console.log(userAuctions, "THIS IS USERAUCTIONS!!!!!!!");
       this.userAuctions = userAuctions;
     } else {
       this.router.navigateByUrl("/login");

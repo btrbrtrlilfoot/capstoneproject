@@ -13,15 +13,17 @@ import { UserProfileService } from "../common/user-profile.service";
 export class HomeComponent implements OnInit {
   @Input() user: LoginComponent;
   bids: [];
+  searchText: string;
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient,
     private router: Router
   ) {}
-
-  onClick(bidId) {
-    this.router.navigate([`../auction/${bidId}`]);
+  // Changed this, is now working.Do not remove
+  onClick(bid) {
+    this.router.navigate([`../auction/${bid.id}`]);
   }
+
   async ngOnInit() {
     console.log("user", this.user);
     AppComponent;
@@ -31,17 +33,7 @@ export class HomeComponent implements OnInit {
       this.user = user;
     }
 
-    const bids = await this._userProfileService.getAllProducts();
+    const bids = await this._userProfileService.getAllOpenAuctions();
     this.bids = bids;
   }
-
-  // this.http.get("/api/products").subscribe(
-  //   (data: any) => {
-  //     this.bids = data;
-  //     console.log("bids", this.bids);
-  //   },
-  //   error => {
-  //     console.log("oops", error);
-  //   }
-  // );
 }

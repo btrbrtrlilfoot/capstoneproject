@@ -26,7 +26,7 @@ export class UserProfileService {
     return products;
   }
 
-  async getAllAuction() {
+  async getAllOpenAuctions() {
     let url = `${this._url}`;
     let products = await this._http.get<any>(url).toPromise();
     console.log(products);

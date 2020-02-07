@@ -19,6 +19,7 @@ export class AuctionofferViewComponent implements OnInit {
   userId: number = 1;
   selectedOffer: number;
   private sub: any;
+
   //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
   constructor(
     private route: ActivatedRoute,

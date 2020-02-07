@@ -14,6 +14,7 @@ export class SingleOfferComponent implements OnInit {
   offer: any = {};
   auctionId: string = "";
   error = false;
+  private sub: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +26,7 @@ export class SingleOfferComponent implements OnInit {
 
   async ngOnInit() {
     // setup a callback for when angular knows the route
-    this.route.params.subscribe(async params => {
+    this.sub = this.route.params.subscribe(async params => {
       // params is the route information
       let auctionId = params["auctionId"];
       let offerId = params["id"];
@@ -44,5 +45,9 @@ export class SingleOfferComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
