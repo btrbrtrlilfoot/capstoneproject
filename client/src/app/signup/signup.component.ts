@@ -38,20 +38,13 @@ export class SignupComponent implements OnInit {
   findMe() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
-        this.latlng = `${position.coords.latitude},${
-          position.coords.longitude
-        }`;
+        this.latlng = [position.coords.latitude, position.coords.longitude];
 
         this.http
-          .get<any>(
-            `https://maps.googleapis.com/maps/api/geocode/json?latlng=${
-              this.latlng
-            }&key=AIzaSyAB2g8hlk5lD0gVBQBQ2-5DwmGMznAuKUA
-       `
-          )
+          .post<any>("/maps/reverse", { latlng: this.latlng })
           .subscribe(data => {
             this.userForm.patchValue({
-              location: data.results[0].formatted_address
+              location: data
             });
           });
       });
@@ -60,16 +53,11 @@ export class SignupComponent implements OnInit {
 
   getGeocode(location) {
     this.http
-      .get<any>(
-        `https://maps.googleapis.com/maps/api/geocode/json?address=${location}key=AIzaSyAB2g8hlk5lD0gVBQBQ2-5DwmGMznAuKUA
-      `
-      )
+      .post<any>("/maps/geocode", { address: location })
       .subscribe(data => {
         if (data) {
           this.userForm.patchValue({
-            location: `${data.results[0].geometry.location.lat},${
-              data.results[0].geometry.location.lng
-            }`
+            location: data
           });
         }
       });

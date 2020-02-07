@@ -1,13 +1,12 @@
-<div *ngIf="user">
-  <h1>Welcome, {{user.name}}!</h1>
-</div>
-
 
 
 <button routerLink='/auction/'>Start a New Bid!</button>
 
   <div *ngIf='bids'>
-    <h2>Active Bids In Your City</h2>
+    <h2>Active Bids In Your City welcome {{user.name}}</h2>
+    <div *ngFor="let distance of distances">
+      <p>{{distance}}</p>
+    </div>
     <div className='scrollBox' *ngFor="let bid of bids"  >
       <h3>{{bid.name}}</h3>
       <h4>{{bid.description}}</h4>
