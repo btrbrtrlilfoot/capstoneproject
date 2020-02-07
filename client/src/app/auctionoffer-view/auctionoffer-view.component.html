@@ -25,7 +25,7 @@
     </mat-radio-group>
   </div>
   <button *ngIf="userId === auction.userId" [disabled]="buttonDisable" (click)="onSubmit(selectedOffer)">Click me!</button>
-  <button *ngIf="userId === auction.userId" routerLink="/auction/:{{id}}/offerform">Add Offer</button>
+  <button *ngIf="userId === auction.userId" routerLink="/auction/{{id}}/offerform">Add Offer</button>
 
 
 </div>
