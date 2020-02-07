@@ -39,7 +39,7 @@ const User = db.define("user", {
     }
   },
   location: {
-    type: Sequelize.STRING,
+    type: Sequelize.ARRAY(Sequelize.FLOAT),
     allowNull: false,
     validate: {
       notEmpty: true

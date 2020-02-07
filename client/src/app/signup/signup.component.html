@@ -1,15 +1,19 @@
 
 
 
-<div >Tell Us About Yourself!</div>
+<div >Tell Us About Yourself! this is latlng: {{userForm.value.email}}</div>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()" >
-  <input type='text' formControlName='name' placeholder="name" >
+  <input type='text' formControlName='image' placeholder="image" >
   <p></p>
-  <input type='text' formControlName='email' placeholder="email" >
+  <input type='text' formControlName='name' placeholder="name" required>
   <p></p>
-  <input type='text' formControlName='password' placeholder="password" >
+  <input type='text' formControlName='email' placeholder="email" required>
   <p></p>
-  <input type='text' formControlName='location' placeholder="city" >
+  <input type='text' formControlName='password' placeholder="password" required>
   <p></p>
-  <button >Make My Account</button>
+  <input type='text' formControlName='location'  placeholder="city" required>
+  <p></p>
+  <button type="button" (click)="this.findMe()">Find Location</button>
+  <p></p>
+  <button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">Make My Account</button>
   </form>

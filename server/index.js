@@ -34,6 +34,9 @@ passport.serializeUser((user, done) => done(null, user.id));
 
 passport.deserializeUser(async (id, done) => {
   try {
+    if (!id) {
+      id = null;
+    }
     const user = await db.models.user.findByPk(id);
     done(null, user);
   } catch (err) {
@@ -67,6 +70,7 @@ const createApp = () => {
   // auth and api routes
   app.use("/auth", require("./auth"));
   app.use("/api", require("./api"));
+  app.use("/maps", require("./maps"));
 
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, "..", "dist")));

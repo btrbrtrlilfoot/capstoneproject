@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   }
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
+
     if (user.hasOwnProperty("id")) {
       this.currentUser = user;
     } else {

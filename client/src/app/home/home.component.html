@@ -1,5 +1,8 @@
-<div *ngIf="user">
+<div *ngIf="user.id">
   <h1>Welcome, {{ user.name }}!</h1>
+  <div>
+    <button routerLink="/auction/">Start a New Bid!</button>
+  </div>
 </div>
 <br>
 
@@ -22,8 +25,5 @@
       <h3 (click)="onClick(bid)">{{bid.name}}</h3>
       <h4>{{bid.description}}</h4>
     </div>
-  </div>
-  <div>
-    <button routerLink="/auction/">Start a New Bid!</button>
   </div>
 </div>

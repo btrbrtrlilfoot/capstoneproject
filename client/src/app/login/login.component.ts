@@ -2,6 +2,7 @@ import { Input, Component, OnInit, createPlatformFactory } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { UserProfileService } from "../common/user-profile.service";
+import { Router } from "@angular/router";
 
 //set user info here
 @Component({
@@ -10,8 +11,9 @@ import { UserProfileService } from "../common/user-profile.service";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  @Input() user: any;
+  user: any;
   constructor(
+    private router: Router,
     private _userProfileService: UserProfileService,
     private http: HttpClient
   ) {}
@@ -22,9 +24,7 @@ export class LoginComponent implements OnInit {
     password: new FormControl("")
   });
 
-  ngOnInit() {
-    console.log("user", this.user);
-  }
+  ngOnInit() {}
 
   async onSubmit() {
     let Form = this.loginForm.value;
@@ -40,6 +40,7 @@ export class LoginComponent implements OnInit {
     //   );
     try {
       this.user = await this._userProfileService.logIn(Form);
+      this.router.navigate(["home"]);
     } catch (error) {
       console.error(error);
     }
