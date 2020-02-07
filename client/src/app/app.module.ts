@@ -31,6 +31,7 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
+    LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent
   ],

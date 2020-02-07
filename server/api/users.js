@@ -18,6 +18,7 @@ router.get("/:id", async (req, res, next) => {
         id: req.params.id
       }
     });
+
     res.json(user);
   } catch (err) {
     next(err);
