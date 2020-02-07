@@ -1,0 +1,35 @@
+#singleOffer {
+  display: flex;
+  align-content: space-between;
+  background-color: mintcream;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: teal;
+  color: black;
+}
+#singleOffer.text {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  flex: 20%;
+}
+#singleOffer.top-right {
+  flex: 10%;
+  text-align: right;
+}
+#image {
+  height: 50px;
+  width: 50px;
+  align-self: flex-end;
+}
+
+#offerName {
+  font-weight: bold;
+}
+
+#status {
+  font-weight: bold;
+}
