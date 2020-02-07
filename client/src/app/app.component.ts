@@ -3,6 +3,7 @@ import { UserProfileService } from "./common/user-profile.service";
 import { LoginComponent } from "./login/login.component";
 import { HttpClient } from "@angular/common/http";
 
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -16,10 +17,8 @@ export class AppComponent implements OnInit {
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient
-  ) {
-    // _userProfileService.getUser()
-    //                    .then(user => this.currentUser = user)
-  }
+  ) 
+  
   async onClick() {
     try {
       await this._userProfileService.logout();

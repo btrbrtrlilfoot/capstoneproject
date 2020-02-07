@@ -8,6 +8,7 @@ export class UserProfileService {
   @Output() currentUser = {};
   isLoggedIn: boolean;
   _url = "api/products";
+  _url1 = "api/products/allproducts";
   _url2 = "auth/me";
   _url3 = "auth/login";
   _url4 = "auth/logout";
@@ -21,7 +22,7 @@ export class UserProfileService {
   async getAllProducts() {
     let url = `${this._url}`;
     let products = await this._http.get<any>(url).toPromise();
-    console.log(products);
+    console.log(products, "This is products from user-profile");
     return products;
   }
 
