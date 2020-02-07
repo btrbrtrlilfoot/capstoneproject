@@ -18,6 +18,8 @@ export class AuctionofferViewComponent implements OnInit {
   buttonDisable: boolean;
   userId: number = 1;
   selectedOffer: number;
+  private sub: any;
+
   //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
   constructor(
     private route: ActivatedRoute,
@@ -28,7 +30,7 @@ export class AuctionofferViewComponent implements OnInit {
 
   ngOnInit() {
     //This is to pull the id of the auction from the link.
-    this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
       //the + is to coerce it from string to numerical
     }); //Get URL Id
@@ -71,5 +73,9 @@ export class AuctionofferViewComponent implements OnInit {
       },
       error => console.log("theres been an error")
     );
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
