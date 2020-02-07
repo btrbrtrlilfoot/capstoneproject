@@ -21,8 +21,14 @@ router.post("/:auctionId", async (req, res, next) => {
     const product = await Product.create({
       name: req.body.name,
       kind: req.body.kind,
+      description: req.body.description,
+      imageUrl: req.body.imageUrl || "product-default.jpg",
       type: "offer"
     });
+
+    if (req.user) {
+      product.setUser(req.user);
+    }
 
     const offer = await auctionProduct.addOffer(product, {
       through: { status: "pending" }

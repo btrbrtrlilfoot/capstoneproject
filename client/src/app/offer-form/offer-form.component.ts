@@ -8,8 +8,8 @@ import { OffersService } from "./offers.service";
   styleUrls: ["./offer-form.component.css"]
 })
 export class OfferFormComponent {
-  offerModel = new Offer("", "item", "");
-
+  offerModel = new Offer("", "item", "", null);
+  private image = {};
   constructor(private _offerService: OffersService) {}
 
   onKindSelected(value: string) {
@@ -24,5 +24,19 @@ export class OfferFormComponent {
         error => console.log("There was an error")
       );
     console.log(this.offerModel);
+  }
+
+  selectImage(event) {
+    let files = event.target.files;
+    if (files.length > 0) {
+      const file = files[0];
+      this.image = file;
+      this._offerService.uploadImages(this.image).subscribe(
+        res => {
+          this.offerModel.imageUrl = res.fileName;
+        },
+        err => console.log(err)
+      );
+    }
   }
 }
