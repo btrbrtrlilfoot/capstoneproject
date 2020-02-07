@@ -1,0 +1,10 @@
+diff a/client/src/app/signup/signup.component.ts b/client/src/app/signup/signup.component.ts	(rejected hunks)
+@@ -42 +41 @@ export class SignupComponent implements OnInit {
+-        this.latlng = [position.coords.latitude,position.coords.longitude];
++        this.latlng = [position.coords.latitude, position.coords.longitude];
+@@ -45 +44 @@ export class SignupComponent implements OnInit {
+-          .post<any>('/maps/reverse', {latlng: this.latlng})
++          .post<any>("/maps/reverse", { latlng: this.latlng })
+@@ -57 +56 @@ export class SignupComponent implements OnInit {
+-      .post<any>('/maps/geocode', {address: location})
++      .post<any>("/maps/geocode", { address: location })

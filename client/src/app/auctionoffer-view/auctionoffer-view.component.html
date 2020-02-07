@@ -7,11 +7,16 @@
 >>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
 } -->
   <p>auctionoffer-view works! on auction: {{id}} </p>
-  <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}</h1>
+  <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}
+  </h1>
+  <p> this is auctionOwnerId: {{ auctionOwnerId}}</p>
+ <p>  this is currentUserId: {{ user.id }} </p>
+
+
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
       <div  *ngFor="let offer of offers"  >
-          <p *ngIf="userId === auction.userId">
+          <p *ngIf="user.id === auctionOwnerId">
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
 
@@ -23,8 +28,9 @@
     </div>
     </mat-radio-group>
   </div>
-  <button *ngIf="userId === auction.userId" [disabled]="buttonDisable" (click)="onSubmit(selectedOffer)">Click me!</button>
-  <button *ngIf="userId === auction.userId" routerLink="/auction/:{{id}}/offerform">Add Offer</button>
+  <div *ngIf="user.id === auctionOwnerId">   <button (click)="onSubmit(selectedOffer)" [disabled]="buttonDisable">Click me!</button> </div>
+  <div *ngIf="(user.id !== auctionOwnerId) && !buttonDisable && user.id">   <button routerLink="/auction/:{{id}}/offerform" [disabled]="buttonDisable">Add Offer</button> </div>
+
 
 
 </div>
