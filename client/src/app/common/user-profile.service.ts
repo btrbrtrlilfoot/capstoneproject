@@ -20,7 +20,7 @@ export class UserProfileService {
   }
 
   async getAllProducts() {
-    let url = `${this._url}`;
+    let url = `${this._url1}`;
     let products = await this._http.get<any>(url).toPromise();
     console.log(products, "This is products from user-profile");
     return products;

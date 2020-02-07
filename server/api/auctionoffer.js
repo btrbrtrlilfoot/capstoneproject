@@ -12,7 +12,6 @@ router.get("/:id", async (req, res, next) => {
       where: { id: auctionId },
       include: { model: Product, as: "Offer" }
     }); //Base eagerloading. Returns the Auction Product and Offers in an array under the key: Offer
-    console.log("u made it");
     res.json(auction);
   } catch (err) {
     next(err);
@@ -21,7 +20,6 @@ router.get("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    console.log("this is in req.bodyy", req.body);
     const auctionId = req.params.id;
     const selectedId = req.body.offerId;
     const products = await Product.findOne({
