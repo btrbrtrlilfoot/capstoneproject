@@ -19,23 +19,12 @@ export class HomeComponent implements OnInit {
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient,
-    private router: Router,
-    private _userProfileService: UserProfileService
+    private router: Router
   ) {}
   // Changed this, is now working.Do not remove
   onClick(bid) {
     this.router.navigate([`../auction/${bid.id}`]);
   }
-
-  async ngOnInit() {
-    console.log("user", this.user);
-    AppComponent;
-
-    const user = await this._userProfileService.getUser();
-    if (user.hasOwnProperty("id")) {
-      this.user = user;
-    }
-
 
   async ngOnInit() {
     this.user = await this._userProfileService.getUser();
@@ -50,8 +39,6 @@ export class HomeComponent implements OnInit {
         console.log("oops", error);
       }
     );
-
-
   }
 
   getDistances() {

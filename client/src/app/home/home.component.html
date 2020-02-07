@@ -1,7 +1,7 @@
 
-
+<div *ngIf='user.id'>
 <button routerLink='/auction/'>Start a New Bid!</button>
-
+</div>
   <div *ngIf='bids'>
     <h2>Active Bids In Your City welcome {{user.name}}</h2>
     <div *ngFor="let distance of distances">
@@ -16,4 +16,3 @@
   <div>
     <button routerLink="/auction/">Start a New Bid!</button>
   </div>
-</div>
