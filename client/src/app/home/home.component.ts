@@ -19,9 +19,9 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {}
-
-  onClick(bidId) {
-    this.router.navigate([`../auction/${bidId}`]);
+  // Changed this, is now working.Do not remove
+  onClick(bid) {
+    this.router.navigate([`../auction/${bid.id}`]);
   }
 
   async ngOnInit() {
@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
       this.user = user;
     }
 
-    const bids = await this._userProfileService.getAllProducts();
+    const bids = await this._userProfileService.getAllOpenAuctions();
     this.bids = bids;
   }
 }
