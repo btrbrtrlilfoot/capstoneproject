@@ -1,5 +1,7 @@
+import { Component, OnInit, NgModule } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
-import { Component, OnInit } from "@angular/core";
+import { LoginComponent } from "./login/login.component";
+import { HttpClient } from "@angular/common/http";
 
 @Component({
   selector: "app-root",
@@ -9,12 +11,27 @@ import { Component, OnInit } from "@angular/core";
 export class AppComponent implements OnInit {
   title = "BetterBartr";
 
-  user = {};
+  currentUser: UserProfileService;
 
-  constructor(private _userProfileService: UserProfileService) {}
+  constructor(
+    private _userProfileService: UserProfileService,
+    private http: HttpClient
+  ) {}
 
+  async onClick() {
+    try {
+      await this._userProfileService.logout();
+    } catch (error) {
+      console.error;
+    }
+  }
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
-    this.user = user;
+    if (user.hasOwnProperty("id")) {
+      this.currentUser = user;
+    } else {
+      this.currentUser = null;
+    }
+    console.log("useeerApp", this.currentUser);
   }
 }

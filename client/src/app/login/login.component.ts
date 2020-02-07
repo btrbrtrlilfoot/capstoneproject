@@ -1,7 +1,7 @@
 import { Input, Component, OnInit, createPlatformFactory } from "@angular/core";
 import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
-import { Router } from "@angular/router";
+import { UserProfileService } from "../common/user-profile.service";
 
 //set user info here
 @Component({
@@ -12,8 +12,7 @@ import { Router } from "@angular/router";
 export class LoginComponent implements OnInit {
   @Input() user: any;
   constructor(
-    private formBuilder: FormBuilder,
-    private router: Router,
+    private _userProfileService: UserProfileService,
     private http: HttpClient
   ) {}
   loginForm = new FormGroup({
@@ -27,17 +26,22 @@ export class LoginComponent implements OnInit {
     console.log("user", this.user);
   }
 
-  onSubmit() {
+  async onSubmit() {
     let Form = this.loginForm.value;
-    this.http.post("/auth/login", Form).subscribe(
-      (data: any) => {
-        this.user = data;
-        console.log("user", this.user);
-        // this.router.navigate(['home'])
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
+    //   this.http.post("/auth/login", Form).subscribe(
+    //     (data: any) => {
+    //       this.user = data;
+    //       console.log("user", this.user);
+    //       // this.router.navigate(['home'])
+    //     },
+    //     error => {
+    //       console.log("oops", error);
+    //     }
+    //   );
+    try {
+      this.user = await this._userProfileService.logIn(Form);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }

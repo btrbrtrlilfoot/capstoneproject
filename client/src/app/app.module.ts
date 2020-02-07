@@ -18,6 +18,7 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
+import { LogoutComponent } from "./logout/logout.component";
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
+    LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent
   ],
