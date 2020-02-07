@@ -3,6 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuctionViewService } from "./auctionoffer-view.service";
+import { UserProfileService } from "../common/user-profile.service";
 
 @Component({
   selector: "app-auctionoffer-view",
@@ -12,11 +13,13 @@ import { AuctionViewService } from "./auctionoffer-view.service";
 export class AuctionofferViewComponent implements OnInit {
   //These Are States, you can call them in your HTML as their variable names
   id: number;
+  auctionOwnerId: any;
   offers: any = {};
   auction: any = {};
   auctionStatus: string;
   buttonDisable: boolean;
-  userId: number = 1;
+  userId: any;
+  user: any; //Grab current logged in UserID
   selectedOffer: number;
   private sub: any;
 
@@ -25,10 +28,13 @@ export class AuctionofferViewComponent implements OnInit {
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router,
-    private auctionView: AuctionViewService
+    private auctionView: AuctionViewService,
+    private userProfileService: UserProfileService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.user = await this.userProfileService.getUser();
+
     //This is to pull the id of the auction from the link.
     this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
@@ -39,6 +45,7 @@ export class AuctionofferViewComponent implements OnInit {
       data => {
         //service function. lets me access the data returned by my http req
         this.auction = data;
+        this.auctionOwnerId = this.auction.userId;
         //This redirects the user away from looking up offers under the Auction url
         if (
           this.auction.type !== "auction (closed)" &&

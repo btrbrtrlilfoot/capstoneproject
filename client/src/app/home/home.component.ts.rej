@@ -1,0 +1,44 @@
+diff a/client/src/app/home/home.component.ts b/client/src/app/home/home.component.ts	(rejected hunks)
+@@ -50,30 +66,12 @@ export class HomeComponent implements OnInit {
+-  sortAuctions(){
+-    console.log('sorting')
+-    this.distances.sort((a,b) => {
+-      console.log('this is a,', a)
+-    if(a < b){
+-      return -1
+-    }
+-    if(a > b){
+-      return 1
+-    }
+-    return 0;
+-  })
+-
+-
+-  // this.distances.sort((a,b) => {
+-  //   let aIdx = this.bids.indexOf(a)
+-  //   let bIdx = this.bids.indexOf(b)
+-  //   if(this.distances[aIdx] < this.distances[bIdx]){
+-  //     return -1
+-  //   }
+-  //   if(this.distances[aIdx] > this.distances[bIdx]){
+-  //     return 1
+-  //   }
+-  //   return 0;
+-  // })
+-
+-
+-}
+-
+-
++    // this.distances.sort((a,b) => {
++    //   let aIdx = this.bids.indexOf(a)
++    //   let bIdx = this.bids.indexOf(b)
++    //   if(this.distances[aIdx] < this.distances[bIdx]){
++    //     return -1
++    //   }
++    //   if(this.distances[aIdx] > this.distances[bIdx]){
++    //     return 1
++    //   }
++    //   return 0;
++    // })
++  }
