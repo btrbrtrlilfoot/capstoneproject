@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { AppComponent } from "../app.component";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
 
 @Component({
@@ -14,12 +15,27 @@ export class HomeComponent implements OnInit {
   bids: any;
   distances: any;
   latlng: any = [40.7177738, -74.00911511];
+
   constructor(
-    private route: ActivatedRoute,
+    private _userProfileService: UserProfileService,
     private http: HttpClient,
     private router: Router,
     private _userProfileService: UserProfileService
   ) {}
+  // Changed this, is now working.Do not remove
+  onClick(bid) {
+    this.router.navigate([`../auction/${bid.id}`]);
+  }
+
+  async ngOnInit() {
+    console.log("user", this.user);
+    AppComponent;
+
+    const user = await this._userProfileService.getUser();
+    if (user.hasOwnProperty("id")) {
+      this.user = user;
+    }
+
 
   async ngOnInit() {
     this.user = await this._userProfileService.getUser();
@@ -34,6 +50,8 @@ export class HomeComponent implements OnInit {
         console.log("oops", error);
       }
     );
+
+
   }
 
   getDistances() {

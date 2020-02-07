@@ -9,7 +9,11 @@
     </div>
     <div className='scrollBox' *ngFor="let bid of bids"  >
       <h3>{{bid.name}}</h3>
+
       <h4>{{bid.description}}</h4>
     </div>
   </div>
-
+  <div>
+    <button routerLink="/auction/">Start a New Bid!</button>
+  </div>
+</div>

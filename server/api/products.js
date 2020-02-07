@@ -1,6 +1,18 @@
 const router = require("express").Router();
 const { User, Product } = require("../db/models");
 
+//using this route in user-profile service file
+router.get("/allproducts", async (req, res, next) => {
+  try {
+    const products = await Product.findAll({
+      include: [{ model: User }]
+    });
+    res.send(products);
+  } catch (error) {
+    next(error);
+  }
+});
+
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -10,12 +22,14 @@ router.get("/", async (req, res, next) => {
 
       include: [{ model: User }]
     });
+
     // console.log("products", products[0].user.location);
     // console.log("reqqquser", req.user.location);
     // let city = req.user.location;
     // console.log("????", city);
     // let result = products.filter(product => product.user.location == city);
     res.send(products);
+
   } catch (error) {
     next(error);
   }

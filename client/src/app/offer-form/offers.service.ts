@@ -13,4 +13,12 @@ export class OffersService {
     let url = `${this._url}/${auctionId}`;
     return this._http.post<any>(url, offer);
   }
+
+  uploadImages(images: any) {
+    const formData = new FormData();
+    console.log("OffersService:uploadImages", images);
+    formData.append("file", images);
+
+    return this._http.post<any>("/file", formData);
+  }
 }

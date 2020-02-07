@@ -25,7 +25,7 @@ export class TransactionHistoryComponent implements OnInit {
     const user = await this._userProfileService.getUser();
     this.user = user;
 
-    console.log("UserProfileComponent:ngOnInit:", user);
+    console.log("The logged in  user", user);
 
     if (user.id !== undefined) {
       const userId = user.id;
@@ -34,14 +34,12 @@ export class TransactionHistoryComponent implements OnInit {
       const userProducts = products.filter(product => {
         return product.userId === userId;
       });
-      console.log(userProducts);
 
       const userOffers = userProducts.filter(product => {
         return product.type === "offer";
       });
-      this.userOffers = userOffers;
 
-      console.log(userOffers);
+      this.userOffers = userOffers;
 
       const userAuctions = userProducts.filter(product => {
         return (

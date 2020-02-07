@@ -10,20 +10,22 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
+import { LogoutComponent } from "./logout/logout.component";
+import { AppComponent } from "./app.component";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
-
+  { path: "logout", component: LogoutComponent },
   { path: "login", component: LoginComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },
   { path: "auction", component: PostAuctionComponent, pathMatch: "full" },
   { path: "auction/confirm", component: AuctionConfirmationComponent },
   { path: "auction/:id", component: AuctionofferViewComponent },
-  { path: "offerform", component: OfferFormComponent },
+  { path: "auction/:id/offerform", component: OfferFormComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
   { path: "profile/:id", component: UserProfileComponent },
-  { path: "history", component: TransactionHistoryComponent }
+  { path: "history", component: TransactionHistoryComponent },
+  { path: "**", component: HomeComponent }
 ];
 
 @NgModule({
