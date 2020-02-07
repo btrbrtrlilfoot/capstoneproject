@@ -1,4 +1,0 @@
-diff a/server/auth/index.js b/server/auth/index.js	(rejected hunks)
-@@ -44 +44 @@ router.get("/me", (req, res) => {
--  console.log('this is user', req.user)
-+  console.log("this is user", req.user);

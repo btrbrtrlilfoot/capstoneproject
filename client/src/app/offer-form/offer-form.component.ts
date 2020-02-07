@@ -4,6 +4,7 @@ import { OffersService } from "./offers.service";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
+import { UserProfileService } from "../common/user-profile.service";
 
 declare var Dropzone: any;
 
@@ -14,6 +15,7 @@ declare var Dropzone: any;
 })
 export class OfferFormComponent {
   id: number;
+  user: any;
   offerModel = new Offer("", "item", "", null);
   private image = {};
   private sub: any;
@@ -22,20 +24,24 @@ export class OfferFormComponent {
     private route: ActivatedRoute,
     private _offerService: OffersService,
     private location: Location,
-    private router: Router
+    private router: Router,
+    private userProfileService: UserProfileService
   ) {}
 
-  ngOnInit() {
-    this.sub = this.route.params.subscribe(async params => {
-      this.id = Number(params["id"]);
+  async ngOnInit() {
+    this.user = await this.userProfileService.getUser();
+
+    this.sub = this.route.params.subscribe(params => {
+      this.id = +params["id"];
     });
 
     let _this = this;
     Dropzone.options.myAwesomeDropzone = {
       init: function() {
+        console.log(_this, "THIS IS FROM OFFERFORM");
         this.on("success", function(file, res) {
-          console.log(file, res);
           _this.offerModel.imageUrl = res.fileName;
+          console.log(file, res);
         });
       }
     };
@@ -53,10 +59,6 @@ export class OfferFormComponent {
         error => console.log("There was an error")
       );
     console.log(this.offerModel);
-  }
-
-  goBack() {
-    // this.location.back();
   }
 
   selectImage(event) {

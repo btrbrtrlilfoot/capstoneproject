@@ -1,6 +1,7 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+//multer is used to in express to upload file/multiple files
 const multer = require("multer");
 const compression = require("compression");
 const session = require("express-session");
@@ -79,6 +80,7 @@ const createApp = () => {
 
   let upload = multer({ dest: "uploads/" });
 
+  // multer uses this route to
   app.post("/file", upload.single("file"), (req, res, next) => {
     const file = req.file;
     if (!file) {
