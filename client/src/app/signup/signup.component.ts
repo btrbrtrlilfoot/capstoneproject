@@ -1,5 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  FormBuilder
+} from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
@@ -12,7 +17,8 @@ import { UserProfileService } from "../common/user-profile.service";
 })
 export class SignupComponent implements OnInit {
   user: any;
-
+  latlng: any;
+  userForm: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
     private _userProfileService: UserProfileService,
@@ -20,22 +26,67 @@ export class SignupComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userForm = new FormGroup({
+      $key: new FormControl(null),
+      image: new FormControl(""),
+      name: new FormControl("", Validators.minLength(1)),
+      email: new FormControl("", Validators.email),
+      password: new FormControl("", Validators.minLength(1)),
+      location: new FormControl("", Validators.minLength(1))
+    });
+  }
 
-  userForm = new FormGroup({
-    $key: new FormControl(null),
-    name: new FormControl(""),
-    email: new FormControl(""),
-    password: new FormControl(""),
-    location: new FormControl("")
-  });
-  async onSubmit() {
-    let Form = this.userForm.value;
-    try {
-      this.user = await this._userProfileService.signUp(Form);
-    } catch (error) {
-      console.error(error);
+  findMe() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        this.latlng = [position.coords.latitude, position.coords.longitude];
+
+        this.http
+          .post<any>("/maps/reverse", { latlng: this.latlng })
+          .subscribe(data => {
+            this.userForm.patchValue({
+              location: data
+            });
+          });
+      });
     }
+  }
+
+  getGeocode(location) {
+    this.http
+      .post<any>("/maps/geocode", { address: location })
+      .subscribe(data => {
+        if (data) {
+          this.userForm.patchValue({
+            location: data
+          });
+        }
+      });
+  }
+
+
+  onSubmit() {
+    if (this.latlng) {
+      this.userForm.patchValue({
+        location: this.latlng
+      });
+    } else {
+      this.getGeocode(this.userForm.value.location);
+    }
+
+    let Form = this.userForm.value;
+    this.http.post("/auth/signup", Form).subscribe(
+      (data: any) => {
+        this.user = data;
+      },
+      error => {
+        console.log("oops", error);
+      }
+    );
+
+    this.router.navigate(["home"]);
+
   }
 }
 

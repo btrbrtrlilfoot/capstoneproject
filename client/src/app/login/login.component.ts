@@ -10,7 +10,7 @@ import { UserProfileService } from "../common/user-profile.service";
   styleUrls: ["./login.component.css"]
 })
 export class LoginComponent implements OnInit {
-  @Input() user: any;
+  user: any;
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient

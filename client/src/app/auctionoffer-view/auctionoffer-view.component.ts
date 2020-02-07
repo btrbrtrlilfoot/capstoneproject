@@ -16,7 +16,7 @@ export class AuctionofferViewComponent implements OnInit {
   auction: any = {};
   auctionStatus: string;
   buttonDisable: boolean;
-  userId: number = 1;
+  userId: number = 0;
   selectedOffer: number;
   private sub: any;
 

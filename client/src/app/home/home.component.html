@@ -1,25 +1,15 @@
-<div *ngIf="user">
-  <h1>Welcome, {{ user.name }}!</h1>
-</div>
-<br>
 
-<div>
-  <div>
-    <input
-      class="form-control"
-      type="text"
-      name="search"
-      [(ngModel)]="searchText"
-      autocomplete="off"
-      placeholder="Start searching for a bid"
-    />
-  </div>
-<br>
-  <div *ngIf="bids">
-    <h2>Active Bids In Your City</h2>
-    <div className="scrollBox" *ngFor="let bid of bids | filter: searchText">
-      <!-- changed. is now working do not remove-->
-      <h3 (click)="onClick(bid)">{{bid.name}}</h3>
+
+<button routerLink='/auction/'>Start a New Bid!</button>
+
+  <div *ngIf='bids'>
+    <h2>Active Bids In Your City welcome {{user.name}}</h2>
+    <div *ngFor="let distance of distances">
+      <p>{{distance}}</p>
+    </div>
+    <div className='scrollBox' *ngFor="let bid of bids"  >
+      <h3>{{bid.name}}</h3>
+
       <h4>{{bid.description}}</h4>
     </div>
   </div>

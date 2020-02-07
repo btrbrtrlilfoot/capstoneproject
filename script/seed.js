@@ -11,21 +11,21 @@ async function seed() {
     name: "Kiana",
     email: "kiana@email.com",
     password: "123",
-    location: "NYC",
+    location: [40.7050579, -74.0090341],
     isAdmin: true
   });
   const user2 = await User.create({
     name: "Rachel",
     email: "rachel@email.com",
     password: "123",
-    location: "NYC",
+    location: [40.7050579, -75.0090341],
     isAdmin: true
   });
   const user3 = await User.create({
     name: "Tashi",
     email: "tashi@email.com",
     password: "123",
-    location: "NYC",
+    location: [40.7050579, -54.0090341],
     isAdmin: true
   });
 
@@ -33,7 +33,7 @@ async function seed() {
     name: "Cody",
     email: "cody@email.com",
     password: "123",
-    location: "NYC",
+    location: [40.7350579, -74.0090341],
     isAdmin: false
   });
 
@@ -41,7 +41,7 @@ async function seed() {
     name: "Murphy",
     email: "murphy@email.com",
     password: "123",
-    location: "NYC",
+    location: [40.7050579, -74.0090341],
     isAdmin: false
   });
 

@@ -1,6 +1,3 @@
-<div *ngIf="user; else elseBlock">
-    <app-home [user]="user"></app-home>
-</div>
 
 <ng-template #elseBlock>
 <form [formGroup]='loginForm' (ngSubmit)="onSubmit(evt)">

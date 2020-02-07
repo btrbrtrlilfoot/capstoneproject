@@ -11,7 +11,6 @@
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
       <div  *ngFor="let offer of offers"  >
-        <div>
           <p *ngIf="userId === auction.userId">
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
@@ -20,7 +19,7 @@
           <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active">{{offer.name}}</a>
           <p>{{offer.kind}} from {{offer.userId}}</p>
           <p>Currently: {{offer.offer.status}}</p>
-        </div>
+
     </div>
     </mat-radio-group>
   </div>
