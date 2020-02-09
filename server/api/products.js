@@ -13,6 +13,7 @@ router.get("/allproducts", async (req, res, next) => {
   }
 });
 
+//get open auctions
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -46,12 +47,19 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
+    const tags = req.body.tags;
+    const tagsArray = tags.split(",").map(tag => {
+      return tag.trim();
+    });
+
+    console.log(tagsArray);
     const product = await Product.create({
       name: req.body.item,
       location: req.body.location,
       description: req.body.description,
       type: "auction (open)",
-      userId: req.session.passport.user
+      userId: req.session.passport.user,
+      tags: tagsArray
     });
 
     res.send(product);

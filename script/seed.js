@@ -51,70 +51,80 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "kitchen items", "cooking", "juice"]
   });
   const product2 = await Product.create({
     name: "i-phone 10",
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "phone", "technology", "apple"]
   });
   const product3 = await Product.create({
     name: "Mac Book Air 2015",
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "computer", "technology", "apple", "new"]
   });
   const product4 = await Product.create({
     name: "Sony Headphones",
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "technology", "sony products"]
   });
   const product5 = await Product.create({
     name: "Pack of Pokemon Cards",
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "card games", "fun", "new"]
   });
   const product6 = await Product.create({
     name: "Samsung TV set",
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "TV", "Samsung products", "new"]
   });
   const product7 = await Product.create({
     name: "Rayban Glasses",
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "TV", "Samsung products", "new"]
   });
   const product8 = await Product.create({
     name: "Nike Hoodie",
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "clothes", "new"]
   });
   const product9 = await Product.create({
     name: "Adidas Sports Bag",
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "bags", "Adidas", "worn"]
   });
   const product10 = await Product.create({
     name: "Ramen Noodles",
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    tags: ["item", "food", "Japanese"]
   });
   const product11 = await Product.create({
     name: "Clock",

@@ -20,9 +20,9 @@
 <br>
   <div *ngIf="bids">
     <h2>Active Bids In Your City</h2>
-    <div className="scrollBox" *ngFor="let bid of bids | filter: searchText">
+    <div (click)="onClick(bid)" className="scrollBox" *ngFor="let bid of bids | filter: searchText">
       <!-- changed. is now working do not remove-->
-      <h3 (click)="onClick(bid)">{{bid.name}}</h3>
+      <h3>{{bid.name}}</h3>
       <h4>{{bid.description}}</h4>
     </div>
   </div>

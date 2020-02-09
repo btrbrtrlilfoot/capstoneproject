@@ -23,7 +23,9 @@ export class PostAuctionComponent implements OnInit {
   auctionForm = new FormGroup({
     $key: new FormControl(null),
     item: new FormControl(""),
-    description: new FormControl("")
+    description: new FormControl(""),
+    tags: new FormControl("")
+
     // kind: new FormControl(null)
   });
 

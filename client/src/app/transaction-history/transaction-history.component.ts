@@ -13,6 +13,7 @@ export class TransactionHistoryComponent implements OnInit {
   userOffers: any;
   userAuctions: any;
   user: any = {};
+  userProducts: any;
 
   constructor(
     private route: ActivatedRoute,

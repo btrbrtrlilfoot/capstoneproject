@@ -1,6 +1,6 @@
 
 <div *ngIf="auction; else elseBlock">
-  <app-auction-confirmation [auction]="auction"></app-auction-confirmation> 
+  <app-auction-confirmation [auction]="auction"></app-auction-confirmation>
 
 
 </div>
@@ -10,8 +10,8 @@
  <table>
   <label>What's the name of the item or service that you'd like to auction?</label>
   <input type='text' placeholder="item" formControlName='item'>
-  <div></div>
-  
+  <label>Tags</label>
+  <input type='text' placeholder="tags" formControlName='tags'>
   <label>Give bidders a brief description</label>
   <input type='text' placeholder="description" formControlName='description'>
  <p>I would classify this as a:</p>
@@ -19,7 +19,7 @@
     <input type="checkbox" >
     <span class="checkmark"></span>
   </label>
-  
+
   <label class="container">Service
     <input type="checkbox">
     <span class="checkmark"></span>

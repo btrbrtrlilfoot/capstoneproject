@@ -31,6 +31,9 @@ const Product = db.define("product", {
     validate: {
       notEmpty: true
     }
+  },
+  tags: {
+    type: Sequelize.ARRAY(Sequelize.TEXT)
   }
 });
 module.exports = Product;
