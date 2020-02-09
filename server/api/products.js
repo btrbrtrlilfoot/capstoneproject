@@ -5,7 +5,7 @@ const { User, Product } = require("../db/models");
 router.get("/allproducts", async (req, res, next) => {
   try {
     const products = await Product.findAll({
-      include: [{ model: User }]
+      include: [{ model: User }, { model: Product, as: "Offer" }]
     });
     res.send(products);
   } catch (error) {
