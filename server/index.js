@@ -80,14 +80,17 @@ const createApp = () => {
 
   let upload = multer({ dest: "uploads/" });
 
-  // multer uses this route to
   app.post("/file", upload.single("file"), (req, res, next) => {
+    //getting file from request
     const file = req.file;
+    //if file is not uploaded/not there
     if (!file) {
+      //send error message
       const error = new Error("Please upload a file");
       error.httpStatusCode = 400;
       return next(error);
     }
+    console.log;
     res.send({ fileName: file.filename });
   });
 

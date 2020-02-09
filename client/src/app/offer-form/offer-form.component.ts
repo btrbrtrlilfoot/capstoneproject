@@ -38,7 +38,6 @@ export class OfferFormComponent {
     let _this = this;
     Dropzone.options.myAwesomeDropzone = {
       init: function() {
-        console.log(_this, "THIS IS FROM OFFERFORM");
         this.on("success", function(file, res) {
           _this.offerModel.imageUrl = res.fileName;
           console.log(file, res);

@@ -16,7 +16,7 @@
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
       <div  *ngFor="let offer of offers"  >
-          <p *ngIf="user.id === auctionOwnerId">
+          <p *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)'">
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
 
