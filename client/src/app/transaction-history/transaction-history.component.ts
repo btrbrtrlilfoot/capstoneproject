@@ -26,8 +26,6 @@ export class TransactionHistoryComponent implements OnInit {
     const user = await this._userProfileService.getUser();
     this.user = user;
 
-    console.log("The logged in  user", user);
-
     if (user.id !== undefined) {
       const userId = user.id;
       const products = await this._userProfileService.getAllProducts();
@@ -35,6 +33,7 @@ export class TransactionHistoryComponent implements OnInit {
       const userProducts = products.filter(product => {
         return product.userId === userId;
       });
+      this.userProducts = userProducts;
 
       const userOffers = userProducts.filter(product => {
         return product.type === "offer";
