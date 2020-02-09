@@ -19,6 +19,15 @@ import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 import { LogoutComponent } from "./logout/logout.component";
+import { DropzoneModule } from "ngx-dropzone-wrapper";
+import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+
+const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
+  url: "/file",
+  maxFilesize: 50,
+  acceptedFiles: "image/*"
+};
 
 @NgModule({
   declarations: [
@@ -44,9 +53,16 @@ import { LogoutComponent } from "./logout/logout.component";
     HttpClientModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    DropzoneModule
   ],
-  providers: [LoginComponent],
+  providers: [
+    LoginComponent,
+    {
+      provide: DROPZONE_CONFIG,
+      useValue: DEFAULT_DROPZONE_CONFIG
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
