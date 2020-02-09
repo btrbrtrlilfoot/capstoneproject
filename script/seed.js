@@ -19,14 +19,16 @@ async function seed() {
     email: "rachel@email.com",
     password: "123",
     location: [40.7050579, -75.0090341],
-    isAdmin: true
+    isAdmin: true,
+    phoneNumber: "Some number & need to verify"
   });
   const user3 = await User.create({
     name: "Tashi",
     email: "tashi@email.com",
     password: "123",
     location: [40.7050579, -54.0090341],
-    isAdmin: true
+    isAdmin: true,
+    phoneNumber: "+12409184882"
   });
 
   const user4 = await User.create({
@@ -236,19 +238,19 @@ async function seed() {
   });
 
   //offers
-  await user1.addProduct(product11);
+  await user2.addProduct(product11);
   await user2.addProduct(product12);
   await user3.addProduct(product13);
   await user1.addProduct(product14);
-  await user2.addProduct(product15);
-  await user3.addProduct(product16);
-  await user1.addProduct(product17);
+  await user1.addProduct(product15);
+  await user2.addProduct(product16);
+  await user3.addProduct(product17);
   await user2.addProduct(product19);
   await user3.addProduct(product21);
   await user1.addProduct(product22);
-  await user2.addProduct(product23);
-  await user3.addProduct(product24);
-  await user3.addProduct(product25);
+  await user3.addProduct(product23);
+  await user2.addProduct(product24);
+  await user2.addProduct(product25);
 
   //open auctions
   await user1.addProduct(product1);
