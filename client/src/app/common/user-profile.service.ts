@@ -5,7 +5,8 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class UserProfileService {
-  @Output() currentUser = {};
+  @Output() currentUser: any = {};
+
   isLoggedIn: boolean;
   _url = "api/products";
   _url1 = "api/products/allproducts";
@@ -22,14 +23,12 @@ export class UserProfileService {
   async getAllProducts() {
     let url = `${this._url1}`;
     let products = await this._http.get<any>(url).toPromise();
-    console.log(products, "This is products from user-profile");
     return products;
   }
 
   async getAllOpenAuctions() {
     let url = `${this._url}`;
     let products = await this._http.get<any>(url).toPromise();
-    console.log(products);
     return products;
   }
 
@@ -39,9 +38,8 @@ export class UserProfileService {
   async getUser() {
     let url2 = `${this._url2}`;
     let user = await this._http.get<any>(url2).toPromise();
-    console.log("curuser", user);
-    this.currentUser = user;
-    return user || {};
+    this.currentUser = user || {};
+    return this.currentUser;
   }
 
   /**
@@ -50,23 +48,23 @@ export class UserProfileService {
   async getUserById(id: number) {
     let url = `${this._users}/${id}`;
     let user = await this._http.get<any>(url).toPromise();
-    this.currentUser = user;
-    return user || {};
+    this.currentUser = user || {};
+    return this.currentUser;
   }
 
   //sign user in
   async logIn(form) {
     let user = await this._http.post(this._url3, form).toPromise();
-    this.currentUser = user;
+    this.currentUser = user || {};
     this.isLoggedIn = true;
-    return user || {};
+    return this.currentUser;
   }
 
   async signUp(form) {
     let user = await this._http.post(this._url5, form).toPromise();
-    this.currentUser = user;
+    this.currentUser = user || {};
     this.isLoggedIn = true;
-    return user || {};
+    return this.currentUser;
   }
 
   async logout() {
@@ -76,6 +74,8 @@ export class UserProfileService {
       .post(this._url4, this.currentUser)
       .toPromise();
 
-    return user || {};
+    this.currentUser = {};
+
+    return this.currentUser;
   }
 }

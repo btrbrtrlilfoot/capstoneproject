@@ -14,12 +14,12 @@ export class AuctionofferViewComponent implements OnInit {
   //These Are States, you can call them in your HTML as their variable names
   id: number;
   auctionOwnerId: any;
-  offers: any = {};
+  offers: any = [];
   auction: any = {};
   auctionStatus: string;
   buttonDisable: boolean;
   userId: any;
-  user: any; //Grab current logged in UserID
+  user: any = {}; //Grab current logged in UserID
   selectedOffer: number;
   private sub: any;
 

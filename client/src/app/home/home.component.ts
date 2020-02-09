@@ -11,7 +11,7 @@ import { UserProfileService } from "../common/user-profile.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  user: any;
+  user: any = {};
   bids: any;
   distances: any;
   latlng: any = [40.7177738, -74.00911511];

@@ -11,7 +11,7 @@ import { HttpClient } from "@angular/common/http";
 export class AppComponent implements OnInit {
   title = "BetterBartr";
 
-  currentUser: UserProfileService;
+  currentUser: any = {};
 
   constructor(
     private _userProfileService: UserProfileService,
@@ -21,18 +21,17 @@ export class AppComponent implements OnInit {
   async onClick() {
     try {
       await this._userProfileService.logout();
+      this.currentUser = {};
     } catch (error) {
       console.error;
     }
   }
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
-
     if (user.hasOwnProperty("id")) {
       this.currentUser = user;
     } else {
-      this.currentUser = null;
+      this.currentUser = {};
     }
-    console.log("useeerApp", this.currentUser);
   }
 }
