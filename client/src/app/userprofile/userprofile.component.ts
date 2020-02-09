@@ -29,31 +29,6 @@ export class UserProfileComponent implements OnInit {
       this.user = user;
 
       console.log("UserProfileComponent:ngOnInit:", user);
-
-      if (user !== undefined) {
-        const userId = user.id;
-        const products = await this._userProfileService.getAllProducts();
-
-        const userProducts = products.filter(product => {
-          return product.userId === userId;
-        });
-        console.log(userProducts);
-
-        const userOffers = userProducts.filter(product => {
-          return product.type === "offer";
-        });
-        this.userOffers = userOffers;
-
-        console.log(userOffers);
-
-        const userAuctions = userProducts.filter(product => {
-          return (
-            product.type === "auction (open)" ||
-            product.type === "auction (closed)"
-          );
-        });
-        this.userAuctions = userAuctions;
-      }
     });
   }
 
