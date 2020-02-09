@@ -27,8 +27,9 @@
       <li
         class="list-group-item"
         *ngFor="let offer of userOffers"
+        (click)="navigateToAuctionForOffer(offer)"
       >
-        <p (click)="navigateToAuctionForOffer(offer)">Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
+        <p>Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
         <p>Offer type: {{ offer.kind }}</p>
         <p>Some description {{ offer.description}}</p>
       </li>
