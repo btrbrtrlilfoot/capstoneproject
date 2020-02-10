@@ -25,9 +25,9 @@
     <ul class="list-group">
       <li class="list-group-item active"><h4>Past Offers</h4></li>
       <li
-        routerLinkActive="active"
         class="list-group-item"
         *ngFor="let offer of userOffers"
+        (click)="navigateToAuctionForOffer(offer)"
       >
         <p>Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
         <p>Offer type: {{ offer.kind }}</p>

@@ -5,8 +5,11 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { UserProfileService } from "../common/user-profile.service";
-
-declare var Dropzone: any;
+import {
+  DropzoneComponent,
+  DropzoneDirective,
+  DropzoneConfigInterface
+} from "ngx-dropzone-wrapper";
 
 @Component({
   selector: "app-offer-form",
@@ -20,6 +23,14 @@ export class OfferFormComponent {
   private image = {};
   private sub: any;
 
+  public config: DropzoneConfigInterface = {
+    clickable: true,
+    maxFiles: 1,
+    autoReset: null,
+    errorReset: null,
+    cancelReset: null
+  };
+
   constructor(
     private route: ActivatedRoute,
     private _offerService: OffersService,
@@ -29,21 +40,9 @@ export class OfferFormComponent {
   ) {}
 
   async ngOnInit() {
-    this.user = await this.userProfileService.getUser();
-
     this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
     });
-
-    let _this = this;
-    Dropzone.options.myAwesomeDropzone = {
-      init: function() {
-        this.on("success", function(file, res) {
-          _this.offerModel.imageUrl = res.fileName;
-          console.log(file, res);
-        });
-      }
-    };
   }
 
   onKindSelected(value: string) {
@@ -60,17 +59,11 @@ export class OfferFormComponent {
     console.log(this.offerModel);
   }
 
-  selectImage(event) {
-    let files = event.target.files;
-    if (files.length > 0) {
-      const file = files[0];
-      this.image = file;
-      this._offerService.uploadImages(this.image).subscribe(
-        res => {
-          this.offerModel.imageUrl = res.fileName;
-        },
-        err => console.log(err)
-      );
-    }
+  onUploadSuccess(event) {
+    this.offerModel.imageUrl = event[1].fileName;
+  }
+
+  onUploadError(event) {
+    alert("Image uploaded isn't valid");
   }
 }

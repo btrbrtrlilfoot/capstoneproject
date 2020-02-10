@@ -1,14 +1,13 @@
 <div>
   <h1>Offer Submission Form</h1>
-  <form action="/file" class="dropzone" id="my-awesome-dropzone">
-    <div class="fallback">
-      <input name="file" type="file" />
-    </div>
-  </form>
+  <dropzone
+    [config]="config"
+    [message]="'Click or drag images here to upload'"
+    (error)="onUploadError($event)"
+    (success)="onUploadSuccess($event)"
+  ></dropzone>
 
   <form #offerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
-    <!-- {{offerForm.value | json}} -->
-    <!-- {{offerModel | json}} -->
     <div class="form-group">
       <label>Offer</label>
       <input
@@ -58,7 +57,6 @@
         [disabled]="offerForm.form.invalid"
         type="submit"
         class="btn btn-primary"
-        (click)="goBack()"
       >
         Submit Offer
       </button>

@@ -1,38 +1,42 @@
-
 <div>
- <!-- {{<expressions, you can put ur variables or make calculations. idk if for loops work in them tho>}
+  <!-- {{<expressions, you can put ur variables or make calculations. idk if for loops work in them tho>}
 
-*ngFor >>> for loopig through an array
-*ngIf >>>> Conditional, if false it wont show that element + its stuff
->>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
-} -->
-  <p>auctionoffer-view works! on auction: {{id}} </p>
-  <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}
-  </h1>
-  <p> this is auctionOwnerId: {{ auctionOwnerId}}</p>
- <p>  this is currentUserId: {{ user.id }} </p>
-
+ *ngFor >>> for loopig through an array
+ *ngIf >>>> Conditional, if false it wont show that element + its stuff
+ >>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
+ } -->
+  <p>auctionoffer-view works! on auction: {{ id }}</p>
+  <h1>Offers on {{ auction.name }}, currently {{ auctionStatus }}</h1>
+  <p>this is auctionOwnerId: {{ auctionOwnerId }}</p>
+  <p>this is currentUserId: {{ user.id }}</p>
 
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
-      <div  *ngFor="let offer of offers"  >
-        <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active"id="singleOffer">
-          <p *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)">
+      <div *ngFor="let offer of offers" id="singleOffer">
+          <p
+            *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)'"
+          >
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
 
           <!-- fixed the routerLink issue..Now radio button works -->
-         <div className="text"><p id="offerName">{{offer.name}}</p>
-          <p>{{offer.kind}} from {{offer.userId}}</p>
-          <p id="status">Currently: {{offer.offer.status}}</p>
-        </div>
+          <div className="text">
+            <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active" id="offerName">{{offer.name}}</a>
+            <p>{{ offer.kind }} from {{ offer.userId }}</p>
+            <p id="status">Currently: {{ offer.offer.status }}</p>
+          </div>
           <!-- <img className="top-right"src={{offer.imageUrl}}> -->
-        </a>
-    </div>
+      </div>
     </mat-radio-group>
   </div>
-  <div *ngIf="user.id === auctionOwnerId">   <button (click)="onSubmit(selectedOffer)" [disabled]="buttonDisable">Click me!</button> </div>
-  <div *ngIf="(user.id !== auctionOwnerId) && !buttonDisable && user.id">   <button routerLink="/auction/{{id}}/offerform" [disabled]="buttonDisable">Add Offer</button> </div>
-
-
-
+  <div *ngIf="user.id === auctionOwnerId">
+    <button (click)="onSubmit(selectedOffer)" [disabled]="buttonDisable">
+      Click me!
+    </button>
+  </div>
+  <div *ngIf="user.id !== auctionOwnerId && !buttonDisable && user.id">
+    <button routerLink="/auction/{{ id }}/offerform" [disabled]="buttonDisable">
+      Add Offer
+    </button>
+  </div>
+</div>

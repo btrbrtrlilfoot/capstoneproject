@@ -14,6 +14,7 @@ export class TransactionHistoryComponent implements OnInit {
   userAuctions: any;
   user: any = {};
   userProducts: any;
+  allProducts = [];
 
   constructor(
     private route: ActivatedRoute,
@@ -28,20 +29,17 @@ export class TransactionHistoryComponent implements OnInit {
 
     if (user.id !== undefined) {
       const userId = user.id;
-      const products = await this._userProfileService.getAllProducts();
+      this.allProducts = await this._userProfileService.getAllProducts();
 
-      const userProducts = products.filter(product => {
+      this.userProducts = this.allProducts.filter(product => {
         return product.userId === userId;
       });
-      this.userProducts = userProducts;
 
-      const userOffers = userProducts.filter(product => {
+      this.userOffers = this.userProducts.filter(product => {
         return product.type === "offer";
       });
 
-      this.userOffers = userOffers;
-
-      const userAuctions = userProducts.filter(product => {
+      const userAuctions = this.userProducts.filter(product => {
         return (
           product.type === "auction (open)" ||
           product.type === "auction (closed)"
@@ -50,6 +48,16 @@ export class TransactionHistoryComponent implements OnInit {
       this.userAuctions = userAuctions;
     } else {
       this.router.navigateByUrl("/login");
+    }
+  }
+
+  navigateToAuctionForOffer(selectedOffer) {
+    let auction = this.allProducts.find(auction => {
+      let offer = auction.Offer.find(offer => offer.id === selectedOffer.id);
+      return offer ? true : false;
+    });
+    if (auction) {
+      this.router.navigateByUrl(`/auction/${auction.id}`);
     }
   }
 }

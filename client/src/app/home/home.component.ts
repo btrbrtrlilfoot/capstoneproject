@@ -11,7 +11,7 @@ import { UserProfileService } from "../common/user-profile.service";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  user: any;
+  user: any = {};
   bids: any;
   distances: any;
   latlng: any = [40.7177738, -74.00911511];
@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
   // Changed this, is now working.Do not remove
-  onClick() {
-    console.log("e");
+  onClick(bid) {
+    this.router.navigate([`../auction/${bid.id}`]);
   }
 
   async ngOnInit() {

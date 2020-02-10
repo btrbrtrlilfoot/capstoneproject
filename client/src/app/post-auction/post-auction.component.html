@@ -1,35 +1,44 @@
-
 <div *ngIf="auction; else elseBlock">
   <app-auction-confirmation [auction]="auction"></app-auction-confirmation>
-
-
 </div>
 
 <ng-template #elseBlock>
-<form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
- <table>
-  <label>What's the name of the item or service that you'd like to auction?</label>
-  <input type='text' placeholder="item" formControlName='item'>
-  <label>Tags</label>
-  <input type='text' placeholder="tags" formControlName='tags'>
-  <label>Give bidders a brief description</label>
-  <input type='text' placeholder="description" formControlName='description'>
- <p>I would classify this as a:</p>
-  <div ><label class="container">Item
-    <input type="checkbox" >
-    <span class="checkmark"></span>
-  </label>
+  <dropzone
+    [config]="config"
+    [message]="'Click or drag images here to upload'"
+    (error)="onUploadError($event)"
+    (success)="onUploadSuccess($event)"
+  ></dropzone>
+  <form [formGroup]="auctionForm" (ngSubmit)="onSubmit()">
+    <table>
+      <label
+        >What's the name of the item or service that you'd like to
+        auction?</label
+      >
+      <input type="text" placeholder="item" formControlName="item" />
+      <label>Tags</label>
+      <input type="text" placeholder="tags" formControlName="tags" />
+      <label>Give bidders a brief description</label>
+      <input
+        type="text"
+        placeholder="description"
+        formControlName="description"
+      />
+      <p>I would classify this as a:</p>
+      <div>
+        <label class="container"
+          >Item
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
 
-  <label class="container">Service
-    <input type="checkbox">
-    <span class="checkmark"></span>
-  </label>
-</div>
-  <button type='submit' >Submit</button>
- </table>
-</form>
+        <label class="container"
+          >Service
+          <input type="checkbox" />
+          <span class="checkmark"></span>
+        </label>
+      </div>
+      <button type="submit">Submit</button>
+    </table>
+  </form>
 </ng-template>
-
-
-
-

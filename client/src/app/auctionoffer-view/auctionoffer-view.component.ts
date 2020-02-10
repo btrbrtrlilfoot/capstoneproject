@@ -14,12 +14,12 @@ export class AuctionofferViewComponent implements OnInit {
   //These Are States, you can call them in your HTML as their variable names
   id: number;
   auctionOwnerId: any;
-  offers: any = {};
+  offers: any = [];
   auction: any = {};
   auctionStatus: string;
   buttonDisable: boolean;
   userId: any;
-  user: any; //Grab current logged in UserID
+  user: any = {}; //Grab current logged in UserID
   selectedOffer: number;
   private sub: any;
 
@@ -70,7 +70,7 @@ export class AuctionofferViewComponent implements OnInit {
   }
   //confirms offer as submitted when button is click
   onSubmit(offerId) {
-    this.auctionView.selectOffer(this.id, offerId).subscribe(
+    this.sub = this.auctionView.selectOffer(this.id, offerId).subscribe(
       data => {
         this.offers = data.Offer; //should be updated
         this.auction = data; //should be updatd
@@ -83,6 +83,8 @@ export class AuctionofferViewComponent implements OnInit {
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    if (this.sub) {
+      this.sub.unsubscribe();
+    }
   }
 }

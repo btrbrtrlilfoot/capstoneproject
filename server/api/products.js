@@ -5,7 +5,7 @@ const { User, Product } = require("../db/models");
 router.get("/allproducts", async (req, res, next) => {
   try {
     const products = await Product.findAll({
-      include: [{ model: User }]
+      include: [{ model: User }, { model: Product, as: "Offer" }]
     });
     res.send(products);
   } catch (error) {
@@ -59,7 +59,8 @@ router.post("/", async (req, res, next) => {
       description: req.body.description,
       type: "auction (open)",
       userId: req.session.passport.user,
-      tags: tagsArray
+      tags: tagsArray,
+      imageUrl: req.body.imageUrl
     });
 
     res.send(product);

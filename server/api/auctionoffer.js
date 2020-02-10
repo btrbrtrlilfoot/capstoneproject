@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { User, Auction, Product } = require("../db/models");
 const { Op } = require("sequelize");
+const sendSms = require("../twilio");
 
 module.exports = router;
 
@@ -30,12 +31,18 @@ router.put("/:id", async (req, res, next) => {
     products.save();
     for (let idx in products.Offer) {
       //search for accepted offer based on offerId sent in body, updates entire array of offers
-      if (products.Offer[idx].id === selectedId) {
-        products.Offer[idx].offer.status = "accepted";
+      let product = products.Offer[idx];
+      if (product.id === selectedId) {
+        product.offer.status = "accepted";
+        let user = await products.Offer[idx].getUser();
+        await sendSms(
+          user.phoneNumber,
+          `Your offer of ${product.name} on ${products.name} has been accepted!`
+        );
       } else {
-        products.Offer[idx].offer.status = "rejected";
+        product.offer.status = "rejected";
       }
-      await products.Offer[idx].offer.save();
+      await product.offer.save();
     }
 
     res.json(products);
