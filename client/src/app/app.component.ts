@@ -1,4 +1,3 @@
-
 import { Component, OnInit, NgModule } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
 import { LoginComponent } from "./login/login.component";
@@ -35,6 +34,5 @@ export class AppComponent implements OnInit {
       this.currentUser = null;
     }
     console.log("useeerApp", this.currentUser);
-
   }
 }

@@ -20,14 +20,12 @@
 <br>
   <div *ngIf="bids">
     <h2>Active Bids In Your City</h2>
-    <div className="scrollBox" *ngFor="let bid of bids | filter: searchText">
+    <div (click)="onClick(bid)" className="scrollBox" *ngFor="let bid of bids | filter: searchText">
       <!-- changed. is now working do not remove-->
       <a id="activeBid" routerLink="/auction/{{bid.id}}">
         <p id="auctionName">{{bid.name}}</p>
         <p>{{bid.description}}</p>
       </a>
-     
-     
     </div>
   </div>
 </div>

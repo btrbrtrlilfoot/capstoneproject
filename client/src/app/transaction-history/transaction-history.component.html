@@ -6,14 +6,16 @@
     <ul class="list-group">
       <li class="list-group-item active"><h4>Past Auctions</h4></li>
       <li
-        routerLink="/auction/{{ auction.id }}"
         routerLinkActive="active"
         class="list-group-item"
         *ngFor="let auction of userAuctions"
+        routerLink="/auction/{{ auction.id }}"
       >
         <p>Auction {{ auction.name }} created on {{ auction.createdAt }}</p>
         <p>Auction type: {{ auction.kind }}</p>
         <p>open/closed: {{ auction.type }}</p>
+        <p>Some description {{ auction.description}}</p>
+
       </li>
     </ul>
   </div>
@@ -22,9 +24,14 @@
   <div>
     <ul class="list-group">
       <li class="list-group-item active"><h4>Past Offers</h4></li>
-      <li class="list-group-item" *ngFor="let offer of userOffers">
+      <li
+        routerLinkActive="active"
+        class="list-group-item"
+        *ngFor="let offer of userOffers"
+      >
         <p>Offer {{ offer.name }} created on {{ offer.createdAt }}</p>
         <p>Offer type: {{ offer.kind }}</p>
+        <p>Some description {{ offer.description}}</p>
       </li>
     </ul>
   </div>

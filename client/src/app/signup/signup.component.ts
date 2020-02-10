@@ -65,7 +65,6 @@ export class SignupComponent implements OnInit {
       });
   }
 
-
   onSubmit() {
     if (this.latlng) {
       this.userForm.patchValue({
@@ -86,7 +85,6 @@ export class SignupComponent implements OnInit {
     );
 
     this.router.navigate(["home"]);
-
   }
 }
 

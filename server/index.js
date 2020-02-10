@@ -1,6 +1,8 @@
 const path = require("path");
 const express = require("express");
 const morgan = require("morgan");
+//multer is used to in express to upload file/multiple files
+const multer = require("multer");
 const compression = require("compression");
 const session = require("express-session");
 const passport = require("passport");
@@ -74,6 +76,23 @@ const createApp = () => {
   // static file-serving middleware
   app.use(express.static(path.join(__dirname, "..", "dist")));
   app.use(express.static(path.join(__dirname, "..", "public")));
+  app.use(express.static(path.join(__dirname, "..", "uploads")));
+
+  let upload = multer({ dest: "uploads/" });
+
+  app.post("/file", upload.single("file"), (req, res, next) => {
+    //getting file from request
+    const file = req.file;
+    //if file is not uploaded/not there
+    if (!file) {
+      //send error message
+      const error = new Error("Please upload a file");
+      error.httpStatusCode = 400;
+      return next(error);
+    }
+    console.log;
+    res.send({ fileName: file.filename });
+  });
 
   // any remaining requests with an extension (.js, .css, etc.) send 404
   app.use((req, res, next) => {
