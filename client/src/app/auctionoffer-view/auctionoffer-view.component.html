@@ -7,6 +7,7 @@
 >>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
 } -->
   <img src="{{auction.imageUrl}}" >
+  <img src="{{auction.imageUrl}}" >
   <p>auctionoffer-view works! on auction: {{id}} </p>
   <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}
   </h1>
@@ -18,7 +19,7 @@
     <mat-radio-group [(ngModel)]="selectedOffer">
       <div  *ngFor="let offer of offers"  >
         <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active"id="singleOffer">
-          <p *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)'">
+          <p *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)">
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
 
