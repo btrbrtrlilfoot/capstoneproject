@@ -3,11 +3,7 @@ import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { UserProfileService } from "../common/user-profile.service";
 import { Router } from "@angular/router";
-import { AppComponent } from "../app.component";
-import { Store } from "@ngrx/store";
-interface AppState {
-  loggedIn: boolean;
-}
+
 //set user info here
 @Component({
   selector: "app-login",
@@ -16,9 +12,8 @@ interface AppState {
 })
 export class LoginComponent implements OnInit {
   user: any;
-  loggedIn: AppState;
+
   constructor(
-    private store: Store<AppState>,
     private router: Router,
     private _userProfileService: UserProfileService,
     private http: HttpClient
@@ -48,9 +43,6 @@ export class LoginComponent implements OnInit {
       this.user = await this._userProfileService.logIn(Form);
 
       this.router.navigate(["home"]);
-      const result = this.store.dispatch({ type: "LOGIN" });
-      console.log("returning???", result);
-      console.log("loggedinafterdisp", this.loggedIn);
     } catch (error) {
       console.error(error);
     }

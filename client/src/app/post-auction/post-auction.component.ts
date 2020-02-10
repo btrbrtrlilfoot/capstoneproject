@@ -18,7 +18,7 @@ import { UserProfileService } from "../common/user-profile.service";
   styleUrls: ["./post-auction.component.css"]
 })
 export class PostAuctionComponent implements OnInit {
-  user: any;
+  id: number;
   auction: any;
   private sub: any;
   imageUrl: string;
@@ -34,8 +34,7 @@ export class PostAuctionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router,
-    private userProfileService: UserProfileService
+    private router: Router
   ) {}
 
   auctionForm = new FormGroup({
@@ -46,13 +45,11 @@ export class PostAuctionComponent implements OnInit {
     imageUrl: new FormControl("")
   });
 
-  async ngOnInit() {
-    this.user = await this.userProfileService.getUser();
-  }
+  async ngOnInit() {}
 
   onSubmit() {
     let form = this.auctionForm.value;
-    form.userId = this.user.id;
+    form.userId = this.id;
     form.imageUrl = this.imageUrl;
     console.log("forrmmmm", form.userId);
     this.http.post("/api/products", form).subscribe(
