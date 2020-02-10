@@ -70,7 +70,7 @@ export class AuctionofferViewComponent implements OnInit {
   }
   //confirms offer as submitted when button is click
   onSubmit(offerId) {
-    this.auctionView.selectOffer(this.id, offerId).subscribe(
+    this.sub = this.auctionView.selectOffer(this.id, offerId).subscribe(
       data => {
         this.offers = data.Offer; //should be updated
         this.auction = data; //should be updatd

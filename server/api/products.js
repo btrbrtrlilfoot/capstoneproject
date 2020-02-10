@@ -59,7 +59,8 @@ router.post("/", async (req, res, next) => {
       description: req.body.description,
       type: "auction (open)",
       userId: req.session.passport.user,
-      tags: tagsArray
+      tags: tagsArray,
+      imageUrl: req.body.imageUrl
     });
 
     res.send(product);

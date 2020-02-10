@@ -6,6 +6,7 @@
 *ngIf >>>> Conditional, if false it wont show that element + its stuff
 >>>>If you set an element property to a variable, you have to put it in [] or whatever. i guess if its a function you put the property in a () and call it
 } -->
+  <img src="{{auction.imageUrl}}" >
   <p>auctionoffer-view works! on auction: {{id}} </p>
   <h1>Offers on {{ auction.name  }}, currently {{ auctionStatus }}
   </h1>
@@ -24,6 +25,7 @@
           <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active">{{offer.name}}</a>
           <p>{{offer.kind}} from {{offer.userId}}</p>
           <p>Currently: {{offer.offer.status}}</p>
+
 
     </div>
     </mat-radio-group>

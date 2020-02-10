@@ -5,7 +5,6 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { UserProfileService } from "../common/user-profile.service";
-
 import {
   DropzoneComponent,
   DropzoneDirective,
@@ -41,8 +40,6 @@ export class OfferFormComponent {
   ) {}
 
   async ngOnInit() {
-    this.user = await this.userProfileService.getUser();
-
     this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
     });
