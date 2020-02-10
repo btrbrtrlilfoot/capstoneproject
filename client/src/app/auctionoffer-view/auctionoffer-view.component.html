@@ -12,14 +12,9 @@
 
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
-      <div *ngFor="let offer of offers">
-        <a
-          routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
-          routerLinkActive="active"
-          id="singleOffer"
-        >
+      <div *ngFor="let offer of offers" id="singleOffer">
           <p
-            *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)"
+            *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)'"
           >
             <mat-radio-button [value]="offer.id"></mat-radio-button>
           </p>
@@ -31,7 +26,6 @@
             <p id="status">Currently: {{ offer.offer.status }}</p>
           </div>
           <!-- <img className="top-right"src={{offer.imageUrl}}> -->
-        </a>
       </div>
     </mat-radio-group>
   </div>
