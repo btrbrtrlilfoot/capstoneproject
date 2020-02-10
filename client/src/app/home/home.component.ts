@@ -22,8 +22,8 @@ export class HomeComponent implements OnInit {
     private router: Router
   ) {}
   // Changed this, is now working.Do not remove
-  onClick(bid) {
-    this.router.navigate([`../auction/${bid.id}`]);
+  onClick() {
+    console.log("e");
   }
 
   async ngOnInit() {
