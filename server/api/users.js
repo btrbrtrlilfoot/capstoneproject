@@ -24,19 +24,6 @@ router.get("/:id", async (req, res, next) => {
   }
 });
 
-router.put("/", async (req, res, next) => {
-  try {
-    console.log("reqpara", req.params.img);
-    const user = await User.findOne({
-      where: {
-        id: req.user.id
-      }
-    });
-    user.imageUrl = req.params.img;
-    res.send(user);
-  } catch (error) {}
-});
-
 router.put("/:id", async (req, res, next) => {
   try {
     const user = await User.findOne({

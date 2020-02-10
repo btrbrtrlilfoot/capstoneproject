@@ -3,7 +3,7 @@ import { UserProfileService } from "../common/user-profile.service";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { ActivatedRoute } from "@angular/router";
-import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+
 @Component({
   selector: "app-userprofile",
   templateUrl: "./userprofile.component.html",
@@ -14,14 +14,6 @@ export class UserProfileComponent implements OnInit {
   userAuctions: any;
   user: any = {};
   private sub: any;
-
-  public config: DropzoneConfigInterface = {
-    clickable: true,
-    maxFiles: 1,
-    autoReset: null,
-    errorReset: null,
-    cancelReset: null
-  };
 
   constructor(
     private route: ActivatedRoute,
@@ -40,11 +32,6 @@ export class UserProfileComponent implements OnInit {
     });
   }
 
-  onUploadSuccess(event) {
-    let img = event[1].fileName;
-    console.log("imggg", event);
-    this._userProfileService.changePic(img);
-  }
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

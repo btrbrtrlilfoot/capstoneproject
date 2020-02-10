@@ -75,7 +75,6 @@ export class SignupComponent implements OnInit {
     }
 
     let Form = this.userForm.value;
-    console.log("form", Form);
     this.http.post("/auth/signup", Form).subscribe(
       (data: any) => {
         this.user = data;

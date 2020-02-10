@@ -53,7 +53,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     HttpClientModule,
     BrowserAnimationsModule,
     MatRadioModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    DropzoneModule
   ],
   providers: [
     LoginComponent,
