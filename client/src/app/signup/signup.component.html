@@ -1,27 +1,57 @@
-<div>Tell Us About Yourself! this is latlng: {{ userForm.value.email }}</div>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
-
+    <label for="name">Name</label>
+    <input
+      type="text"
+      formControlName="name"
+      id="name"
+      class="form-control"
+      required
+    />
   </div>
-  <input type="text" formControlName="image" placeholder="image" />
-  <p></p>
-  <input type="text" formControlName="name" placeholder="name" required />
-  <p></p>
-  <input type="text" formControlName="email" placeholder="email" required />
-  <p></p>
-  <input
-    type="text"
-    formControlName="password"
-    placeholder="password"
-    required
-  />
-  <p></p>
-  <input type="text" formControlName="location" placeholder="city" required />
-  <p></p>
-  <button type="button" (click)="this.findMe()">Find Location</button>
-  <p></p>
-  <button type="submit" [disabled]="!userForm.valid" (click)="onSubmit()">
-    Make My Account
-  </button>
-</form>
+  <div class="form-group">
+    <label for="email">Email address</label>
+    <input
+      type="email"
+      formControlName="email"
+      id="email"
+      class="form-control"
+      required
+    />
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input
+      type="password"
+      formControlName="password"
+      id="password"
+      class="form-control"
+      required
+    />
+  </div>
 
+  <div class="form-group">
+    <label for="city">City</label>
+    <input
+      type="text"
+      formControlName="location"
+      id="city"
+      class="form-control"
+      required
+    />
+  </div>
+  <div id="signupBtn">
+    <button type="button" class="btn btn-primary" (click)="this.findMe()">
+      Find Location
+    </button>
+    &nbsp;
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="!userForm.valid"
+      (click)="onSubmit()"
+    >
+      Create Account
+    </button>
+  </div>
+</form>
