@@ -12,6 +12,7 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent implements OnInit {
   user: any;
+
   constructor(
     private router: Router,
     private _userProfileService: UserProfileService,
@@ -40,6 +41,7 @@ export class LoginComponent implements OnInit {
     //   );
     try {
       this.user = await this._userProfileService.logIn(Form);
+
       this.router.navigate(["home"]);
     } catch (error) {
       console.error(error);

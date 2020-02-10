@@ -5,6 +5,8 @@
     BrtrBttr
   </a>
   <ul class="nav justify-content-end">
+    
+    
     <div *ngIf="currentUser.id; else elseBlock">
     <li class="nav-item" >
       <a class="nav-link" routerLink="/history">History</a>

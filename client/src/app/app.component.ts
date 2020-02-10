@@ -10,7 +10,6 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
   title = "BetterBartr";
-
   currentUser: any = {};
 
   constructor(
@@ -33,5 +32,6 @@ export class AppComponent implements OnInit {
     } else {
       this.currentUser = {};
     }
+    console.log("userinithome", user);
   }
 }

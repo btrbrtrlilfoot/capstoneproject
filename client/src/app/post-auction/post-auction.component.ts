@@ -9,6 +9,7 @@ import {
   DropzoneDirective,
   DropzoneConfigInterface
 } from "ngx-dropzone-wrapper";
+import { UserProfileService } from "../common/user-profile.service";
 
 //create bid instance here
 @Component({
@@ -44,7 +45,7 @@ export class PostAuctionComponent implements OnInit {
     imageUrl: new FormControl("")
   });
 
-  ngOnInit() {}
+  async ngOnInit() {}
 
   onSubmit() {
     let form = this.auctionForm.value;

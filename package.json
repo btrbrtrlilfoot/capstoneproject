@@ -55,6 +55,7 @@
     "@angular/router": "~8.2.14",
     "@google/maps": "^1.1.0",
     "@ng-bootstrap/ng-bootstrap": "^5.2.1",
+    "@ngrx/store": "^8.6.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.4.1",
     "compression": "^1.7.3",
