@@ -4,6 +4,26 @@
   outline-style: solid;
 }
 
-h3.scrollBox {
-  background-color: aqua;
+h4.scrollBox {
+  font-size: 10px;
+}
+
+#activeBid {
+  display: flex;
+  flex-direction: column;
+  background-color: mintcream;
+  margin-bottom: 10px;
+  font-size: 15px;
+  border-radius: 10px;
+  border-width: 3px;
+  border-style: solid;
+  border-color: teal;
+  color: black;
+}
+#auctionName {
+  text-align: center;
+  font-weight: bold;
+}
+a.scrollBox {
+  font-size: 30px;
 }
