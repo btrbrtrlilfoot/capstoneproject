@@ -39,7 +39,15 @@ export class UserProfileService {
   async getUser() {
     let url2 = `${this._url2}`;
     let user = await this._http.get<any>(url2).toPromise();
-    this.currentUser = user || {};
+    if (user) {
+      console.log("user found!!!!!");
+      this.isLoggedIn = true;
+      this.currentUser = user;
+    } else {
+      console.log("no user found");
+      this.currentUser = {};
+    }
+
     return this.currentUser;
   }
 
@@ -49,10 +57,18 @@ export class UserProfileService {
   async getUserById(id: number) {
     let url = `${this._users}/${id}`;
     let user = await this._http.get<any>(url).toPromise();
+
     this.currentUser = user || {};
     return this.currentUser;
   }
+  //change profile pic
 
+  async changePic(img) {
+    console.log("changepicimgg", img);
+    let user = await this._http.put(this._users, img);
+    this.currentUser = user || {};
+    return this.currentUser;
+  }
   //sign user in
   async logIn(form) {
     let user = await this._http.post(this._url3, form).toPromise();

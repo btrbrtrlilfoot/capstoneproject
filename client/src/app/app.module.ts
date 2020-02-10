@@ -22,6 +22,8 @@ import { LogoutComponent } from "./logout/logout.component";
 import { DropzoneModule } from "ngx-dropzone-wrapper";
 import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
+import { StoreModule } from "@ngrx/store";
+import { Reducer } from "./reducer";
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: "/file",
@@ -54,7 +56,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     BrowserAnimationsModule,
     MatRadioModule,
     Ng2SearchPipeModule,
-    DropzoneModule
+    DropzoneModule,
+    StoreModule.forRoot({ loggedIn: Reducer })
   ],
   providers: [
     LoginComponent,

@@ -4,7 +4,11 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
+import { Store } from "@ngrx/store";
 
+interface AppState {
+  loggedIn: boolean;
+}
 @Component({
   selector: "app-home",
   templateUrl: "./home.component.html",
@@ -13,10 +17,12 @@ import { UserProfileService } from "../common/user-profile.service";
 export class HomeComponent implements OnInit {
   user: any = {};
   bids: any;
+  isLoggedIn: boolean;
   distances: any;
   latlng: any = [40.7177738, -74.00911511];
 
   constructor(
+    private store: Store<AppState>,
     private _userProfileService: UserProfileService,
     private http: HttpClient,
     private router: Router
@@ -28,7 +34,7 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
-    console.log(typeof user, "This is the user");
+    console.log(user, "This is the user");
     this.user = user;
     this.http.get("/api/products").subscribe(
       (data: any) => {

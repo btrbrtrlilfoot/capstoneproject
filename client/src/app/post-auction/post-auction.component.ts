@@ -9,6 +9,7 @@ import {
   DropzoneDirective,
   DropzoneConfigInterface
 } from "ngx-dropzone-wrapper";
+import { UserProfileService } from "../common/user-profile.service";
 
 //create bid instance here
 @Component({
@@ -17,7 +18,7 @@ import {
   styleUrls: ["./post-auction.component.css"]
 })
 export class PostAuctionComponent implements OnInit {
-  id: number;
+  user: any;
   auction: any;
   private sub: any;
   imageUrl: string;
@@ -33,7 +34,8 @@ export class PostAuctionComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private userProfileService: UserProfileService
   ) {}
 
   auctionForm = new FormGroup({
@@ -44,11 +46,13 @@ export class PostAuctionComponent implements OnInit {
     imageUrl: new FormControl("")
   });
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.user = await this.userProfileService.getUser();
+  }
 
   onSubmit() {
     let form = this.auctionForm.value;
-    form.userId = this.id;
+    form.userId = this.user.id;
     form.imageUrl = this.imageUrl;
     console.log("forrmmmm", form.userId);
     this.http.post("/api/products", form).subscribe(
