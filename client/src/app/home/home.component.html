@@ -4,7 +4,7 @@
     <button routerLink="/auction/">Start a New Bid!</button>
   </div>
 </div>
-<br>
+<br />
 
 <div>
   <div>
@@ -17,13 +17,17 @@
       placeholder="Start searching for a bid"
     />
   </div>
-<br>
+  <br />
   <div *ngIf="bids">
     <h2>Active Bids In Your City</h2>
-    <div (click)="onClick(bid)" className="scrollBox" *ngFor="let bid of bids | filter: searchText">
-      <a id="activeBid" routerLink="/auction/{{bid.id}}">
-        <p id="auctionName">{{bid.name}}</p>
-        <p>{{bid.description}}</p>
+    <div
+      (click)="onClick(bid)"
+      className="scrollBox"
+      *ngFor="let bid of bids | filter: searchText"
+    >
+      <a id="activeBid" routerLink="/auction/{{ bid.id }}">
+        <p id="auctionName">{{ bid.name }}</p>
+        <p>{{ bid.description }}</p>
       </a>
     </div>
   </div>

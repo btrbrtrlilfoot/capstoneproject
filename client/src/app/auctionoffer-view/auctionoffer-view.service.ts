@@ -5,8 +5,7 @@ import { HttpClient } from "@angular/common/http";
   providedIn: "root"
 })
 export class AuctionViewService {
-
-  _url = '/api/auctions';
+  _url = "/api/auctions";
   auction: any;
   empty: boolean = true;
   constructor(private _http: HttpClient) {}
@@ -16,17 +15,16 @@ export class AuctionViewService {
     let url = `${this._url}/${id}`;
     this.auction = this._http.get<any>(url);
     return this.auction;
-
   }
 
   selectOffer(auctionId, offerId) {
     let url = `${this._url}/${auctionId}`;
 
-    this.auction = this._http.put<any>(url, {offerId: offerId});
+    this.auction = this._http.put<any>(url, { offerId: offerId });
     return this.auction;
   }
 
-  returnAuction(){
+  returnAuction() {
     return this.auction;
   }
 }

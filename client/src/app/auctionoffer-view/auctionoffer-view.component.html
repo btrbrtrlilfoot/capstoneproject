@@ -13,19 +13,26 @@
   <div>
     <mat-radio-group [(ngModel)]="selectedOffer">
       <div *ngFor="let offer of offers" id="singleOffer">
-          <p
-            *ngIf="user.id === auctionOwnerId && auction.type === 'auction (open)'"
-          >
-            <mat-radio-button [value]="offer.id"></mat-radio-button>
-          </p>
+        <p
+          *ngIf="
+            user.id === auctionOwnerId && auction.type === 'auction (open)'
+          "
+        >
+          <mat-radio-button [value]="offer.id"></mat-radio-button>
+        </p>
 
-          <!-- fixed the routerLink issue..Now radio button works -->
-          <div className="text">
-            <a routerLink="/auction/{{id}}/offer/{{offer.id}}" routerLinkActive="active" id="offerName">{{offer.name}}</a>
-            <p>{{ offer.kind }} from {{ offer.userId }}</p>
-            <p id="status">Currently: {{ offer.offer.status }}</p>
-          </div>
-          <!-- <img className="top-right"src={{offer.imageUrl}}> -->
+        <!-- fixed the routerLink issue..Now radio button works -->
+        <div className="text">
+          <a
+            routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
+            routerLinkActive="active"
+            id="offerName"
+            >{{ offer.name }}</a
+          >
+          <p>{{ offer.kind }} from {{ offer.userId }}</p>
+          <p id="status">Currently: {{ offer.offer.status }}</p>
+        </div>
+        <!-- <img className="top-right"src={{offer.imageUrl}}> -->
       </div>
     </mat-radio-group>
   </div>
