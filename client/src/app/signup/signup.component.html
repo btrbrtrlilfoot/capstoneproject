@@ -1,5 +1,8 @@
 <div>Tell Us About Yourself! this is latlng: {{ userForm.value.email }}</div>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+
+  </div>
   <input type="text" formControlName="image" placeholder="image" />
   <p></p>
   <input type="text" formControlName="name" placeholder="name" required />
@@ -21,3 +24,4 @@
     Make My Account
   </button>
 </form>
+
