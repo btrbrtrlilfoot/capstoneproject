@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Offer } from "./offer";
 import { OffersService } from "./offers.service";
 import { Location } from "@angular/common";
@@ -16,7 +16,7 @@ import {
   templateUrl: "./offer-form.component.html",
   styleUrls: ["./offer-form.component.css"]
 })
-export class OfferFormComponent {
+export class OfferFormComponent implements OnInit {
   id: number;
   user: any;
   offerModel = new Offer("", "item", "", null);
