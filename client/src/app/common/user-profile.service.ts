@@ -70,13 +70,13 @@ export class UserProfileService {
 
   async logout() {
     this.isLoggedIn = false;
-
+    console.log("logged out1", this.currentUser);
     const user = await this._http
       .post(this._url4, this.currentUser)
       .toPromise();
-
+    console.log("logged out3", this.currentUser);
     this.currentUser = {};
-
+    console.log("logged out2", this.currentUser);
     return this.currentUser;
   }
 }

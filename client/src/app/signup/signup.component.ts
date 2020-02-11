@@ -26,7 +26,12 @@ export class SignupComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    const checkUser = await this._userProfileService.getUser();
+    if (checkUser.id) {
+      this.router.navigate(["home"]);
+    }
+
     this.userForm = new FormGroup({
       $key: new FormControl(null),
       image: new FormControl(""),
