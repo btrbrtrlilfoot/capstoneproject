@@ -53,7 +53,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "kitchen items", "cooking", "juice"]
   });
   const product2 = await Product.create({
@@ -61,7 +61,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "phone", "technology", "apple"]
   });
   const product3 = await Product.create({
@@ -69,7 +69,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "computer", "technology", "apple", "new"]
   });
   const product4 = await Product.create({
@@ -77,7 +77,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "technology", "sony products"]
   });
   const product5 = await Product.create({
@@ -85,7 +85,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "card games", "fun", "new"]
   });
   const product6 = await Product.create({
@@ -93,7 +93,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "TV", "Samsung products", "new"]
   });
   const product7 = await Product.create({
@@ -101,7 +101,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "TV", "Samsung products", "new"]
   });
   const product8 = await Product.create({
@@ -109,7 +109,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "clothes", "new"]
   });
   const product9 = await Product.create({
@@ -117,7 +117,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "bags", "Adidas", "worn"]
   });
   const product10 = await Product.create({
@@ -125,7 +125,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "food", "Japanese"]
   });
   const product11 = await Product.create({
@@ -133,7 +133,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product12 = await Product.create({
@@ -141,21 +141,21 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
   const product13 = await Product.create({
     name: "Bike",
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
   const product14 = await Product.create({
     name: "Lightsaber",
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product15 = await Product.create({
@@ -163,38 +163,38 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product16 = await Product.create({
-    name: "wash dishes for an hour",
+    name: "Wash dishes for an hour",
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product17 = await Product.create({
-    name: "make lunch for you",
+    name: "Make delicious lunch",
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product19 = await Product.create({
-    name: "help with your assignment",
+    name: "Help with assignment",
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
   const product20 = await Product.create({
-    name: "teach you basic German",
+    name: "Teach basic German",
     kind: "service",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product21 = await Product.create({
@@ -202,7 +202,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product22 = await Product.create({
@@ -210,7 +210,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product23 = await Product.create({
@@ -218,7 +218,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product24 = await Product.create({
@@ -226,7 +226,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   const product25 = await Product.create({
@@ -234,7 +234,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
   });
 
   //offers

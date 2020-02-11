@@ -34,7 +34,6 @@ export class SignupComponent implements OnInit {
 
     this.userForm = new FormGroup({
       $key: new FormControl(null),
-      image: new FormControl(""),
       name: new FormControl("", Validators.minLength(1)),
       email: new FormControl("", Validators.email),
       password: new FormControl("", Validators.minLength(1)),
