@@ -43,7 +43,9 @@ export class UserProfileService {
     let url2 = `${this._url2}`;
     let user = await this._http.get<any>(url2).toPromise();
     this.currentUser = user || {};
-    console.log("got user");
+    if (this.currentUser.id) {
+      this.isLoggedIn.next(true);
+    }
     return this.currentUser;
   }
 

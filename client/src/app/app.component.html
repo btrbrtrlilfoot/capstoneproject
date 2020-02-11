@@ -12,7 +12,9 @@
   </a>
 
   <ul class="nav justify-content-end">
-
+    <li class="nav-item">
+      <button class="btn btn-outline-primary" type="button" routerLink="/auction/">Create Auction</button>
+    </li>
     <div *ngIf="isLoggedIn; else elseBlock" >
       <li class="nav-item" >
         <a class="nav-link" routerLink="/history">History</a>
