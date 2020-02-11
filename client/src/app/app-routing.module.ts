@@ -12,6 +12,7 @@ import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 import { LogoutComponent } from "./logout/logout.component";
 import { AppComponent } from "./app.component";
+import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 
 const routes: Routes = [
   { path: "logout", component: LogoutComponent },
@@ -23,8 +24,15 @@ const routes: Routes = [
   { path: "auction/:id", component: AuctionofferViewComponent },
   { path: "auction/:id/offerform", component: OfferFormComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
-  { path: "profile/:id", component: UserProfileComponent },
+  { path: "profile/:id", component: UserProfileComponent, pathMatch: "full" },
+  {
+    path: "updateUserInfo",
+    component: UpdateUserInfoComponent,
+    pathMatch: "full"
+  },
+
   { path: "history", component: TransactionHistoryComponent },
+
   { path: "**", component: HomeComponent }
 ];
 
