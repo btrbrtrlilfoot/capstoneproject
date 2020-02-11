@@ -9,6 +9,7 @@ import {
   DropzoneDirective,
   DropzoneConfigInterface
 } from "ngx-dropzone-wrapper";
+import { UserProfileService } from "../common/user-profile.service";
 
 //create bid instance here
 @Component({
@@ -22,6 +23,7 @@ export class PostAuctionComponent implements OnInit {
   private sub: any;
   imageUrl: string;
   kind: string = "item";
+  user: any;
 
   public config: DropzoneConfigInterface = {
     clickable: true,
@@ -32,6 +34,7 @@ export class PostAuctionComponent implements OnInit {
   };
 
   constructor(
+    private _userProfileService: UserProfileService,
     private route: ActivatedRoute,
     private http: HttpClient,
     private router: Router
@@ -46,7 +49,12 @@ export class PostAuctionComponent implements OnInit {
     kind: new FormControl("")
   });
 
-  ngOnInit() {}
+  async ngOnInit() {
+    this.user = await this._userProfileService.getUser();
+    if (!this.user.id) {
+      this.router.navigate(["signup"]);
+    }
+  }
 
   onKindSelected(value: string) {
     this.kind = value;

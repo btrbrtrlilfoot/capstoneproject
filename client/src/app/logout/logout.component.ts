@@ -17,9 +17,16 @@ export class LogoutComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    const checkUser = await this._userProfileService.getUser();
+    if (!checkUser.id) {
+      this.router.navigate(["home"]);
+    }
     try {
+      console.log("init logout2");
       await this._userProfileService.logout();
+      this._userProfileService.isLoggedIn.next(false);
       this.user = null;
+      console.log("init logout");
     } catch (error) {
       console.error;
     }

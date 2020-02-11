@@ -1,5 +1,6 @@
 import { Injectable, Output } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { BehaviorSubject } from "rxjs";
 
 @Injectable({
   providedIn: "root"
@@ -7,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class UserProfileService {
   @Output() currentUser: any = {};
 
-  isLoggedIn: boolean;
+  isLoggedIn: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   _url = "api/products";
   _url1 = "api/products/allproducts";
   _url2 = "auth/me";
@@ -16,9 +17,7 @@ export class UserProfileService {
   _url5 = "auth/signup";
   _users = "api/users";
 
-  constructor(private _http: HttpClient) {
-    this.isLoggedIn = false;
-  }
+  constructor(private _http: HttpClient) {}
 
   async getAllProducts() {
     let url = `${this._url1}`;
@@ -33,6 +32,10 @@ export class UserProfileService {
     return products;
   }
 
+  async deleteUserAuction(id) {
+    let url = `${this._url}/${id}`;
+    await this._http.delete<any>(url).toPromise();
+  }
   /**
    *  Fetch the currently signed in user
    */
@@ -40,6 +43,9 @@ export class UserProfileService {
     let url2 = `${this._url2}`;
     let user = await this._http.get<any>(url2).toPromise();
     this.currentUser = user || {};
+    if (this.currentUser.id) {
+      this.isLoggedIn.next(true);
+    }
     return this.currentUser;
   }
 
@@ -57,24 +63,25 @@ export class UserProfileService {
   async logIn(form) {
     let user = await this._http.post(this._url3, form).toPromise();
     this.currentUser = user || {};
-    this.isLoggedIn = true;
     return this.currentUser;
   }
 
   async signUp(form) {
     let user = await this._http.post(this._url5, form).toPromise();
     this.currentUser = user || {};
-    this.isLoggedIn = true;
+
     return this.currentUser;
   }
-
+  async changePic(img) {
+    console.log("changepicimgg", img);
+    let user = await this._http.put(this._users, img);
+    this.currentUser = user || {};
+    return this.currentUser;
+  }
   async logout() {
-    this.isLoggedIn = false;
-
     const user = await this._http
       .post(this._url4, this.currentUser)
       .toPromise();
-
     this.currentUser = {};
 
     return this.currentUser;

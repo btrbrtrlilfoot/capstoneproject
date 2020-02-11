@@ -26,7 +26,12 @@ export class SignupComponent implements OnInit {
     private http: HttpClient
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    const checkUser = await this._userProfileService.getUser();
+    if (checkUser.id) {
+      this.router.navigate(["home"]);
+    }
+
     this.userForm = new FormGroup({
       $key: new FormControl(null),
       name: new FormControl("", Validators.minLength(1)),
@@ -77,6 +82,7 @@ export class SignupComponent implements OnInit {
     this.http.post("/auth/signup", Form).subscribe(
       (data: any) => {
         this.user = data;
+        this._userProfileService.isLoggedIn.next(true);
       },
       error => {
         console.log("oops", error);
