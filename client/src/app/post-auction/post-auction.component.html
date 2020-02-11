@@ -43,6 +43,7 @@
         <label>Classify Auction</label>
         <select
           class="form-control"
+          (change)="onKindSelected($event.target.value)"
         >
           <option value="item">Item</option>
           <option value="service">Service</option>

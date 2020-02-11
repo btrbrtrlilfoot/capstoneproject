@@ -18,17 +18,28 @@
     />
   </div>
   <br />
+
   <div *ngIf="bids">
     <h2>Active Bids In Your City</h2>
-    <div
-      (click)="onClick(bid)"
-      className="scrollBox"
-      *ngFor="let bid of bids | filter: searchText"
-    >
-      <a id="activeBid" routerLink="/auction/{{ bid.id }}">
-        <p id="auctionName">{{ bid.name }}</p>
-        <p>{{ bid.description }}</p>
-      </a>
+    <div class="row row-cols-1 row-cols-md-3">
+      <div
+        (click)="onClick(bid)"
+        className="scrollBox"
+        *ngFor="let bid of bids | filter: searchText"
+        class="col mb-4"
+      >
+        <div div class="card h-100">
+          <img src="{{ bid.imageUrl }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ bid.name }}</h5>
+            <p class="card-text">{{ bid.description }}</p>
+          </div>
+
+          <!-- <a id="activeBid" routerLink="/auction/{{ bid.id }}">
+            <p id="auctionName"></p>
+          </a> -->
+        </div>
+      </div>
     </div>
   </div>
 </div>
