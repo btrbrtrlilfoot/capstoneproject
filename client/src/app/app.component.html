@@ -10,13 +10,22 @@
     />
     BetterBrtr
   </a>
-  <ul class="nav justify-content-end" *ngIf="currentUser.id; else elseBlock">
-    <li class="nav-item">
-      <button class="btn btn-outline-primary" type="button" routerLink="/auction/">Create Auction</button>
+
+  <ul class="nav justify-content-end">
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/history">History</a>
+    </li>
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/profile/{{currentUser.id}}">Profile</a>
+
     </li>
     <li class="nav-item ">
       <a class="nav-link" routerLink="/profile/{{ currentUser.id }}">Profile</a>
     </li>
+
+    <li class="nav-item" >
+      <a class="nav-link" routerLink="/login">Login</a>
+
     <li class="nav-item">
       <a class="nav-link" routerLink="/history">History</a>
     </li>

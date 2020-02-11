@@ -25,6 +25,9 @@ export class TransactionHistoryComponent implements OnInit {
 
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
+    if (!user.id) {
+      this.router.navigate(["home"]);
+    }
     this.user = user;
 
     if (user.id !== undefined) {

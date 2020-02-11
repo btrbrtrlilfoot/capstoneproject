@@ -24,7 +24,13 @@ export class LoginComponent implements OnInit {
     password: new FormControl("")
   });
 
-  ngOnInit() {}
+  async ngOnInit() {
+    const checkUser = await this._userProfileService.getUser();
+    if (checkUser.id) {
+      console.log("user is already logged in");
+      this.router.navigate(["home"]);
+    }
+  }
 
   async onSubmit() {
     let Form = this.loginForm.value;
