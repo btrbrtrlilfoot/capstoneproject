@@ -136,7 +136,7 @@ async function seed() {
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
     tags: ["item", "food", "Japanese"],
-    imageUrl: "addidasbag.jpg"
+    imageUrl: "ramen.jpg"
   });
   const product11 = await Product.create({
     name: "Clock",
@@ -161,14 +161,15 @@ async function seed() {
     type: "offer",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
-    imageUrl: ""
+    imageUrl: "bike.jpg"
   });
   const product14 = await Product.create({
     name: "Lightsaber",
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "lightsaber.jpg"
   });
 
   const product15 = await Product.create({
@@ -176,7 +177,8 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "printer.jpg"
   });
 
   const product16 = await Product.create({
@@ -184,7 +186,8 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "service.png"
   });
 
   const product17 = await Product.create({
@@ -192,7 +195,8 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "service.png"
   });
 
   const product19 = await Product.create({
@@ -200,7 +204,8 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "service.png"
   });
   const product20 = await Product.create({
     name: "Teach basic German",
@@ -216,7 +221,8 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "calculator.jpg"
   });
 
   const product22 = await Product.create({
@@ -224,15 +230,17 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "fountainpen.jpg"
   });
 
   const product23 = await Product.create({
-    name: "Novel",
+    name: "Collection of Daniel Steel Novels",
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "danielsteelbooks.jpeg"
   });
 
   const product24 = await Product.create({
@@ -240,7 +248,8 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "selfiestick.jpg"
   });
 
   const product25 = await Product.create({
@@ -248,7 +257,8 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod"
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    imageUrl: "bracelet.jpg"
   });
 
   //offers
