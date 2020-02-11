@@ -21,6 +21,7 @@ export class PostAuctionComponent implements OnInit {
   auction: any;
   private sub: any;
   imageUrl: string;
+  kind: string = "item";
 
   public config: DropzoneConfigInterface = {
     clickable: true,
@@ -41,15 +42,22 @@ export class PostAuctionComponent implements OnInit {
     item: new FormControl(""),
     description: new FormControl(""),
     tags: new FormControl(""),
-    imageUrl: new FormControl("")
+    imageUrl: new FormControl(""),
+    kind: new FormControl("")
   });
 
   ngOnInit() {}
+
+  onKindSelected(value: string) {
+    this.kind = value;
+  }
 
   onSubmit() {
     let form = this.auctionForm.value;
     form.userId = this.id;
     form.imageUrl = this.imageUrl;
+    form.kind = this.kind;
+
     console.log("forrmmmm", form.userId);
     this.http.post("/api/products", form).subscribe(
       (data: any) => {

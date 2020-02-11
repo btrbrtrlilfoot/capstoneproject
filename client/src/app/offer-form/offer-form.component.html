@@ -1,5 +1,5 @@
 <div>
-  <h1>Offer Submission Form</h1>
+  <h1>Submit an Offer</h1>
   <dropzone
     [config]="config"
     [message]="'Click or drag images here to upload'"
@@ -9,7 +9,7 @@
 
   <form #offerForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
     <div class="form-group">
-      <label>Offer</label>
+      <label>What item/service would you like to offer?</label>
       <input
         type="text"
         required
@@ -25,7 +25,7 @@
     </div>
     <!-- {{offer.valid}} -->
     <div class="form-group">
-      <label>Description</label>
+      <label>Give a brief description about your item/service</label>
       <textarea
         rows="5"
         required
@@ -42,7 +42,7 @@
       >
     </div>
     <div class="form-group">
-      <label>Offer Type</label>
+      <label>Classify Offer</label>
       <select
         class="form-control"
         (change)="onKindSelected($event.target.value)"
@@ -56,7 +56,7 @@
       <button
         [disabled]="offerForm.form.invalid"
         type="submit"
-        class="btn btn-primary"
+        class="btn btn-outline-primary"
       >
         Submit Offer
       </button>
