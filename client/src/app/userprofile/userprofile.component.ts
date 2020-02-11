@@ -25,6 +25,7 @@ export class UserProfileComponent implements OnInit {
   async ngOnInit() {
     const checkUser = await this._userProfileService.getUser();
     if (!checkUser.id) {
+      console.log("no id....");
       this.router.navigate(["home"]);
     }
     this.sub = this.route.params.subscribe(async params => {

@@ -15,7 +15,8 @@
   <br />
 
   <div *ngIf="bids">
-    <h3>Active Auctions Near You</h3>
+    <h3>Active Auctions</h3>
+    <button type="button" (click)="sortAuctions()">Sort By Distance</button>
     <br>
     <div class="row row-cols-1 row-cols-md-3">
       <div
@@ -28,7 +29,7 @@
           <img src="{{ bid.imageUrl }}" class="card-img-top">
           <div class="card-body">
             <h5 class="card-title">{{ bid.name }} <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
-            <p class="card-text">{{ bid.description }}</p>
+            <p class="card-text">{{ bid.description }} {{bid.distance}} m </p>
           </div>
         </div>
       </div>

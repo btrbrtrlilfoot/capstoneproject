@@ -13,8 +13,7 @@ import { UserProfileService } from "../common/user-profile.service";
 export class HomeComponent implements OnInit {
   user: any = {};
   bids: any;
-  distances: any;
-  latlng: any = [40.7177738, -74.00911511];
+  latlng: any;
 
   constructor(
     private _userProfileService: UserProfileService,
@@ -28,13 +27,13 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
-    console.log(typeof user, "This is the user");
     this.user = user;
+    this.latlng = this.user.location;
     this.http.get("/api/products").subscribe(
       (data: any) => {
+        console.log("this is user location", this.latlng);
         this.bids = data;
         this.getDistances();
-        this.sortAuctions();
       },
       error => {
         console.log("oops", error);
@@ -43,7 +42,6 @@ export class HomeComponent implements OnInit {
   }
 
   getDistances() {
-    this.distances = new Array(this.bids.length);
     for (let bid of this.bids) {
       this.http
         .put<any>("/maps/sort", {
@@ -51,34 +49,20 @@ export class HomeComponent implements OnInit {
           destinations: [bid.user.location]
         })
         .subscribe(data => {
-          this.distances[this.bids.indexOf(bid)] = data;
+          bid.distance = data;
         });
     }
   }
 
   sortAuctions() {
-    console.log("sorting");
-    this.distances.sort((a, b) => {
-      console.log("this is a,", a);
-      if (a < b) {
+    this.bids.sort((a, b) => {
+      if (a.distance < b.distance) {
         return -1;
       }
-      if (a > b) {
+      if (a.distance > b.distance) {
         return 1;
       }
       return 0;
     });
-
-    // this.distances.sort((a,b) => {
-    //   let aIdx = this.bids.indexOf(a)
-    //   let bIdx = this.bids.indexOf(b)
-    //   if(this.distances[aIdx] < this.distances[bIdx]){
-    //     return -1
-    //   }
-    //   if(this.distances[aIdx] > this.distances[bIdx]){
-    //     return 1
-    //   }
-    //   return 0;
-    // })
   }
 }
