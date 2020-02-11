@@ -24,6 +24,7 @@ export class LogoutComponent implements OnInit {
     try {
       console.log("init logout2");
       await this._userProfileService.logout();
+      this._userProfileService.isLoggedIn.next(false);
       this.user = null;
       console.log("init logout");
     } catch (error) {

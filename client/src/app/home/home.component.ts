@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -13,9 +14,7 @@ import { UserProfileService } from "../common/user-profile.service";
 export class HomeComponent implements OnInit {
   user: any = {};
   bids: any;
-  distances: any;
-  latlng: any = [40.7177738, -74.00911511];
-
+  latlng: any;
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient,
@@ -28,13 +27,14 @@ export class HomeComponent implements OnInit {
 
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
-    console.log(typeof user, "This is the user");
     this.user = user;
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;
-        this.getDistances();
-        this.sortAuctions();
+        if (this.user.id) {
+          this.latlng = this.user.location;
+          this.getDistances();
+        }
       },
       error => {
         console.log("oops", error);
@@ -43,42 +43,29 @@ export class HomeComponent implements OnInit {
   }
 
   getDistances() {
-    this.distances = new Array(this.bids.length);
-    for (let bid of this.bids) {
-      this.http
-        .put<any>("/maps/sort", {
-          origins: [this.latlng],
-          destinations: [bid.user.location]
-        })
-        .subscribe(data => {
-          this.distances[this.bids.indexOf(bid)] = data;
-        });
+    if (this.user.id) {
+      for (let bid of this.bids) {
+        this.http
+          .put<any>("/maps/sort", {
+            origins: [this.latlng],
+            destinations: [bid.user.location]
+          })
+          .subscribe(data => {
+            bid.distance = data;
+          });
+      }
     }
   }
 
   sortAuctions() {
-    console.log("sorting");
-    this.distances.sort((a, b) => {
-      console.log("this is a,", a);
-      if (a < b) {
+    this.bids.sort((a, b) => {
+      if (a.distance < b.distance) {
         return -1;
       }
-      if (a > b) {
+      if (a.distance > b.distance) {
         return 1;
       }
       return 0;
     });
-
-    // this.distances.sort((a,b) => {
-    //   let aIdx = this.bids.indexOf(a)
-    //   let bIdx = this.bids.indexOf(b)
-    //   if(this.distances[aIdx] < this.distances[bIdx]){
-    //     return -1
-    //   }
-    //   if(this.distances[aIdx] > this.distances[bIdx]){
-    //     return 1
-    //   }
-    //   return 0;
-    // })
   }
 }

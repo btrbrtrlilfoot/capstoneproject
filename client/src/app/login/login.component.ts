@@ -36,6 +36,7 @@ export class LoginComponent implements OnInit {
     let Form = this.loginForm.value;
     try {
       this.user = await this._userProfileService.logIn(Form);
+      this._userProfileService.isLoggedIn.next(true);
       this.router.navigate(["home"]);
     } catch (error) {
       console.error(error);
