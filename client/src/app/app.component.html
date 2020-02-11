@@ -12,37 +12,34 @@
   </a>
 
   <ul class="nav justify-content-end">
-    <li class="nav-item" >
-      <a class="nav-link" routerLink="/history">History</a>
-    </li>
-    <li class="nav-item" >
-      <a class="nav-link" routerLink="/profile/{{currentUser.id}}">Profile</a>
 
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link" routerLink="/profile/{{ currentUser.id }}">Profile</a>
-    </li>
-
-    <li class="nav-item" >
-      <a class="nav-link" routerLink="/login">Login</a>
-
-    <li class="nav-item">
-      <a class="nav-link" routerLink="/history">History</a>
-    </li>
-    <li class="nav-item">
-      <a href="#" class="nav-link" (click)="onClick()" routerLinkActive="active" >Logout</a>
-    </li>
-  </ul>
-  <ng-template #elseBlock>
-    <ul class="nav justify-content-end">
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/login">Login</a>
+    <div *ngIf="isLoggedIn; else elseBlock" >
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/history">History</a>
       </li>
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/profile/{{currentUser.id}}">Profile</a>
+
+      </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link" (click)="onClick()" routerLinkActive="active" >Logout</a>
+        </li>
+    </div>
+
+    <ng-template #elseBlock>
+
       <li class="nav-item">
         <a class="nav-link" routerLink="/signup">Signup</a>
       </li>
-    </ul>
-  </ng-template>
+
+      <li class="nav-item" >
+        <a class="nav-link" routerLink="/login">Login</a>
+      </li>
+
+
+    </ng-template>
+
+  </ul>
 </nav>
 <div class="container" style="margin-top:30px">
   <router-outlet></router-outlet>

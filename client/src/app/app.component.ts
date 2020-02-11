@@ -10,11 +10,15 @@ import { HttpClient } from "@angular/common/http";
 })
 export class AppComponent implements OnInit {
   currentUser: any = {};
-
+  isLoggedIn: any;
   constructor(
     private _userProfileService: UserProfileService,
     private http: HttpClient
-  ) {}
+  ) {
+    this._userProfileService.isLoggedIn.subscribe(value => {
+      this.isLoggedIn = value;
+    });
+  }
 
   async onClick() {
     try {

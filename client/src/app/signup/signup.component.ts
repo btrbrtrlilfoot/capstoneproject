@@ -82,6 +82,7 @@ export class SignupComponent implements OnInit {
     this.http.post("/auth/signup", Form).subscribe(
       (data: any) => {
         this.user = data;
+        this._userProfileService.isLoggedIn.next(true);
       },
       error => {
         console.log("oops", error);
