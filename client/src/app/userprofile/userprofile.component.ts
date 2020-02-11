@@ -34,9 +34,20 @@ export class UserProfileComponent implements OnInit {
 
       console.log("UserProfileComponent:ngOnInit:", user);
     });
+    let openAuctions = await this._userProfileService.getAllOpenAuctions();
+    this.userAuctions = openAuctions.filter(
+      auction => auction.userId === this.user.id
+    );
+    console.log("active auctions", this.userAuctions);
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+  onUploadSuccess(event) {
+    this.user.imageUrl = event[1].fileName;
   }
+
+  onClick(id: number) {
+    this._userProfileService.deleteUserAuction(id);
+  }
+  // console.log('success',event)
+  // this.user = await this._userProfileService.changePic(event[1].fileName)
 }

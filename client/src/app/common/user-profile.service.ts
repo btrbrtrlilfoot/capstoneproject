@@ -33,6 +33,10 @@ export class UserProfileService {
     return products;
   }
 
+  async deleteUserAuction(id) {
+    let url = `${this._url}/${id}`;
+    await this._http.delete<any>(url).toPromise();
+  }
   /**
    *  Fetch the currently signed in user
    */
@@ -67,7 +71,12 @@ export class UserProfileService {
     this.isLoggedIn = true;
     return this.currentUser;
   }
-
+  async changePic(img) {
+    console.log("changepicimgg", img);
+    let user = await this._http.put(this._users, img);
+    this.currentUser = user || {};
+    return this.currentUser;
+  }
   async logout() {
     this.isLoggedIn = false;
     console.log("logged out1", this.currentUser);
