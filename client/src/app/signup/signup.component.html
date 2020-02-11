@@ -38,7 +38,7 @@
     <input
       type="text"
       formControlName="location"
-      id="city"
+      id="address"
       class="form-control"
       required
     />
@@ -52,7 +52,6 @@
       type="submit"
       class="btn btn-outline-primary"
       [disabled]="!userForm.valid"
-      (click)="onSubmit()"
     >
       Sign Up
     </button>
