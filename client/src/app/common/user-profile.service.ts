@@ -68,10 +68,12 @@ export class UserProfileService {
   }
 
   async logout() {
+
     const user = await this._http
       .post(this._url4, this.currentUser)
       .toPromise();
     this.currentUser = {};
+
     return this.currentUser;
   }
 }
