@@ -32,6 +32,10 @@ export class UserProfileService {
     return products;
   }
 
+  async deleteUserAuction(id) {
+    let url = `${this._url}/${id}`;
+    await this._http.delete<any>(url).toPromise();
+  }
   /**
    *  Fetch the currently signed in user
    */
@@ -66,9 +70,13 @@ export class UserProfileService {
 
     return this.currentUser;
   }
-
+  async changePic(img) {
+    console.log("changepicimgg", img);
+    let user = await this._http.put(this._users, img);
+    this.currentUser = user || {};
+    return this.currentUser;
+  }
   async logout() {
-
     const user = await this._http
       .post(this._url4, this.currentUser)
       .toPromise();
