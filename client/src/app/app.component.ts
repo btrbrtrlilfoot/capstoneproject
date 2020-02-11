@@ -9,8 +9,6 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-  title = "BetterBartr";
-
   currentUser: any = {};
 
   constructor(

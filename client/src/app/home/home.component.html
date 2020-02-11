@@ -1,11 +1,6 @@
 <div *ngIf="user.id">
   <h1>Welcome, {{ user.name }}!</h1>
-  <div>
-    <button routerLink="/auction/">Start a New Bid!</button>
-  </div>
 </div>
-<br />
-
 <div>
   <div>
     <input
@@ -14,13 +9,13 @@
       name="search"
       [(ngModel)]="searchText"
       autocomplete="off"
-      placeholder="Start searching for a bid"
+      placeholder="Start searching for an auction"
     />
   </div>
   <br />
 
   <div *ngIf="bids">
-    <h2>Active Bids In Your City</h2>
+    <h3>Active Auctions In Your City</h3>
     <div class="row row-cols-1 row-cols-md-3">
       <div
         (click)="onClick(bid)"
