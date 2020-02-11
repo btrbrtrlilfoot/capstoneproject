@@ -1,18 +1,39 @@
-
 <div>
-  <div *ngIf="error; else body">
-   <p> No offer found!</p>
+  <div class="jumbotron" *ngIf="error; else body">
+    <p class="display-4">No offer found!</p>
+    <hr class="my-4" />
+    <p>Do you want to make an offer on exisiting auctions in your area?</p>
+    <a
+      routerLinkActive="active"
+      routerLink="/home"
+      class="btn btn-primary btn-lg"
+      href="#"
+      role="button"
+      >click here!</a
+    >
   </div>
+  <div>
+    <ng-template #body>
+      <div class="card mb-3">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="{{ offer.imageUrl }}" class="card-img" />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h3 class="card-title">
+                Offer {{ offer.name }} on Auction Id {{ auctionId }}
+              </h3>
+              <p class="card-text">{{ offer.description }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
 
-  <ng-template #body>
-    <h2>Offer on Auction {{auctionId}}</h2>
-    <h3>{{offer.name}}</h3>
-    <img src="{{offer.imageUrl}}" >
-    <p>{{offer.description}}</p>
-
-
-    <br/>
-
-    <button type="button" (click)="goBack()">Back</button>
-  </ng-template>
+      <br />
+      <button type="button"  class="btn btn-outline-primary" (click)="goBack()">
+        Back
+      </button>
+    </ng-template>
+  </div>
 </div>

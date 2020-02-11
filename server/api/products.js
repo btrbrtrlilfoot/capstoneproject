@@ -52,7 +52,6 @@ router.post("/", async (req, res, next) => {
       return tag.trim();
     });
 
-    console.log(tagsArray);
     const product = await Product.create({
       name: req.body.item,
       location: req.body.location,
@@ -60,7 +59,8 @@ router.post("/", async (req, res, next) => {
       type: "auction (open)",
       userId: req.session.passport.user,
       tags: tagsArray,
-      imageUrl: req.body.imageUrl
+      imageUrl: req.body.imageUrl,
+      kind: req.body.kind
     });
 
     res.send(product);

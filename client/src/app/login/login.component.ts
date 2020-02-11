@@ -28,16 +28,6 @@ export class LoginComponent implements OnInit {
 
   async onSubmit() {
     let Form = this.loginForm.value;
-    //   this.http.post("/auth/login", Form).subscribe(
-    //     (data: any) => {
-    //       this.user = data;
-    //       console.log("user", this.user);
-    //       // this.router.navigate(['home'])
-    //     },
-    //     error => {
-    //       console.log("oops", error);
-    //     }
-    //   );
     try {
       this.user = await this._userProfileService.logIn(Form);
       this.router.navigate(["home"]);
