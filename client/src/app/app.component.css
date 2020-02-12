@@ -2,3 +2,18 @@
   color: #ffb899;
   font-family: "Fredoka One", cursive;
 }
+
+#ftpg2-btn {
+  font-family: "Open Sans," sans-serif;
+  margin: 5px;
+  color: #ff906b;
+  border-color: #ff906b;
+  border-width: 1px;
+  border: 10px;
+  padding: 10px;
+  font-size: 15px;
+}
+
+#ftpg2-btn:hover {
+  background-color: rgb(249, 165, 165, 0.5);
+}
