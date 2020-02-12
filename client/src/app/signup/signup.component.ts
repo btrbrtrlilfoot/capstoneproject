@@ -27,11 +27,6 @@ export class SignupComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const checkUser = await this._userProfileService.getUser();
-    if (checkUser.id) {
-      this.router.navigate(["home"]);
-    }
-
     this.userForm = new FormGroup({
       $key: new FormControl(null),
       name: new FormControl("", Validators.minLength(1)),
@@ -39,6 +34,11 @@ export class SignupComponent implements OnInit {
       password: new FormControl("", Validators.minLength(1)),
       location: new FormControl("", Validators.minLength(1))
     });
+
+    const checkUser = await this._userProfileService.getUser();
+    if (checkUser.id) {
+      this.router.navigate(["home"]);
+    }
   }
 
   findMe() {
@@ -62,34 +62,33 @@ export class SignupComponent implements OnInit {
       .post<any>("/maps/geocode", { address: location })
       .subscribe(data => {
         if (data) {
+          console.log("data", data);
           this.userForm.patchValue({
             location: data
           });
+          this.signUp();
         }
       });
   }
 
-  onSubmit() {
+  async signUp() {
+    let Form = this.userForm.value;
+    const signedUp = await this._userProfileService.signUp(Form);
+    if (signedUp) {
+      this._userProfileService.isLoggedIn.next(true);
+      this.router.navigate(["home"]);
+    }
+  }
+
+  async onSubmit() {
     if (this.latlng) {
       this.userForm.patchValue({
         location: this.latlng
       });
+      this.signUp();
     } else {
       this.getGeocode(this.userForm.value.location);
     }
-
-    let Form = this.userForm.value;
-    this.http.post("/auth/signup", Form).subscribe(
-      (data: any) => {
-        this.user = data;
-        this._userProfileService.isLoggedIn.next(true);
-      },
-      error => {
-        console.log("oops", error);
-      }
-    );
-
-    this.router.navigate(["home"]);
   }
 }
 

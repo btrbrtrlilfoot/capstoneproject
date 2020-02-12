@@ -31,6 +31,7 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
+
     console.group("userinhomee", this.user);
 
     this.sub = this._userProfileService.getUser().then(

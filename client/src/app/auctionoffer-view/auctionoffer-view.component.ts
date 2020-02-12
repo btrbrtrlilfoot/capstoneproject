@@ -76,7 +76,7 @@ export class AuctionofferViewComponent implements OnInit {
         this.auction = data; //should be updatd
         this.auctionStatus = "closed";
         this.buttonDisable = true;
-        this.router.navigateByUrl(`/auctions/${this.id}/success`);
+        this.router.navigateByUrl(`/auction/${this.id}/success`);
       },
       error => console.log("theres been an error")
     );

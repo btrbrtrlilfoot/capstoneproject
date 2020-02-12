@@ -24,6 +24,7 @@ import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 import { NgxPopper } from "angular-popper";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
+import { FrontpageComponent } from "./frontpage/frontpage.component";
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: "/file",
@@ -47,6 +48,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     UserProfileComponent,
     TransactionHistoryComponent,
     UpdateUserInfoComponent
+    FrontpageComponent
   ],
   imports: [
     NgxPopper,

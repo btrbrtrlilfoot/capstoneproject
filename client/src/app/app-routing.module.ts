@@ -13,6 +13,9 @@ import { TransactionHistoryComponent } from "./transaction-history/transaction-h
 import { LogoutComponent } from "./logout/logout.component";
 import { AppComponent } from "./app.component";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
+import { FrontpageComponent } from "./frontpage/frontpage.component";
+import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
+
 
 const routes: Routes = [
   { path: "logout", component: LogoutComponent },
@@ -23,6 +26,7 @@ const routes: Routes = [
   { path: "auction/confirm", component: AuctionConfirmationComponent },
   { path: "auction/:id", component: AuctionofferViewComponent },
   { path: "auction/:id/offerform", component: OfferFormComponent },
+  { path: "auction/:id/success", component: AuctionClosedPageComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
   { path: "profile/:id", component: UserProfileComponent, pathMatch: "full" },
   {
@@ -32,8 +36,8 @@ const routes: Routes = [
   },
 
   { path: "history", component: TransactionHistoryComponent },
-
-  { path: "**", component: HomeComponent }
+  { path: "front", component: FrontpageComponent },
+  { path: "**", component: FrontpageComponent }
 ];
 
 @NgModule({
