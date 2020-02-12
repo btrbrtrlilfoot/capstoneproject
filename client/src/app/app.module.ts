@@ -47,7 +47,7 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent,
-    UpdateUserInfoComponent
+    UpdateUserInfoComponent,
     FrontpageComponent
   ],
   imports: [
