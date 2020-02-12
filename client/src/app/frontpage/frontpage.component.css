@@ -1,0 +1,73 @@
+#frontpg {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 10px;
+  border-radius: 10px;
+  background: #ff906b;
+  justify-content: space-evenly;
+}
+
+h1 {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 500;
+  color: white;
+}
+
+#logotxt {
+  font-family: "Fredoka One", cursive;
+  font-size: 60px;
+}
+
+#h3txt {
+  font-family: "Fredoka One", cursive;
+  font-size: 30px;
+  color: white;
+}
+
+#symbol {
+  border-radius: 100px;
+  border: 10px;
+  background-color: white;
+  padding: 10px;
+  margin: 20px;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: small;
+  color: white;
+}
+
+#frnt-text {
+  width: 50%;
+  align-items: center;
+}
+
+#frontpg-2 {
+  display: flex;
+  background-color: #ff906b;
+  justify-content: space-evenly;
+}
+
+#ftpg-2-2 {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 10px;
+}
+
+#ftpg2-btn {
+  font-family: "Fredoka One", cursive;
+  margin: 5px;
+  background-color: #ffb899;
+  color: white;
+  border-color: white;
+  border: 10px;
+  padding: 20px 50px 20px 50px;
+}
+
+#ftpg2-btn:hover {
+  background-color: rgb(249, 165, 165, 0.5);
+}

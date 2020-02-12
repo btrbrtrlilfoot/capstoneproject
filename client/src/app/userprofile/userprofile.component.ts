@@ -11,6 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UserProfileComponent implements OnInit {
   userOffers: any;
+  clicked: boolean;
   userAuctions: any;
   user: any = {};
   private sub: any;
@@ -39,20 +40,24 @@ export class UserProfileComponent implements OnInit {
 
       console.log("UserProfileComponent:ngOnInit:", user);
     });
-    // await this._userProfileService.getAllOpenAuctions()
-    //                               .then(data =>
-
-    //               this.userAuctions = data.filter(
-    //   auction => auction.userId === this.user.id
-    // )
-    // )
-
+    let openAuctions = await this._userProfileService.getAllOpenAuctions();
+    this.userAuctions = openAuctions.filter(
+      auction => auction.userId === this.user.id
+    );
+    this.clicked = false;
     console.log("active auctions", this.userAuctions);
     this.router.navigate([`/profile/${this.user.id}`]);
   }
 
-  onUploadSuccess(event) {
-    this.user.imageUrl = event[1].fileName;
+  popUp() {
+    this.clicked = true;
+  }
+
+  async onUploadSuccess(event) {
+    console.log("event", event);
+    const updated = await this._userProfileService.changePic(event[1].fileName);
+    this.user = updated;
+    console.log("userururur", this.user);
   }
 
   onClick(id: number) {

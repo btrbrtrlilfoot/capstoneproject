@@ -35,6 +35,6 @@ export class AppComponent implements OnInit {
     } else {
       this.currentUser = {};
     }
-    console.log("appuser", this.currentUser);
+    console.log("curuserrrr", this.currentUser);
   }
 }
