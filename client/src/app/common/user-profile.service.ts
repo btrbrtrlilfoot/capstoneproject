@@ -74,8 +74,9 @@ export class UserProfileService {
   }
   async changePic(img) {
     console.log("changepicimgg", img);
-    let user = await this._http.put(this._users, img);
+    let user = this._http.post(this._users, img);
     this.currentUser = user || {};
+    console.log("newcurruser", this.currentUser);
     return this.currentUser;
   }
   async logout() {

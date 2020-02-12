@@ -1,1 +1,9 @@
-<p>{{ auction.name }} is being swapped for {{ auction.Offer[0].name }}</p>
+
+<div class="jumbotron">
+  <h1 class="display-4">Thank you for accepting the offer of {{ auction.Offer[0].name }} on your {{ auction.name }} auction !</h1>
+  <p class="lead"> The user has been notified regarding this.</p>
+  <hr class="my-4">
+  <p>Your auction is now closed.</p>
+  <p>To see other auctions near you click the link below</p>
+  <a routerLinkActive="active" routerLink="/home" class="btn btn-primary btn-lg" href="#" role="button">click here!</a>
+</div>

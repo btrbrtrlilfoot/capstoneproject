@@ -10,39 +10,47 @@
     />
     BetterBrtr
   </a>
-
+<div>
   <ul class="nav justify-content-end">
-    <li class="nav-item">
-      <button class="btn btn-outline-primary" type="button" routerLink="/auction/">Create Auction</button>
-    </li>
     <div *ngIf="isLoggedIn; else elseBlock" >
-      <li class="nav-item" >
-        <a class="nav-link" routerLink="/history">History</a>
-      </li>
-      <li class="nav-item" >
-        <a class="nav-link" routerLink="/profile/{{currentUser.id}}">Profile</a>
-
-      </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link" (click)="onClick()" routerLinkActive="active" >Logout</a>
-        </li>
-    </div>
-
+      <div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Options
+        </button>
+        <ul class="dropdown-menu dropdown-menu-right">
+          <li><a href="#" class="nav-link" routerLink="/auction/">Create Auction</a></li>
+          <li><a href="#" class="nav-link" routerLink="/profile/{{currentUser.id}}">Profile</a></li>
+          <li> <a  href="#" class="nav-link" routerLink="/history">History</a></li>
+          <li role="separator" class="divider"></li>
+          <li><a href="#" class="nav-link" (click)="onClick()" routerLinkActive="active" >Logout</a> </li>
+        </ul>
+      </div>
+      </div>
     <ng-template #elseBlock>
-
-      <li class="nav-item">
-        <a class="nav-link" routerLink="/signup">Signup</a>
-      </li>
-
-      <li class="nav-item" >
-        <a class="nav-link" routerLink="/login">Login</a>
-      </li>
+        <div class="btn-group">
+          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+           Options
+          </button>
+          <ul class="dropdown-menu dropdown-menu-right">
+            <li><a href="#" class="nav-link" routerLink="/auction/">Create Auction</a></li>
+            <li> <a class="nav-link" routerLink="/signup">Signup</a> </li>
+            <li role="separator" class="divider"></li>
+            <li> <a class="nav-link" routerLink="/login">Login</a> </li>
+          </ul>
+        </div>
+<div id="pad"></div>
 
 
     </ng-template>
 
   </ul>
+
+
+
+</div>
+
 </nav>
+
 <div class="container" style="margin-top:30px">
   <router-outlet></router-outlet>
 </div>

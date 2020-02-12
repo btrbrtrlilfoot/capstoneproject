@@ -1,10 +1,12 @@
-
-<h3>Sign Up</h3>
+<h3>Your Info</h3>
 <br>
-<form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+<form *ngIf="user" [formGroup]="userUpdateForm" >
   <div class="form-group">
     <label for="name">Name</label>
     <input
+      ng-change="change()"
+      placeholder="{{user.name}}"
+      value="{{user.name}}"
       type="text"
       formControlName="name"
       id="name"
@@ -15,6 +17,8 @@
   <div class="form-group">
     <label for="email">Email address</label>
     <input
+      ng-change="change()"
+      value="{{user.email}}"
       type="email"
       formControlName="email"
       id="email"
@@ -25,35 +29,28 @@
   <div class="form-group">
     <label for="password">Password</label>
     <input
+      ng-change="change()"
+      value="********"
       type="password"
-      formControlName="password"
       id="password"
       class="form-control"
       required
     />
   </div>
+    <dropzone
 
-  <div class="form-group">
-    <label for="city">City</label>
-    <input
-      type="text"
-      formControlName="location"
-      id="address"
-      class="form-control"
-      required
-    />
-  </div>
-  <div id="signupBtn">
-    <button type="button" class="btn btn-primary" (click)="this.findMe()">
-      Find Location
-    </button>
-    &nbsp;
+    [config]="config"
+    [message]="'Upload Profile Picture'"
+    (error)="onUploadError($event)"
+    (success)="onUploadSuccess($event)"
+  ></dropzone>
+
+  
     <button
-      type="submit"
+      type="button"
       class="btn btn-outline-primary"
-      [disabled]="!userForm.valid"
+      (click)="onSubmit(evt)" 
     >
-      Sign Up
+      Submit Changes
     </button>
-  </div>
 </form>

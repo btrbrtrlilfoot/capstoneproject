@@ -82,7 +82,12 @@ router.delete("/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
     await Product.destroy({ where: { id: id } });
-    res.sendStatus(204);
+    const newData = await Product.findAll({
+      where: {
+        type: "auction (open)"
+      }
+    });
+    res.status(204).send(newData);
   } catch (error) {
     next(error);
   }

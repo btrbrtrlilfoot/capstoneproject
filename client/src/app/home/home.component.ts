@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from "@angular/core";
 import { AppComponent } from "../app.component";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { ActivatedRoute } from "@angular/router";
+
 import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
 import { BehaviorSubject } from "rxjs";
@@ -15,7 +17,10 @@ export class HomeComponent implements OnInit {
   user: any = {};
   bids: any;
   latlng: any;
+  private sub: any;
+
   constructor(
+    private route: ActivatedRoute,
     private _userProfileService: UserProfileService,
     private http: HttpClient,
     private router: Router
@@ -26,9 +31,16 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    const user = await this._userProfileService.getUser();
-    this.user = user;
-    console.log("oninithomeuser", this.user);
+    this.sub = await this.http.get("/auth/me").subscribe(
+      (data: any) => {
+        this.user = data;
+        console.group("userinhomee", this.user);
+      },
+      error => {
+        console.log("oops", error);
+      }
+    );
+
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;
@@ -68,5 +80,9 @@ export class HomeComponent implements OnInit {
       }
       return 0;
     });
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+    console.log("userdestroy", this.user);
   }
 }
