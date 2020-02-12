@@ -40,6 +40,7 @@ router.post("/logout", (req, res) => {
 });
 
 router.get("/me", (req, res) => {
+  console.log("requ", req.user);
   res.json(req.user);
 });
 
