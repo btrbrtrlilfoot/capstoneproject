@@ -43,7 +43,7 @@ export class UpdateUserInfoComponent implements OnInit {
     form.imageUrl = this.imageUrl;
 
     console.log("formoo", form);
-    await this.http.put(`/api/users/`, form).subscribe(
+    this.user = await this.http.put(`/api/users/`, form).subscribe(
       (data: any) => {
         this.user = data;
         console.log("newuser", this.user);
