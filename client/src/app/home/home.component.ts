@@ -28,6 +28,7 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
     this.user = user;
+    console.log("oninithomeuser", this.user);
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;

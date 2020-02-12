@@ -31,16 +31,24 @@ export class UserProfileComponent implements OnInit {
     }
     this.sub = this.route.params.subscribe(async params => {
       let id = Number(params["id"]);
+
       const user = await this._userProfileService.getUserById(id);
       this.user = user;
+      const userAuctions = await this._userProfileService.getAllOpenAuctions();
+      this.userAuctions = userAuctions.filter(auction => auction.userId === id);
 
       console.log("UserProfileComponent:ngOnInit:", user);
     });
-    let openAuctions = await this._userProfileService.getAllOpenAuctions();
-    this.userAuctions = openAuctions.filter(
-      auction => auction.userId === this.user.id
-    );
+    // await this._userProfileService.getAllOpenAuctions()
+    //                               .then(data =>
+
+    //               this.userAuctions = data.filter(
+    //   auction => auction.userId === this.user.id
+    // )
+    // )
+
     console.log("active auctions", this.userAuctions);
+    this.router.navigate([`/profile/${this.user.id}`]);
   }
 
   onUploadSuccess(event) {
@@ -49,6 +57,10 @@ export class UserProfileComponent implements OnInit {
 
   onClick(id: number) {
     this._userProfileService.deleteUserAuction(id);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
   // console.log('success',event)
   // this.user = await this._userProfileService.changePic(event[1].fileName)
