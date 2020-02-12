@@ -8,6 +8,16 @@
   justify-content: space-evenly;
 }
 
+#frontpg-3 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 10px;
+  border-radius: 10px;
+  background: #ffb899;
+  justify-content: space-evenly;
+}
+
 h1 {
   font-family: "Open Sans", sans-serif;
   font-weight: 500;
@@ -47,7 +57,7 @@ p {
 
 #frontpg-2 {
   display: flex;
-  background-color: #ff906b;
+  background-color: #ffb899;
   justify-content: space-evenly;
 }
 
@@ -61,7 +71,7 @@ p {
 #ftpg2-btn {
   font-family: "Fredoka One", cursive;
   margin: 5px;
-  background-color: #ffb899;
+  background-color: #ff906b;
   color: white;
   border-color: white;
   border: 10px;

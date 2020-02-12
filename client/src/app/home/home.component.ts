@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
   }
 
   sortAuctions() {
+    console.log("sorting", this.bids);
     this.bids.sort((a, b) => {
       if (a.distance < b.distance) {
         return -1;
@@ -81,6 +82,8 @@ export class HomeComponent implements OnInit {
       }
       return 0;
     });
+
+    console.log("bids", this.bids);
   }
   // ngOnDestroy() {
   //     this.sub.unsubscribe();

@@ -1,3 +1,54 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 75%;
+}
+
+#flavor {
+  font-family: "Open Sans", sans-serif;
+  font-weight: 300;
+  font-size: medium;
+  color: white;
+}
+
+#welcome {
+  font-family: "Fredoka One", cursive;
+  color: #ffb899;
+}
+
+#sort {
+  border-width: 2px;
+  background-color: #ffb899;
+  border-color: white;
+  margin-left: 10px;
+}
+
+#sort:hover {
+  background-color: #ff906b;
+}
+
+#searchbar {
+  width: 50%;
+  margin-right: 10px;
+}
+
+#utility {
+  display: flex;
+  flex-direction: row;
+  padding: 10px;
+}
+#frontpg {
+  font-family: "Fredoka One", cursive;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 20px;
+  background: #ffb899;
+  color: white;
+}
+
 .scrollBox {
   display: flex;
   border-width: 10px;
@@ -20,6 +71,15 @@ h4.scrollBox {
   border-color: teal;
   color: black;
 }
+
+#a-card {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 30px;
+}
+
 #auctionName {
   text-align: center;
   font-weight: bold;
@@ -30,6 +90,5 @@ a.scrollBox {
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
   object-fit: cover;
 }
