@@ -1,38 +1,47 @@
-<div *ngIf="user.id">
-  <h1>Welcome, {{ user.name }}!</h1>
-</div>
-<div>
-  <div>
-    <input
+<div class="header">
+
+  <h1 id="welcome">    Welcome, {{ user.name }}!   </h1>
+
+
+    <div class="jumbotron" id="frontpg">
+      <div id="utility">
+        <h3>Active Auctions</h3>
+      <div *ngIf="user.id"><button class="btn btn-primary btn-sm active"  id="sort" type="button" (click)="sortAuctions()">Sort By Distance</button></div>
+
+      </div>
+
+      <input
       class="form-control"
       type="text"
       name="search"
       [(ngModel)]="searchText"
       autocomplete="off"
       placeholder="Start searching for an auction"
-    />
-  </div>
-  <br />
+    id="searchbar"
+      />
+     </div>
 
-  <div *ngIf="bids">
-    <h3>Active Auctions</h3>
-    <div *ngIf="user.id"><button type="button" (click)="sortAuctions()">Sort By Distance</button> </div>
-    <br>
-    <div class="row row-cols-1 row-cols-md-3">
+</div>
+
+
+
+<div class="container">
+
+
+    <div *ngIf="bids">
+      <br>
       <div
-        (click)="onClick(bid)"
-        className="scrollBox"
-        *ngFor="let bid of bids | filter: searchText"
-        class="col mb-4"
-      >
-        <div div class="card h-100">
-          <img src="{{ bid.imageUrl }}" class="card-img-top"  >
-          <div class="card-body">
-            <h5 class="card-title">{{ bid.name }} <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
-            <p class="card-text">{{ bid.description }} {{bid.distance}} m </p>
-          </div>
+      (click)="onClick(bid)"
+      className="scrollBox"
+      *ngFor="let bid of bids | filter: searchText" id="a-card">
+      <div div class="card w-75">
+        <img src="{{ bid.imageUrl }}" class="card-img-top"  >
+        <div class="card-body">
+          <h5 class="card-title">{{ bid.name }} <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
+          <p class="card-text">{{ bid.description }} {{bid.distance}} m </p>
         </div>
       </div>
     </div>
-  </div>
+    </div>
 </div>
+
