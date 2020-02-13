@@ -5,7 +5,6 @@ import {
   Validators,
   FormBuilder
 } from "@angular/forms";
-import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { UserProfileService } from "../common/user-profile.service";
@@ -23,7 +22,6 @@ export class SignupComponent implements OnInit {
   searchButtonText = "Find Location";
 
   constructor(
-    private formBuilder: FormBuilder,
     private _userProfileService: UserProfileService,
     private router: Router,
     private http: HttpClient
@@ -97,43 +95,3 @@ export class SignupComponent implements OnInit {
     }
   }
 }
-
-//     this.http.post("/auth/signup", Form).subscribe(
-//       (data: any) => {
-//         this.user = data;
-//         // this.router.navigate(["/home"]);
-//       },
-//       error => {
-//         console.log("oops", error);
-//       }
-//     );
-//     this.http.post("/auth/login", this.user).subscribe(
-//       (data: any) => {
-//         this.user = data;
-//         console.log("user", this.user);
-//         this.router.navigate(["home"]);
-//       },
-//       error => {
-//         console.log("oops", error);
-//       }
-//     );
-//   }
-// }
-
-// onSubmit =  async (req,res,next) =>{
-//   console.log('event')
-// }
-
-// ngOnInit() {
-//   this.createForm()
-// }
-// createForm()
-// {
-//   this.loginForm = new FormGroup({
-//     $key: new FormControl(null),
-//     name: new FormControl(''),
-//     email: new FormControl(''),
-//     pasword: new FormControl(''),
-//     location: new FormControl('')
-
-// })

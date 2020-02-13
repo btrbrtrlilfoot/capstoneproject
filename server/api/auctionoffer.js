@@ -1,6 +1,5 @@
 const router = require("express").Router();
-const { User, Auction, Product } = require("../db/models");
-const { Op } = require("sequelize");
+const { Product } = require("../db/models");
 const sendSms = require("../twilio");
 
 module.exports = router;
@@ -37,7 +36,9 @@ router.put("/:id", async (req, res, next) => {
         let user = await products.Offer[idx].getUser();
         await sendSms(
           user.phoneNumber,
-          `Your offer of ${product.name} on ${products.name} has been accepted!`
+          `Congrats! Your offer of ${product.name} on ${
+            products.name
+          } has been accepted!`
         );
       } else {
         product.offer.status = "rejected";

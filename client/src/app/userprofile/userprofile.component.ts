@@ -59,6 +59,4 @@ export class UserProfileComponent implements OnInit {
   onClick(id: number) {
     this._userProfileService.deleteUserAuction(id);
   }
-  // console.log('success',event)
-  // this.user = await this._userProfileService.changePic(event[1].fileName)
 }

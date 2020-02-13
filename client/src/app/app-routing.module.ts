@@ -11,11 +11,9 @@ import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
 import { LogoutComponent } from "./logout/logout.component";
-import { AppComponent } from "./app.component";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 import { FrontpageComponent } from "./frontpage/frontpage.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
-
 
 const routes: Routes = [
   { path: "logout", component: LogoutComponent },
