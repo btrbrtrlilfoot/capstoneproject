@@ -1,5 +1,5 @@
 <nav class="navbar navbar-light" >
-  <a class="navbar-brand" routerLink="/home" id="home-logo">
+  <a class="navbar-brand" routerLink="/" id="home-logo">
     <img
       src="logo.png"
       width="30"
@@ -12,7 +12,9 @@
   </a>
 <div>
   <ul class="nav justify-content-end">
+    <button class="btn btn-outline-primary" type="button" routerLink="/home" id="ftpg2-btn">Home</button>
     <button class="btn btn-outline-primary" type="button" routerLink="/auction" id="ftpg2-btn">Create Auction</button>
+
     <div *ngIf="isLoggedIn; else elseBlock" >
       <div class="btn-group">
         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="ftpg2-btn">

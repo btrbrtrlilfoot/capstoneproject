@@ -23,8 +23,6 @@ router.put("/sort", async (req, res, next) => {
     //         response.json.rows[0].elements[0].distance.value
     //       );
     //       res.json(response.json.rows[0].elements[0].distance.value);
-    //     } else {
-    //       res.json(0)
     //     }
     //   }
     // );

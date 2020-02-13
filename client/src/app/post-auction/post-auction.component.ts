@@ -3,6 +3,7 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { Location } from "@angular/common";
 
 import {
   DropzoneComponent,
@@ -37,7 +38,8 @@ export class PostAuctionComponent implements OnInit {
     private _userProfileService: UserProfileService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   auctionForm = new FormGroup({
@@ -82,5 +84,9 @@ export class PostAuctionComponent implements OnInit {
 
   onUploadError(event) {
     alert("Image uploaded isn't valid");
+  }
+
+  goBack() {
+    this.router.navigate(["home"]);
   }
 }
