@@ -45,9 +45,12 @@
   </div>
   <div id="signupBtn">
     <button type="button" class="btn btn-primary" (click)="this.findMe()">
-      Find Location
+      <span ng-show="searchButtonText == 'Searching'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
+        {{ searchButtonText }}
     </button>
+
     &nbsp;
+    <br>
     <button
       type="submit"
       class="btn btn-outline-primary"

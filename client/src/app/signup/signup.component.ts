@@ -19,6 +19,9 @@ export class SignupComponent implements OnInit {
   user: any;
   latlng: any;
   userForm: FormGroup;
+  loading = false;
+  searchButtonText = "Find Location";
+
   constructor(
     private formBuilder: FormBuilder,
     private _userProfileService: UserProfileService,
@@ -42,17 +45,21 @@ export class SignupComponent implements OnInit {
   }
 
   findMe() {
+    this.loading = true;
+    this.searchButtonText = "Finding...";
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(position => {
         this.latlng = [position.coords.latitude, position.coords.longitude];
 
-        this.http
+        const location = this.http
           .post<any>("/maps/reverse", { latlng: this.latlng })
           .subscribe(data => {
             this.userForm.patchValue({
               location: data
             });
           });
+        this.loading = false;
+        this.searchButtonText = "Find Location";
       });
     }
   }

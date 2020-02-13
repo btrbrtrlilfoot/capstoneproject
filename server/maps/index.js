@@ -11,21 +11,21 @@ router.put("/sort", async (req, res, next) => {
   try {
     const origins = req.body.origins;
     const destinations = req.body.destinations;
-    // gMapsClient.distanceMatrix(
-    //   {
-    //     origins: origins,
-    //     destinations: destinations
-    //   },
-    //   function(err, response) {
-    //     if (!err) {
-    //       console.log(
-    //         "this is response",
-    //         response.json.rows[0].elements[0].distance.value
-    //       );
-    //       res.json(response.json.rows[0].elements[0].distance.value);
-    //     }
-    //   }
-    // );
+    gMapsClient.distanceMatrix(
+      {
+        origins: origins,
+        destinations: destinations
+      },
+      function(err, response) {
+        if (!err) {
+          console.log(
+            "this is response",
+            response.json.rows[0].elements[0].distance.value
+          );
+          res.json(response.json.rows[0].elements[0].distance.value);
+        }
+      }
+    );
     res.json(0);
   } catch (error) {
     next(error);
