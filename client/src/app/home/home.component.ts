@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {}
-  // Changed this, is now working.Do not remove
+
   onClick(bid) {
     this.router.navigate([`../auction/${bid.id}`]);
   }
@@ -85,8 +85,4 @@ export class HomeComponent implements OnInit {
 
     console.log("bids", this.bids);
   }
-  // ngOnDestroy() {
-  //     this.sub.unsubscribe();
-  //     console.log('userdestroy',this.user)
-  //   }
 }

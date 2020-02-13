@@ -16,7 +16,6 @@ export class OffersService {
 
   uploadImages(images: any) {
     const formData = new FormData();
-    console.log("OffersService:uploadImages", images);
     formData.append("file", images);
 
     return this._http.post<any>("/file", formData);

@@ -69,7 +69,6 @@ export class SignupComponent implements OnInit {
       .post<any>("/maps/geocode", { address: location })
       .subscribe(data => {
         if (data) {
-          console.log("data", data);
           this.userForm.patchValue({
             location: data
           });

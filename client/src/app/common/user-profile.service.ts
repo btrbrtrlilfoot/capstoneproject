@@ -73,10 +73,8 @@ export class UserProfileService {
     return this.currentUser;
   }
   async changePic(img) {
-    console.log("changepicimgg", img);
     let user = this._http.post(this._users, img);
     this.currentUser = user || {};
-    console.log("newcurruser", this.currentUser);
     return this.currentUser;
   }
   async logout() {
