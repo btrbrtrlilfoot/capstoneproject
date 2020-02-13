@@ -3,7 +3,8 @@ import { FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { AuctionConfirmationComponent } from "../auction-confirmation/auction-confirmation.component";
+import { Location } from "@angular/common";
+
 import {
   DropzoneComponent,
   DropzoneDirective,
@@ -37,7 +38,8 @@ export class PostAuctionComponent implements OnInit {
     private _userProfileService: UserProfileService,
     private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   auctionForm = new FormGroup({
@@ -66,12 +68,9 @@ export class PostAuctionComponent implements OnInit {
     form.imageUrl = this.imageUrl;
     form.kind = this.kind;
 
-    console.log("forrmmmm", form.userId);
     this.http.post("/api/products", form).subscribe(
       (data: any) => {
         this.auction = data;
-        console.log("biddddd", this.auction);
-        // this.router.navigate(["/auction/confirm", { auction: this.auction }]);
       },
       error => {
         console.log("oops", error);
@@ -85,5 +84,9 @@ export class PostAuctionComponent implements OnInit {
 
   onUploadError(event) {
     alert("Image uploaded isn't valid");
+  }
+
+  goBack() {
+    this.router.navigate(["home"]);
   }
 }
