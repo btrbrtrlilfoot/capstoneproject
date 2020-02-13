@@ -6,63 +6,68 @@
       </div>
       <div class="col-md-8">
         <div class="card-body">
-          <h3 class="card-title">{{ auction.name }} <span class="badge badge-secondary">{{ auctionStatus }}</span></h3>
-          <p class="card-text">{{auction.description}}</p>
+          <h3 class="card-title">
+            {{ auction.name }}
+            <span class="badge badge-secondary">{{ auctionStatus }}</span>
+          </h3>
+          <p class="card-text">{{ auction.description }}</p>
         </div>
       </div>
     </div>
   </div>
-    <div>
-      <mat-radio-group [(ngModel)]="selectedOffer">
-        <div class="list-group">
-            <div class="list-group-item list-group-item-dark d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Offers</h5>
+  <div>
+    <mat-radio-group [(ngModel)]="selectedOffer">
+      <div class="list-group">
+        <div
+          class="list-group-item list-group-item-dark d-flex w-100 justify-content-between"
+        >
+          <h5 class="mb-1">Offers</h5>
+        </div>
+        <div *ngFor="let offer of offers" class="list-group-item">
+          <div class="row no-gutters">
+            <div
+              class="col-md-1"
+              *ngIf="
+                user.id === auctionOwnerId && auction.type === 'auction (open)'
+              "
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <mat-radio-button [value]="offer.id"></mat-radio-button>
+              </div>
             </div>
-          <div *ngFor="let offer of offers" class="list-group-item">
-            <div class="row no-gutters">
-              <div
-                class="col-md-1"
-                *ngIf="
-                  user.id === auctionOwnerId &&
-                  auction.type === 'auction (open)'
-                "
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <mat-radio-button [value]="offer.id"></mat-radio-button>
-                </div>
+            <div
+              class="col-md-11"
+              routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
+              routerLinkActive="active"
+            >
+              <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{ offer.name }}</h5>
+                <small>{{ offer.kind }}</small>
               </div>
-              <div
-                class="col-md-11"
-                routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
-                routerLinkActive="active"
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{ offer.name }}</h5>
-                  <small>{{ offer.kind }}</small>
-                </div>
-                <p class="mb-1">
-                  This {{ offer.kind }} is an offer from userId
-                  {{ offer.userId }}
-                </p>
-                <small>Currently: {{ offer.offer.status }}</small>
-              </div>
+              <p class="mb-1">
+                This {{ offer.kind }} is an offer from userId
+                {{ offer.userId }}
+              </p>
+              <small>Currently: {{ offer.offer.status }}</small>
             </div>
           </div>
         </div>
-      </mat-radio-group>
-    </div>
-    <br>
-    <div *ngIf="user.id === auctionOwnerId">
-      <button
-        (click)="onSubmit(selectedOffer)"
-        [disabled]="buttonDisable"
-        type="button"
-        class="btn btn-outline-primary"
-      >
-        Select Offer
-      </button>
-    </div>
-    <br>
+      </div>
+    </mat-radio-group>
+  </div>
+  <br />
+  <div *ngIf="user.id === auctionOwnerId">
+    <button
+      (click)="onSubmit(selectedOffer)"
+      [disabled]="buttonDisable || selectedOffer === undefined"
+      type="button"
+      class="btn btn-outline-primary"
+    >
+      Select Offer
+    </button>
+  </div>
+  <br />
+  <div class="offerbackBtn">
     <div *ngIf="user.id !== auctionOwnerId && !buttonDisable && user.id">
       <button
         routerLink="/auction/{{ id }}/offerform"
@@ -73,4 +78,9 @@
         Add Offer
       </button>
     </div>
+    &nbsp;
+    <button (click)="goBack()" type="button" class="btn btn-outline-primary">
+      Back
+    </button>
+  </div>
 </div>

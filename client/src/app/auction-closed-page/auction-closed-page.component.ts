@@ -10,17 +10,23 @@ import { Router } from "@angular/router";
 export class AuctionClosedPageComponent implements OnInit {
   auction: any;
   private sub: any;
+  acceptedOffer: any = {};
+
   constructor(
     private auctionView: AuctionViewService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.auction = this.auctionView.returnAuction().subscribe(
-      data => {
-        this.auction = data;
-      },
-      error => console.log("error")
-    );
+    this.auction = this.auctionView.returnAuction().subscribe(data => {
+      this.auction = data;
+      this.acceptedOffer = this.auction.Offer.find(outerOffer => {
+        let inner = outerOffer.offer;
+        if (inner && inner.status === "accepted") {
+          return true;
+        }
+        return false;
+      });
+    });
   }
 }

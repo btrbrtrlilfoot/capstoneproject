@@ -66,4 +66,8 @@ export class OfferFormComponent {
   onUploadError(event) {
     alert("Image uploaded isn't valid");
   }
+
+  goBack() {
+    this.location.back();
+  }
 }
