@@ -31,17 +31,33 @@
     <div *ngIf="bids">
       <br>
       <div
-      (click)="onClick(bid)"
       className="scrollBox"
       *ngFor="let bid of bids | filter: searchText" id="a-card">
-      <div div class="card w-75">
-        <img src="{{ bid.imageUrl }}" class="card-img-top"  >
-        <div class="card-body">
-          <h5 class="card-title">{{ bid.name }} <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
-          <p class="card-text">{{ bid.description }} {{bid.distance}} m </p>
+      <div  (click)="onClick(bid)" class="card w-75" id="card-container">
+        <div class="card-header" id="card-h">
+
+          <div>
+            <img  src="{{ bid.user.imageUrl }}" id="bid-user-img" >
+            {{bid.user.name}} <p></p>
+           </div>
+
+
+          <div> <p style="color:#ff906b">#{{bid.id}}</p></div>
+
+
+        </div>
+
+
+        <img src="{{ bid.imageUrl }}" class="card-img-top" id="card-img" >
+        <div class="card-body" id="card-b">
+          <h5 class="card-title">{{ bid.name }}  <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
+          <p id="distance">{{bid.distance ? bid.distance : 0}}m away</p>
+          <p class="card-text" id="card-txt">{{ bid.description }}</p>
         </div>
       </div>
     </div>
     </div>
+
+    <button type="button" (click)="gotoTop()"id="top">⇧</button>
 </div>
 
