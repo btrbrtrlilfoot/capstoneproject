@@ -11,6 +11,7 @@ import { ActivatedRoute } from "@angular/router";
 })
 export class UserProfileComponent implements OnInit {
   userOffers: any;
+  id: number;
   clicked: boolean;
   userAuctions: any;
   user: any = {};
@@ -24,19 +25,23 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const checkUser = await this._userProfileService.getUser();
-    if (!checkUser.id) {
-      console.log("no id....");
-
+    const user = await this._userProfileService.getUser();
+    if (!user.id) {
       this.router.navigate(["home"]);
     }
-    this.sub = this.route.params.subscribe(async params => {
-      let id = Number(params["id"]);
-      const user = await this._userProfileService.getUserById(id);
-      this.user = user;
+    this.user = user;
 
-      console.log("UserProfileComponent:ngOnInit:", user);
-    });
+    if (user.id !== undefined) {
+      const userId = user.id;
+    }
+
+    const userAuctions = await this._userProfileService.getAllOpenAuctions();
+    this.userAuctions = userAuctions.filter(
+      auction => auction.userId === this.user.id
+    );
+
+    console.log("UserProfileComponent:ngOnInit:", user);
+
     let openAuctions = await this._userProfileService.getAllOpenAuctions();
     this.userAuctions = openAuctions.filter(
       auction => auction.userId === this.user.id
