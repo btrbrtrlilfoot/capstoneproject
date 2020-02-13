@@ -10,19 +10,31 @@ module.exports = router;
 router.put("/sort", async (req, res, next) => {
   try {
     const origins = req.body.origins;
-    const destinations = req.body.destinations;
-    gMapsClient.distanceMatrix(
-      {
-        origins: origins,
-        destinations: destinations
-      },
-      function(err, response) {
-        if (!err) {
-          res.json(response.json.rows[0].elements[0].distance.value);
-        }
+    const bids = req.body.bids;
+    let result = [];
+    const promise = new Promise(function(resolve, reject) {
+      for (let bid of bids) {
+        gMapsClient.distanceMatrix(
+          {
+            origins: [origins],
+            destinations: [bid.user.location]
+          },
+          (err, response) => {
+            if (!err) {
+              bid.distance = response.json.rows[0].elements[0].distance.value;
+              result.push(bid);
+              if (result.length === bids.length) {
+                resolve();
+              }
+            }
+          }
+        );
       }
-    );
-    res.json(0);
+    });
+
+    promise.finally(() => {
+      res.json(result);
+    });
   } catch (error) {
     next(error);
   }

@@ -1,10 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from "@angular/forms";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { UserProfileService } from "../common/user-profile.service";
@@ -33,7 +28,8 @@ export class SignupComponent implements OnInit {
       name: new FormControl("", Validators.minLength(1)),
       email: new FormControl("", Validators.email),
       password: new FormControl("", Validators.minLength(1)),
-      location: new FormControl("", Validators.minLength(1))
+      location: new FormControl("", Validators.minLength(1)),
+      phoneNumber: new FormControl("")
     });
 
     const checkUser = await this._userProfileService.getUser();

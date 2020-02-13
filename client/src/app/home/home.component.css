@@ -12,6 +12,25 @@
   color: white;
 }
 
+#card-h {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: rgb(133, 133, 133);
+  background-color: white;
+}
+
+#distance {
+  font-size: 12px;
+}
+
+#bid-user-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
 #welcome {
   font-family: "Fredoka One", cursive;
   color: #ffb899;
@@ -22,6 +41,22 @@
   background-color: #ffb899;
   border-color: white;
   margin-left: 10px;
+}
+
+#top {
+  background-color: #ffb899;
+  color: white;
+  border: 1px;
+  border-radius: 10px;
+  font-size: 5px;
+  font-family: "Fredoka One", cursive;
+  position: fixed;
+  bottom: 5px;
+  right: 10px;
+  font-size: 20px;
+  text-align: center;
+  border-radius: 5px;
+  outline: none;
 }
 
 #sort:hover {
@@ -72,12 +107,28 @@ h4.scrollBox {
   color: black;
 }
 
+#card-container {
+  box-shadow: 5px 5px 5px #ffb899;
+}
+
+#card-b {
+  font-family: "Open Sans", sans-serif;
+}
+
 #a-card {
   display: flex;
   justify-content: center;
   align-content: center;
   align-items: center;
   margin: 30px;
+}
+
+#card-img:hover {
+  opacity: 0.8;
+}
+
+#card-txt {
+  font-size: 12px;
 }
 
 #auctionName {

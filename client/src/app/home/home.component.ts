@@ -3,10 +3,9 @@ import { AppComponent } from "../app.component";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
-
 import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Subscription } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -17,7 +16,7 @@ export class HomeComponent implements OnInit {
   user: any = {};
   bids: any;
   latlng: any;
-  private sub: any;
+  private sub: Subscription = new Subscription();
 
   constructor(
     private route: ActivatedRoute,
@@ -30,10 +29,18 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`../auction/${bid.id}`]);
   }
 
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
+
   async ngOnInit() {
     console.group("userinhomee", this.user);
 
-    this.sub = this._userProfileService.getUser().then(
+    this._userProfileService.getUser().then(
       (data: any) => {
         this.user = data;
       },
@@ -42,32 +49,35 @@ export class HomeComponent implements OnInit {
       }
     );
 
-    this.http.get("/api/products").subscribe(
-      (data: any) => {
-        this.bids = data;
-        if (this.user.id) {
-          this.latlng = this.user.location;
-          this.getDistances();
+    this.sub.add(
+      this.http.get("/api/products").subscribe(
+        (data: any) => {
+          this.bids = data;
+          if (this.user.id) {
+            this.latlng = this.user.location;
+            this.getDistances();
+          }
+        },
+        error => {
+          console.log("oops", error);
         }
-      },
-      error => {
-        console.log("oops", error);
-      }
+      )
     );
   }
 
   getDistances() {
     if (this.user.id) {
-      for (let bid of this.bids) {
+      this.sub.add(
         this.http
           .put<any>("/maps/sort", {
-            origins: [this.latlng],
-            destinations: [bid.user.location]
+            origins: this.latlng,
+            bids: this.bids
           })
           .subscribe(data => {
-            bid.distance = data;
-          });
-      }
+            console.log("this is bids", data);
+            this.bids = data;
+          })
+      );
     }
   }
 
@@ -84,5 +94,8 @@ export class HomeComponent implements OnInit {
     });
 
     console.log("bids", this.bids);
+  }
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
