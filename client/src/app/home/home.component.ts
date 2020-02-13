@@ -59,18 +59,17 @@ export class HomeComponent implements OnInit {
 
   getDistances() {
     if (this.user.id) {
-      for (let bid of this.bids) {
-        this.sub.add(
-          this.http
-            .put<any>("/maps/sort", {
-              origins: [this.latlng],
-              destinations: [bid.user.location]
-            })
-            .subscribe(data => {
-              bid.distance = data;
-            })
-        );
-      }
+      this.sub.add(
+        this.http
+          .put<any>("/maps/sort", {
+            origins: this.latlng,
+            bids: this.bids
+          })
+          .subscribe(data => {
+            console.log("this is bids", data);
+            this.bids = data;
+          })
+      );
     }
   }
 
