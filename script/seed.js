@@ -18,7 +18,7 @@ async function seed() {
     name: "Rachel",
     email: "rachel@email.com",
     password: "123",
-    location: [40.7050579, -75.0090341],
+    location: [40.709195, -74.0128613],
     isAdmin: true,
     phoneNumber: "Some number & need to verify"
   });
@@ -26,7 +26,7 @@ async function seed() {
     name: "Tashi",
     email: "tashi@email.com",
     password: "123",
-    location: [40.7050579, -54.0090341],
+    location: [40.709195, -74.0128613],
     isAdmin: true,
     phoneNumber: "+12409184882"
   });
