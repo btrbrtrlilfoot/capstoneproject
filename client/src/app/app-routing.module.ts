@@ -15,10 +15,18 @@ import { AppComponent } from "./app.component";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 import { FrontpageComponent } from "./frontpage/frontpage.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
+import { LoggedOutComponent } from "./logged-out/logged-out.component";
 
 const routes: Routes = [
+  {
+    path: "",
+    component: FrontpageComponent,
+    pathMatch: "full",
+    runGuardsAndResolvers: "always"
+  },
   { path: "logout", component: LogoutComponent },
   { path: "login", component: LoginComponent },
+  { path: "loggedOut", component: LoggedOutComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },
   { path: "auction", component: PostAuctionComponent, pathMatch: "full" },
@@ -27,7 +35,7 @@ const routes: Routes = [
   { path: "auction/:id/offerform", component: OfferFormComponent },
   { path: "auction/:id/success", component: AuctionClosedPageComponent },
   { path: "auction/:auctionId/offer/:id", component: SingleOfferComponent },
-  { path: "profile/:id", component: UserProfileComponent, pathMatch: "full" },
+  { path: "profile", component: UserProfileComponent, pathMatch: "full" },
   {
     path: "updateUserInfo",
     component: UpdateUserInfoComponent,
@@ -40,7 +48,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { onSameUrlNavigation: "reload" })],
   exports: [RouterModule]
 })
 export class AppRoutingModule {}

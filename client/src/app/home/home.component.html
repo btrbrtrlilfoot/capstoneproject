@@ -1,12 +1,12 @@
 <div class="header">
 
-  <h1 id="welcome">    Welcome, {{ user.name }}!   </h1>
+  <h1 id="welcome">    Welcome, {{ currentUser.name }}!   </h1>
 
 
     <div class="jumbotron" id="frontpg">
       <div id="utility">
         <h3>Active Auctions</h3>
-      <div *ngIf="user.id"><button class="btn btn-primary btn-sm active"  id="sort" type="button" (click)="sortAuctions()">Sort By Distance</button></div>
+      <div *ngIf="currentUser.id"><button class="btn btn-primary btn-sm active"  id="sort" type="button" (click)="sortAuctions()">Sort By Distance</button></div>
 
       </div>
 

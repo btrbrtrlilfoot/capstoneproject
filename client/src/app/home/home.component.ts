@@ -14,7 +14,7 @@ import { BehaviorSubject } from "rxjs";
   styleUrls: ["./home.component.css"]
 })
 export class HomeComponent implements OnInit {
-  user: any = {};
+  currentUser: any = {};
   bids: any;
   latlng: any;
   private sub: any;
@@ -31,11 +31,10 @@ export class HomeComponent implements OnInit {
   }
 
   async ngOnInit() {
-    console.group("userinhomee", this.user);
-
     this.sub = this._userProfileService.getUser().then(
       (data: any) => {
-        this.user = data;
+        this.currentUser = data;
+        console.group("userinhomee", this.currentUser);
       },
       error => {
         console.log("oops", error);
@@ -45,8 +44,8 @@ export class HomeComponent implements OnInit {
     this.http.get("/api/products").subscribe(
       (data: any) => {
         this.bids = data;
-        if (this.user.id) {
-          this.latlng = this.user.location;
+        if (this.currentUser.id) {
+          this.latlng = this.currentUser.location;
           this.getDistances();
         }
       },
@@ -57,7 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   getDistances() {
-    if (this.user.id) {
+    if (this.currentUser.id) {
       for (let bid of this.bids) {
         this.http
           .put<any>("/maps/sort", {
