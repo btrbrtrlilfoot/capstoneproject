@@ -55,7 +55,7 @@
     <div *ngIf="user.id === auctionOwnerId">
       <button
         (click)="onSubmit(selectedOffer)"
-        [disabled]="buttonDisable"
+        [disabled]="buttonDisable || selectedOffer === undefined"
         type="button"
         class="btn btn-outline-primary"
       >
