@@ -29,6 +29,14 @@ export class HomeComponent implements OnInit {
     this.router.navigate([`../auction/${bid.id}`]);
   }
 
+  gotoTop() {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: "smooth"
+    });
+  }
+
   async ngOnInit() {
     console.group("userinhomee", this.user);
 
