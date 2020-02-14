@@ -47,7 +47,7 @@ export class AuctionofferViewComponent implements OnInit {
       data => {
         //service function. lets me access the data returned by my http req
         this.auction = data;
-        console.log("this is auction", this.auction);
+        console.log("this is auction--------->", this.auction);
         this.auctionOwnerId = this.auction.userId;
         //This redirects the user away from looking up offers under the Auction url
         if (
