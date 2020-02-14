@@ -25,7 +25,6 @@ router.get("/:id", async (req, res, next) => {
 });
 router.put("/", async (req, res, next) => {
   try {
-    console.log("reqpara", req.body);
     const user = await User.findOne({
       where: {
         id: req.body.id
@@ -35,11 +34,12 @@ router.put("/", async (req, res, next) => {
     user.imageUrl = req.body.imageUrl;
     user.name = req.body.name;
     user.email = req.body.email;
-    console.log("user backend", user);
 
     user.save();
     res.send(user);
-  } catch (error) {}
+  } catch (error) {
+    next(error);
+  }
 });
 router.put("/:id", async (req, res, next) => {
   try {

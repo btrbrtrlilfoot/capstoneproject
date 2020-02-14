@@ -24,6 +24,7 @@ import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 import { FrontpageComponent } from "./frontpage/frontpage.component";
+import { LoggedOutComponent } from "./logged-out/logged-out.component";
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: "/file",
@@ -47,7 +48,8 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     UserProfileComponent,
     TransactionHistoryComponent,
     UpdateUserInfoComponent,
-    FrontpageComponent
+    FrontpageComponent,
+    LoggedOutComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { AuctionViewService } from "./auctionoffer-view.service";
 import { UserProfileService } from "../common/user-profile.service";
+import { Location } from "@angular/common";
 
 @Component({
   selector: "app-auctionoffer-view",
@@ -29,7 +30,8 @@ export class AuctionofferViewComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private auctionView: AuctionViewService,
-    private userProfileService: UserProfileService
+    private userProfileService: UserProfileService,
+    private location: Location
   ) {}
 
   async ngOnInit() {
@@ -82,7 +84,9 @@ export class AuctionofferViewComponent implements OnInit {
       error => console.log("theres been an error")
     );
   }
-
+  goBack() {
+    this.location.back();
+  }
   ngOnDestroy() {
     if (this.sub) {
       this.sub.unsubscribe();
