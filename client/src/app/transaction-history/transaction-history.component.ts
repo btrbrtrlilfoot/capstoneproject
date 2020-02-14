@@ -33,7 +33,7 @@ export class TransactionHistoryComponent implements OnInit {
     if (user.id !== undefined) {
       const userId = user.id;
       this.allProducts = await this._userProfileService.getAllProducts();
-
+      console.log(this.allProducts, "---------> THIS IS ALL PRODUCTS");
       this.userProducts = this.allProducts.filter(product => {
         return product.userId === userId;
       });
@@ -42,7 +42,7 @@ export class TransactionHistoryComponent implements OnInit {
         console.log(product);
         return product.type === "offer";
       });
-
+      console.log(this.userOffers, "this is user offers ------->");
       const userAuctions = this.userProducts.filter(product => {
         return (
           product.type === "auction (open)" ||
@@ -50,6 +50,7 @@ export class TransactionHistoryComponent implements OnInit {
         );
       });
       this.userAuctions = userAuctions;
+      console.log(this.userAuctions, "this is user auctions ------->");
     } else {
       this.router.navigateByUrl("/login");
     }

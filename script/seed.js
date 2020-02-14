@@ -12,6 +12,7 @@ async function seed() {
     email: "kiana@email.com",
     password: "123",
     location: [40.7050579, -74.0090341],
+    phoneNumber: "+17183094307",
     isAdmin: true
   });
   const user2 = await User.create({
@@ -20,7 +21,7 @@ async function seed() {
     password: "123",
     location: [40.709195, -74.1128613],
     isAdmin: true,
-    phoneNumber: "Some number & need to verify"
+    phoneNumber: "+19176080434"
   });
   const user3 = await User.create({
     name: "Tashi",
@@ -208,7 +209,7 @@ async function seed() {
     imageUrl: "service.png"
   });
   const product20 = await Product.create({
-    name: "Teach basic German",
+    name: "Teach German",
     kind: "service",
     type: "auction (open)",
     description:
