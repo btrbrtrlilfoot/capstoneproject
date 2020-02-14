@@ -57,6 +57,7 @@
     "@ng-bootstrap/ng-bootstrap": "^5.2.1",
     "@popperjs/core": "^2.0.6",
     "angular-popper": "^2.0.1",
+    "animate.css": "^3.7.2",
     "bootstrap": "^4.4.1",
     "compression": "^1.7.3",
     "connect-session-sequelize": "^6.0.0",
