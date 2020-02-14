@@ -42,7 +42,6 @@ export class TransactionHistoryComponent implements OnInit {
         console.log(product);
         return product.type === "offer";
       });
-      console.log(this.userOffers, "this is user offers ------->");
       const userAuctions = this.userProducts.filter(product => {
         return (
           product.type === "auction (open)" ||
@@ -50,7 +49,6 @@ export class TransactionHistoryComponent implements OnInit {
         );
       });
       this.userAuctions = userAuctions;
-      console.log(this.userAuctions, "this is user auctions ------->");
     } else {
       this.router.navigateByUrl("/login");
     }
