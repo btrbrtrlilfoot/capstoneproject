@@ -1,52 +1,81 @@
 <div class="container">
   <div style="width: 25%">
-
     <div class="card" style="width: 18rem;">
-      <img src="{{user.imageUrl}}" class="card-img-top" alt="...">
-      <div  *ngIf="checkUser.id === user.id" class="btn-group">
-        <button  id="btn" (click)="popUp()" routerLink="/updateUserInfo"type="button" class="btn btn-danger">
-          Edit Info
-        </button>
+      <img src="{{ user.imageUrl }}" class="card-img-top" alt="..." />
+      <button
+        id="btn"
+        (click)="popUp()"
+        routerLink="/updateUserInfo"
+        type="button"
+        class="btn btn-danger"
+      >
+        Edit Info
+      </button>
 
-          <div *ngIf="clicked">
-            <div class="custom-file">
-              <input type="file" class="custom-file-input" id="customFile" ng-change="onUploadSuccess(event)">
-              <label class="custom-file-label" for="customFile">Choose file</label>
-            </div>
-          </div>
-          </div>
-
-
-
-
+      <div *ngIf="clicked">
+        <div class="custom-file">
+          <input
+            type="file"
+            class="custom-file-input"
+            id="customFile"
+            ng-change="onUploadSuccess(event)"
+          />
+          <label class="custom-file-label" for="customFile">Choose file</label>
+        </div>
+      </div>
     </div>
 
     <div class="card-body">
-      <h5 class="card-title"  style="color: #ffb899; font-family: Open Sans, sans-serif; font-size: 20px; font-weight: 800" >{{user.name}}</h5>
-      <p style="color:rgb(133, 133, 133); font-size: 12px">Member Since: {{user.createdAt}}</p>
+      <h5
+        class="card-title"
+        style="color: #ffb899; font-family: Open Sans, sans-serif; font-size: 20px; font-weight: 800"
+      >
+        {{ user.name }}
+      </h5>
+      <p style="color:rgb(133, 133, 133); font-size: 12px">
+        Member Since: {{ user.createdAt }}
+      </p>
     </div>
-
-
   </div>
 
-
-
-
-
   <div style="width: 50%; height: 50%">
-    <h3 style="color: #ffb899; font-family: Open Sans, sans-serif; font-weight: 800; font-size: 25px">Currently Active Bids</h3>
-    <div  *ngFor="let userAuction of userAuctions">
-      <div div class="card" >
-        <img src="{{ userAuction.imageUrl }}" class="card-img-top h-50">
+    <h3
+      style="color: #ffb899; font-family: Open Sans, sans-serif; font-weight: 800; font-size: 25px"
+    >
+      Currently Active Bids
+    </h3>
+    <div *ngFor="let userAuction of userAuctions">
+      <div div class="card">
+        <img src="{{ userAuction.imageUrl }}" class="card-img-top h-50" />
         <div class="card-body">
-          <h5 class="card-title" style="color: rgb(133, 133, 133); font-size: 15px">{{ userAuction.name }} <span style="background-color: #ff906b;" class="badge badge-secondary">{{ userAuction.kind }}</span></h5>
-          <p class="card-text" style="font-size: 12px; color: rgb(133, 133, 133);">{{ userAuction.description }}</p> <div *ngIf="checkUser.id === user.id">
-            <button class="card-button" id="btn" type="button" class="btn btn-danger" (click)="onClick(userAuction.id)">Delete</button>
-          </div>
-
+          <h5
+            class="card-title"
+            style="color: rgb(133, 133, 133); font-size: 15px"
+          >
+            {{ userAuction.name }}
+            <span
+              style="background-color: #ff906b;"
+              class="badge badge-secondary"
+              >{{ userAuction.kind }}</span
+            >
+          </h5>
+          <p
+            class="card-text"
+            style="font-size: 12px; color: rgb(133, 133, 133);"
+          >
+            {{ userAuction.description }}
+          </p>
+            <button
+              class="card-button"
+              id="btn"
+              type="button"
+              class="btn btn-danger"
+              (click)="onClick(userAuction.id)"
+            >
+              Delete
+            </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
