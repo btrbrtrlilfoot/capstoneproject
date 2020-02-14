@@ -1,5 +1,5 @@
 
-<h3>Sign Up</h3>
+<h3 style="font-family: Fredoka One, cursive;;   color: #ffb899">Sign Up</h3>
 <br>
 <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
   <div class="form-group">
@@ -54,14 +54,14 @@
     />
   </div>
   <div id="signupBtn">
-    <button type="button" class="btn btn-primary" (click)="this.findMe()">
+    <button id="btn" type="button" class="btn btn-primary" (click)="this.findMe()">
       <span ng-show="searchButtonText == 'Searching'"><i class="glyphicon glyphicon-refresh spinning"></i></span>
         {{ searchButtonText }}
     </button>
 
     &nbsp;
     <br>
-    <button
+    <button id="btn"
       type="submit"
       class="btn btn-outline-primary"
       [disabled]="!userForm.valid"

@@ -1,6 +1,7 @@
 .list-group-item.active {
   background-color: #ffb899;
   font-family: "Fredoka One", cursive;
+  border: 0px;
 }
 
 #transactions {

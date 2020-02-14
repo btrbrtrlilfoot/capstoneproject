@@ -1,44 +1,86 @@
-<div>
-  <div class="jumbotron" *ngIf="error; else body">
-    <p class="display-4">No offer found!</p>
-    <hr class="my-4" />
-    <p>Do you want to make an offer on exisiting auctions in your area?</p>
-    <a
-      routerLinkActive="active"
-      routerLink="/home"
-      class="btn btn-primary btn-lg"
-      href="#"
-      role="button"
-      >click here!</a
-    >
-  </div>
+<div *ngIf="offer.id">
   <div>
-    <ng-template #body>
-      <div class="card mb-3">
-        <div class="row no-gutters">
-          <div class="col-md-4">
-            <img src="{{ offer.imageUrl }}" class="card-img" />
-          </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h3 class="card-title">
-                Offer {{ offer.name }} on Auction Id {{ auctionId }}
-              </h3>
-              <p class="card-text">{{ offer.description }}</p>
+    <div class="jumbotron" *ngIf="error; else body">
+      <p class="display-4">No offer found!</p>
+      <hr class="my-4" />
+      <p>Do you want to make an offer on exisiting auctions in your area?</p>
+      <a
+        routerLinkActive="active"
+        routerLink="/home"
+        class="btn btn-primary btn-lg"
+        href="#"
+        role="button"
+        >click here!</a
+      >
+    </div>
+    <div>
+      <ng-template #body>
+        <div class="card mb-3">
+          <div class="row no-gutters">
+            <div class="col-md-4">
+              <img src="{{ offer.imageUrl }}" class="card-img" />
+            </div>
+            <div class="col-md-8">
+              <div class="card-body">
+                <div class="card-header" id="card-h">
+                  <div
+                    routerLink="/profile/{{ offer.user.id }}"
+                    routerLinkActive="active"
+                  >
+                    <img src="{{ offer.user.imageUrl }}" id="offer-user-img" />
+                    {{ offer.user.name }}
+                    <p></p>
+                  </div>
+                  <div style="align-items: flex-end; text-align: right;">
+                    <p style="color:#ff906b; font-size: 15px">
+                      From Auction # {{ auctionId }}
+                    </p>
+                    <span
+                      class="badge badge-secondary"
+                      style="background-color: #ff906b;"
+                      >{{ offer.kind }}</span
+                    >
+                  </div>
+                </div>
+
+                <h5
+                  class="card-title"
+                  style="color: rgb(133, 133, 133);; font-family: Open Sans, sans-serif; font-size: 15px"
+                >
+                  {{ offer.name }}
+                </h5>
+
+                <p
+                  class="card-text"
+                  style="color:#b7b7b7; font-family: Open Sans, sans-serif; font-size: 12px"
+                >
+                  {{ offer.description }}
+                </p>
+              </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <br />
-      <button type="button"  class="btn btn-outline-primary" (click)="goBack()">
-        Back
-      </button>
-      &nbsp;
-      <button  [disabled]="disableDeleteBtn"
-      type="button"  class="btn btn-outline-primary" (click)="deleteSingleOffer()">
-        Delete
-      </button>
-    </ng-template>
+        <br />
+        <button
+          type="button"
+          id="btn"
+          class="btn btn-outline-primary"
+          (click)="goBack()"
+        >
+          Back
+        </button>
+        &nbsp;
+        <button
+          [disabled]="disableDeleteBtn"
+          type="button"
+          class="btn btn-outline-primary"
+          (click)="deleteSingleOffer()"
+          id="btn"
+        >
+          Delete
+        </button>
+      </ng-template>
+    </div>
   </div>
 </div>

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Product } = require("../db/models");
+const { Product, User } = require("../db/models");
 const sendSms = require("../twilio");
 
 module.exports = router;
@@ -10,7 +10,10 @@ router.get("/:id", async (req, res, next) => {
     const auctionId = req.params.id;
     const auction = await Product.findOne({
       where: { id: auctionId },
-      include: { model: Product, as: "Offer" }
+      include: [
+        { model: Product, as: "Offer", include: { model: User } },
+        { model: User }
+      ]
     }); //Base eagerloading. Returns the Auction Product and Offers in an array under the key: Offer
     res.json(auction);
   } catch (err) {
