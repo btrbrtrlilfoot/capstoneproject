@@ -43,7 +43,7 @@ export class AuctionofferViewComponent implements OnInit {
       //the + is to coerce it from string to numerical
     }); //Get URL Id
 
-    this.auctionView.getAuctionProducts(this.id).subscribe(
+    await this.auctionView.getAuctionProducts(this.id).subscribe(
       data => {
         //service function. lets me access the data returned by my http req
         this.auction = data;
