@@ -1,76 +1,105 @@
-<div>
-  <div class="card mb-3">
+
+
+
+  <div class="card mb-3" id="card-container">
     <div class="row no-gutters">
       <div class="col-md-4">
         <img src="{{ auction.imageUrl }}" class="card-img" />
       </div>
       <div class="col-md-8">
+
+
+
+
+
         <div class="card-body">
-          <h3 class="card-title">{{ auction.name }} <span class="badge badge-secondary">{{ auctionStatus }}</span></h3>
-          <p class="card-text">{{auction.description}}</p>
+
+          <div>
+            <div class="card-header" id="card-h">
+              <div>
+                <img  src="{{ auction.user.imageUrl }}" id="auction-user-img" routerLink="/profile/{{ auction.user.id }}"
+                routerLinkActive="active" >
+                {{auction.user.name}} <p></p>
+               </div>
+              <div> <p style="color:#ff906b"># {{auction.id}}  </p></div>
+
+              </div>
+          <div>
+
+
+
+          <h3 class="card-title" style="font-family: Open Sans, sans-serif;   color: rgb(133, 133, 133)">{{ auction.name }} <span class="badge badge-secondary" style="background-color: #ff906b;">{{ auctionStatus }}</span></h3>
+         <div style="width: 75%"> <p class="card-text" style="font-size: 12px; font-family: Open Sans, sans-serif;">{{auction.description}}</p></div>
         </div>
       </div>
     </div>
   </div>
-    <div>
-      <mat-radio-group [(ngModel)]="selectedOffer">
-        <div class="list-group">
-            <div class="list-group-item list-group-item-dark d-flex w-100 justify-content-between">
-              <h5 class="mb-1">Offers</h5>
-            </div>
-          <div *ngFor="let offer of offers" class="list-group-item">
-            <div class="row no-gutters">
-              <div
-                class="col-md-1"
-                *ngIf="
-                  user.id === auctionOwnerId &&
-                  auction.type === 'auction (open)'
-                "
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <mat-radio-button [value]="offer.id"></mat-radio-button>
-                </div>
-              </div>
-              <div
-                class="col-md-11"
-                routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
-                routerLinkActive="active"
-              >
-                <div class="d-flex w-100 justify-content-between">
-                  <h5 class="mb-1">{{ offer.name }}</h5>
-                  <small>{{ offer.kind }}</small>
-                </div>
-                <p class="mb-1">
-                  This {{ offer.kind }} is an offer from userId
-                  {{ offer.userId }}
-                </p>
-                <small>Currently: {{ offer.offer.status }}</small>
-              </div>
+
+</div>
+</div>
+
+<div>
+  <mat-radio-group [(ngModel)]="selectedOffer">
+    <div class="list-group">
+        <div class="list-group-item list-group-item-dark d-flex w-100 justify-content-between" style="background-color:#ffb899; border-color:white;">
+          <h5 class="mb-1" style="color: white; font-family: Open Sans, sans-serif">Offers</h5>
+        </div>
+      <div *ngFor="let offer of offers" class="list-group-item" style="font-family: Open Sans, sans-serif; color:  rgb(133, 133, 133)">
+        <div class="row no-gutters">
+          <div
+            class="col-md-1"
+            *ngIf="
+              user.id === auctionOwnerId &&
+              auction.type === 'auction (open)'
+            "
+          >
+            <div class="d-flex w-100 justify-content-between">
+              <mat-radio-button [value]="offer.id"></mat-radio-button>
             </div>
           </div>
+          <div
+            class="col-md-11"
+            routerLink="/auction/{{ id }}/offer/{{ offer.id }}"
+            routerLinkActive="active"
+          >
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1" style="font-size: 20px">{{ offer.name }}</h5>
+
+            </div>
+            <p class="mb-1" style="font-size: 12px">
+              This {{ offer.kind }} is an offer from <a routerLink="/profile/{{ offer.user.id }}"
+              routerLinkActive="active" style="color:#ff906b">   {{ offer.user.name }} </a> </p>
+
+            <small>Currently: {{ offer.offer.status }}</small><br>
+            <small>Type:{{ offer.kind }}</small>
+          </div>
         </div>
-      </mat-radio-group>
+      </div>
     </div>
-    <br>
-    <div *ngIf="user.id === auctionOwnerId">
-      <button
-        (click)="onSubmit(selectedOffer)"
-        [disabled]="buttonDisable"
-        type="button"
-        class="btn btn-outline-primary"
-      >
-        Select Offer
-      </button>
-    </div>
-    <br>
-    <div *ngIf="user.id !== auctionOwnerId && !buttonDisable && user.id">
-      <button
-        routerLink="/auction/{{ id }}/offerform"
-        [disabled]="buttonDisable"
-        type="button"
-        class="btn btn-outline-primary"
-      >
-        Add Offer
-      </button>
-    </div>
+  </mat-radio-group>
 </div>
+<div class="btndv">
+  <div *ngIf="user.id === auctionOwnerId">
+    <button id="btn"
+      (click)="onSubmit(selectedOffer)"
+      [disabled]="buttonDisable"
+      type="button"
+      class="btn btn-outline-primary"
+    >
+      Select Offer
+    </button>
+  </div>
+  <div *ngIf="user.id !== auctionOwnerId && !buttonDisable && user.id">
+    <button id="btn"
+      routerLink="/auction/{{ id }}/offerform"
+      [disabled]="buttonDisable"
+      type="button"
+      class="btn btn-outline-primary"
+    >
+      Add Offer
+    </button>
+
+
+
+</div>
+

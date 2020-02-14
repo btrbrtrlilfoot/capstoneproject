@@ -8,6 +8,10 @@
   color: white;
 }
 
+.btn btn-primary btn-sm:focus {
+  display: none;
+}
+
 #card-h {
   display: flex;
   justify-content: space-between;

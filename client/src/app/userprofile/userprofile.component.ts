@@ -14,6 +14,7 @@ export class UserProfileComponent implements OnInit {
   clicked: boolean;
   userAuctions: any;
   user: any = {};
+  checkUser: any;
   private sub: any;
 
   constructor(
@@ -24,8 +25,8 @@ export class UserProfileComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    const checkUser = await this._userProfileService.getUser();
-    if (!checkUser.id) {
+    this.checkUser = await this._userProfileService.getUser();
+    if (!this.checkUser.id) {
       console.log("no id....");
 
       this.router.navigate(["home"]);
