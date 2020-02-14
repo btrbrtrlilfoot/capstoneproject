@@ -58,10 +58,14 @@ export class UserProfileComponent implements OnInit {
     console.log("event", event);
     const updated = await this._userProfileService.changePic(event[1].fileName);
     this.user = updated;
-    console.log("userururur", this.user);
   }
 
   onClick(id: number) {
     this._userProfileService.deleteUserAuction(id);
+  }
+
+  formatDate(dateString) {
+    let date = new Date(dateString);
+    return date.toDateString();
   }
 }

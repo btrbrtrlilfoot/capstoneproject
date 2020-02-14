@@ -5,19 +5,19 @@
       <button (click)="popUp()" routerLink="/updateUserInfo"type="button" class="btn btn-danger">
         Edit Info
       </button>
-      
+
         <div *ngIf="clicked">
           <div class="custom-file">
             <input type="file" class="custom-file-input" id="customFile" ng-change="onUploadSuccess(event)">
             <label class="custom-file-label" for="customFile">Choose file</label>
           </div>
         </div>
-       
+
       </div>
     </div>
     <div class="card-body">
       <h5 class="card-title">{{user.name}}</h5>
-      <p>Member Since: {{user.createdAt}}</p>
+      <p>Member Since: {{formatDate(user.createdAt)}}</p>
     </div>
   <h3>Currently Active Bids:</h3>
   <div>

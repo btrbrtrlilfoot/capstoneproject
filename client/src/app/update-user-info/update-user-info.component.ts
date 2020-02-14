@@ -44,7 +44,7 @@ export class UpdateUserInfoComponent implements OnInit {
         console.log("oops", error);
       }
     );
-    this.router.navigate(["/home"]);
+    this.router.navigate(["/profile"]);
   }
   change(evt) {
     this.userUpdateForm[evt.target.id] = evt.target.value;
