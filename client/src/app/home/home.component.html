@@ -5,8 +5,8 @@
 
     <div class="jumbotron" id="frontpg">
       <div id="utility">
-        <h3>Active Auctions</h3>
-      <div *ngIf="currentUser.id"><button class="btn btn-primary btn-sm active"  id="sort" type="button" (click)="sortAuctions()">Sort By Distance</button></div>
+        <h3 style="font-family: Open Sans, sans-serif; font-weight: 200;">Active Auctions</h3>
+      <div *ngIf="user.id"><button class="btn btn-primary btn-sm "  id="sort" type="button" style="font-weight:20" (click)="sortAuctions()">Sort By Distance</button></div>
 
       </div>
 
@@ -30,32 +30,39 @@
 
     <div *ngIf="bids">
       <br>
-      <div
-      className="scrollBox"
-      *ngFor="let bid of bids | filter: searchText" id="a-card">
-      <div  (click)="onClick(bid)" class="card w-75" id="card-container">
-        <div class="card-header" id="card-h">
-
-          <div>
-            <img  src="{{ bid.user.imageUrl }}" id="bid-user-img" >
-            {{bid.user.name}} <p></p>
-           </div>
+      <div class="row row-cols-1 row-cols-md-3">
 
 
-          <div> <p style="color:#ff906b">#{{bid.id}}</p></div>
+        <div
+        className=" scrollBox"
+        *ngFor="let bid of bids | filter: searchText"  class="col mb-4">
+        <div  (click)="onClick(bid)" class="card w-100" style="height: 600px" id="card-container">
+          <div class="card-header" id="card-h">
+
+            <div>
+              <img  src="{{ bid.user.imageUrl }}" id="bid-user-img" >
+              <p style="font-size: 10px">{{bid.user.name}} </p>
+             </div>
 
 
-        </div>
+            <div> <p style="color:#ff906b">#{{bid.id}}</p></div>
 
 
-        <img src="{{ bid.imageUrl }}" class="card-img-top" id="card-img" >
-        <div class="card-body" id="card-b">
-          <h5 class="card-title">{{ bid.name }}  <span class="badge badge-secondary">{{ bid.kind }}</span></h5>
-          <p id="distance">{{bid.distance ? bid.distance : 0}}m away</p>
-          <p class="card-text" id="card-txt">{{ bid.description }}</p>
+          </div>
+
+
+          <img src="{{ bid.imageUrl }}" class="card-img-top" id="card-img" >
+          <div class="card-body" id="card-b">
+            <h5 class="card-title">{{ bid.name }}  <span class="badge badge-secondary" style="background-color:#ff906b; color:white;">{{ bid.kind }}</span></h5>
+            <p id="distance">{{bid.distance ? bid.distance : 0}}m away</p>
+            <p class="card-text" id="card-txt">{{ bid.description }}</p>
+          </div>
         </div>
       </div>
-    </div>
+
+
+      </div>
+
     </div>
 
     <button type="button" (click)="gotoTop()"id="top">⇧</button>

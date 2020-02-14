@@ -15,6 +15,7 @@ export class UserProfileComponent implements OnInit {
   clicked: boolean;
   userAuctions: any;
   user: any = {};
+  checkUser: any;
   private sub: any;
 
   constructor(

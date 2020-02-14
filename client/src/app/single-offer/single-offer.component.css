@@ -1,0 +1,25 @@
+#offer-user-img {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+#card-h {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Open Sans", sans-serif;
+  font-size: 20px;
+  color: rgb(133, 133, 133);
+  background-color: white;
+  margin-bottom: 30px;
+}
+
+#btn {
+  background-color: #ff906b;
+  border-color: white;
+  color: white;
+}
+
+#btn:hover {
+  background-color: #ffb899;
+}
