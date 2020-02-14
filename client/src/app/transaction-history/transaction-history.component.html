@@ -37,7 +37,8 @@
           *ngFor="let auction of userAuctions"
           routerLink="/auction/{{ auction.id }}"
         >
-          <h6>Auction {{ auction.name }} - created on {{ formatDate(auction.createdAt) }} <span class="badge badge-secondary">{{ auction.kind }}</span></h6>
+          <h6>Auction {{ auction.name }} - created on {{ formatDate(auction.createdAt) }} <span class="badge badge-secondary" style="background-color: #ff906b;"
+            >{{ auction.kind }}</span></h6>
           <small>{{ auction.type }}</small>
         </li>
       </ul>
@@ -56,7 +57,8 @@
         *ngFor="let offer of userOffers"
         (click)="navigateToAuctionForOffer(offer)"
       >
-        <h6>Offer {{ offer.name }} - created on {{ formatDate(offer.createdAt) }} <span class="badge badge-secondary">{{ offer.kind }}</span></h6>
+        <h6>Offer {{ offer.name }} - created on {{ formatDate(offer.createdAt) }} <span class="badge badge-secondary" style="background-color: #ff906b;"
+          >{{ offer.kind }}</span></h6>
       </li>
     </ul>
   </div>
