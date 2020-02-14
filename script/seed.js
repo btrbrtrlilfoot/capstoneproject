@@ -32,16 +32,16 @@ async function seed() {
   });
 
   const user4 = await User.create({
-    name: "Cody",
-    email: "cody@email.com",
+    name: "John",
+    email: "john@email.com",
     password: "123",
     location: [40.7350579, -75.0090341],
     isAdmin: false
   });
 
   const user5 = await User.create({
-    name: "Murphy",
-    email: "murphy@email.com",
+    name: "Juan",
+    email: "juan@email.com",
     password: "123",
     location: [40.7050579, -74.0098341],
     isAdmin: false
@@ -53,7 +53,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Used but in good condition NutriBullet 900. Great for fruits, veggies, and greens. Perfect for making smoothies",
     tags: ["item", "kitchen items", "cooking", "juice"],
     imageUrl: "Juicer.jpg"
   });
@@ -62,7 +62,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Small crack on the screen, but the battery life is excellent! Comes with charger and Otterbox case",
     tags: ["item", "phone", "technology", "apple"],
     imageUrl: "I-Phone10.jpeg"
   });
@@ -71,7 +71,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Brand new, perfect condition! Purchased by a friend who had to suddenly leave the country and left it behind. Comes with charger, laptop sleeve, HDMI adapter, and CD drive.",
     tags: ["item", "computer", "technology", "apple", "new"],
     imageUrl: "macbookair-2015.jpg"
   });
@@ -80,7 +80,7 @@ async function seed() {
     kind: "item",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "From Sony's Website: Sit back, relax and prepare to experience a new level of audio excellence. These headphones combine cutting-edge technology with the finest craftsmanship, for the ultimate listening experience.",
     tags: ["item", "technology", "sony products"],
     imageUrl: "sonyheadphones.jpg"
   });
@@ -88,8 +88,7 @@ async function seed() {
     name: "Pack of Pokemon Cards",
     kind: "item",
     type: "auction (open)",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    description: "Extremely rare cards included",
     tags: ["item", "card games", "fun", "new"],
     imageUrl: "pokemoncards.jpg"
   });
@@ -98,7 +97,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Class - LED - NU6900 Series - 2160p - Smart - 4K UHD TV with HDR. Access your streaming services all in one place using the Samsung remote control.",
     tags: ["item", "TV", "Samsung products", "new"],
     imageUrl: "samsungTV.jpg"
   });
@@ -106,8 +105,7 @@ async function seed() {
     name: "Rayban Glasses",
     kind: "item",
     type: "auction (closed)",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    description: "Vintage & Extremely stylish with UV resistant lenses.",
     tags: ["item", "TV", "Samsung products", "new"],
     imageUrl: "rayban.jpeg"
   });
@@ -116,7 +114,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Size small, warm enough to wear under a jacket even in midwinter. Bought this for my little brother but he doesn't want it, so it's brand new and still has the tags on!",
     tags: ["item", "clothes", "new"],
     imageUrl: "nikehoodie.jpg"
   });
@@ -125,7 +123,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Sturdy, roomy, and trendy. You'll never skip another workout once you have this bad boy to show off",
     tags: ["item", "bags", "Adidas", "worn"],
     imageUrl: "addidasbag.jpg"
   });
@@ -134,7 +132,7 @@ async function seed() {
     kind: "item",
     type: "auction (closed)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Satisfy your salt cravings with this tasty, quick, easy classic.",
     tags: ["item", "food", "Japanese"],
     imageUrl: "ramen.jpg"
   });
@@ -143,7 +141,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "This clock belonged to my grandfather. He was a trained woodworker and handcrafted this in 1937. Its base is made out of mahogany, and the face is made from tempered glass. Roman numerals provide an instant old-days charm to any room this clock is placed in",
     imageUrl: "clock.jpg"
   });
 
@@ -152,7 +150,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "With the largest library of games, Xbox 360 has something for everyone. Play blockbuster titles like Halo, Forza Motorsport, and Madden/FIFA. Enjoy unrivaled multiplayer games online with friends, and watch HD movies, TV shows, live events, music and sports. Plus, the spacious 500GB hard drive gives you more storage for games, entertainment and demos. And now with a sleek new design, Xbox 360 looks better than ever.",
     imageUrl: "xbox.jpg"
   });
   const product13 = await Product.create({
@@ -160,7 +158,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Save a fortune on gym fees AND gas by biking to work! Sturdy 12 speed is usable in almost any terrain. Make sure you check the tire pressure and chain regularly, as it is an older bike. ",
     imageUrl: "bike.jpg"
   });
   const product14 = await Product.create({
@@ -168,7 +166,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Lightweight yet sturdy. Had it for ten years, but my kids don't play with it anymore. It has a lot of sentimental value so I don't want to throw it out. Please take it! ",
     imageUrl: "lightsaber.jpg"
   });
 
@@ -176,8 +174,7 @@ async function seed() {
     name: "Printer",
     kind: "item",
     type: "offer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    description: "InkJet350 series. Comes with pack of black ink!",
     imageUrl: "printer.jpg"
   });
 
@@ -186,7 +183,7 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Finally, you can relax and enjoy a nice dinner at home without having to worry about a mountain of dishes! I will take care of it all",
     imageUrl: "service.png"
   });
 
@@ -195,7 +192,7 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "I am currently in culinary school and am looking to practice my skills on different dishes. Provide the necessary ingredients & cookware and I will make you whatever you want!",
     imageUrl: "service.png"
   });
 
@@ -204,7 +201,7 @@ async function seed() {
     kind: "service",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "I am a student an engineering student at Brooklyn College. I can help with any high school level math, calculus, or physics class.",
     imageUrl: "service.png"
   });
   const product20 = await Product.create({
@@ -212,7 +209,7 @@ async function seed() {
     kind: "service",
     type: "auction (open)",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "If you would like to become conversational in German and expand your cultural horizons, hit me up! I am a native German speaker who moved to New York ten years ago",
     imageUrl: "German.jpg"
   });
 
@@ -221,7 +218,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "TI84, great condition. Graphing, programming, and statistic functionality",
     imageUrl: "calculator.jpg"
   });
 
@@ -229,8 +226,7 @@ async function seed() {
     name: "Pen",
     kind: "item",
     type: "offer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    description: "Classic feather quill, comes with ink well",
     imageUrl: "fountainpen.jpg"
   });
 
@@ -238,8 +234,7 @@ async function seed() {
     name: "Collection of Daniel Steel Novels",
     kind: "item",
     type: "offer",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+    description: "Paperback, like new",
     imageUrl: "danielsteelbooks.jpeg"
   });
 
@@ -248,7 +243,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "great reach, provides the perfect angle for selfies. It can fit up to five people in one pic!",
     imageUrl: "selfiestick.jpg"
   });
 
@@ -257,7 +252,7 @@ async function seed() {
     kind: "item",
     type: "offer",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod",
+      "Handmade with goodluck charms. Classic and goes with everything",
     imageUrl: "bracelet.jpg"
   });
 
