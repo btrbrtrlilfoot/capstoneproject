@@ -86,7 +86,7 @@ router.delete("/:id", async (req, res, next) => {
       await offer.destroy();
     }
     await products.destroy(); //deletes product
-    res.send("Auction Has Been Deleted. All Offers Are Gone");
+    res.sendStatus(204);
   } catch (err) {
     next(err);
   }

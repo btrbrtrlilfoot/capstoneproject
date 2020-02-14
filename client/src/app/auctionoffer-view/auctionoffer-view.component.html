@@ -82,5 +82,9 @@
     <button (click)="goBack()" type="button" class="btn btn-outline-primary">
       Back
     </button>
+    &nbsp;
+    <button [disabled]="disableDeleteBtn" type="button" (click)="deleteAuctionOffer()" class="btn btn-outline-primary">
+      Delete
+    </button>
   </div>
 </div>

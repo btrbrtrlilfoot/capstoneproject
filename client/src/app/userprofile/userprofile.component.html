@@ -16,21 +16,10 @@
       </div>
     </div>
     <div class="card-body">
-      <h5 class="card-title">{{user.name}}</h5>
+      <h5 class="card-title">Name: {{user.name}}</h5>
+      <p>Email: {{user.email}}</p>
+      <p>Phone Number: {{user.phoneNumber}}</p>
       <p>Member Since: {{formatDate(user.createdAt)}}</p>
     </div>
-  <h3>Currently Active Bids:</h3>
-  <div>
-    <div  *ngFor="let userAuction of userAuctions">
-      <div div class="card h-100">
-        <img src="{{ userAuction.imageUrl }}" class="card-img-top">
-        <div class="card-body">
-          <h5 class="card-title">{{ userAuction.name }} <span class="badge badge-secondary">{{ userAuction.kind }}</span></h5>
-          <p class="card-text">{{ userAuction.description }}</p>
-          <button class="card-button" type="button" class="btn btn-danger" (click)="onClick(userAuction.id)">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 

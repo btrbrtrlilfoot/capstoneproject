@@ -34,6 +34,11 @@
       <button type="button"  class="btn btn-outline-primary" (click)="goBack()">
         Back
       </button>
+      &nbsp;
+      <button  [disabled]="disableDeleteBtn"
+      type="button"  class="btn btn-outline-primary" (click)="deleteSingleOffer()">
+        Delete
+      </button>
     </ng-template>
   </div>
 </div>
