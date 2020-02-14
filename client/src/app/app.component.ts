@@ -1,6 +1,5 @@
-import { Component, OnInit, NgModule } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
-import { LoginComponent } from "./login/login.component";
 import { HttpClient } from "@angular/common/http";
 import { Router, Event, NavigationEnd } from "@angular/router";
 

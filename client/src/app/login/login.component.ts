@@ -1,5 +1,5 @@
-import { Input, Component, OnInit, createPlatformFactory } from "@angular/core";
-import { FormGroup, FormControl, FormBuilder } from "@angular/forms";
+import { Component, OnInit } from "@angular/core";
+import { FormGroup, FormControl } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { UserProfileService } from "../common/user-profile.service";
 import { Router } from "@angular/router";

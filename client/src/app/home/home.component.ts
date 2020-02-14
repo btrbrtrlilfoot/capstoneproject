@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
     private http: HttpClient,
     private router: Router
   ) {}
-  // Changed this, is now working.Do not remove
+
   onClick(bid) {
     this.router.navigate([`../auction/${bid.id}`]);
   }

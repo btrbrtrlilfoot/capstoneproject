@@ -55,7 +55,6 @@ router.post("/reverse", async (req, res, next) => {
       },
       function(err, response) {
         if (!err) {
-          console.log("this is response", response.json);
           res.json(response.json.results[0].formatted_address);
         }
       }
@@ -78,7 +77,6 @@ router.post("/geocode", async (req, res, next) => {
             response.json.results[0].geometry.location.lng,
             response.json.results[0].geometry.location.lng
           ];
-          console.log("this is response", response.json);
           res.json(latlng);
         }
       }

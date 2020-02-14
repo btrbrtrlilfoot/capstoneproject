@@ -30,18 +30,14 @@ export class UserProfileComponent implements OnInit {
       this.router.navigate(["home"]);
     }
     this.user = user;
-
     if (user.id !== undefined) {
       const userId = user.id;
     }
-
     const userAuctions = await this._userProfileService.getAllOpenAuctions();
     this.userAuctions = userAuctions.filter(
       auction => auction.userId === this.user.id
     );
-
     console.log("UserProfileComponent:ngOnInit:", user);
-
     let openAuctions = await this._userProfileService.getAllOpenAuctions();
     this.userAuctions = openAuctions.filter(
       auction => auction.userId === this.user.id
@@ -60,11 +56,11 @@ export class UserProfileComponent implements OnInit {
     this.user = updated;
     console.log("userururur", this.user);
   }
-
   onClick(id: number) {
     this._userProfileService.deleteUserAuction(id);
   }
-
-  // console.log('success',event)
-  // this.user = await this._userProfileService.changePic(event[1].fileName)
+  formatDate(dateString) {
+    let date = new Date(dateString);
+    return date.toDateString();
+  }
 }

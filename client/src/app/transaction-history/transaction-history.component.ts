@@ -10,8 +10,8 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ["./transaction-history.component.css"]
 })
 export class TransactionHistoryComponent implements OnInit {
-  userOffers: any;
-  userAuctions: any;
+  userOffers: any = [];
+  userAuctions: any = [];
   user: any = {};
   userProducts: any;
   allProducts = [];
@@ -39,6 +39,7 @@ export class TransactionHistoryComponent implements OnInit {
       });
 
       this.userOffers = this.userProducts.filter(product => {
+        console.log(product);
         return product.type === "offer";
       });
 
@@ -62,5 +63,11 @@ export class TransactionHistoryComponent implements OnInit {
     if (auction) {
       this.router.navigateByUrl(`/auction/${auction.id}`);
     }
+  }
+
+  formatDate(dateString) {
+    let date = new Date(dateString);
+
+    return date.toDateString();
   }
 }

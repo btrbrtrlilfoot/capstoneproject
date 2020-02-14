@@ -33,7 +33,9 @@
         {{ user.name }}
       </h5>
       <p style="color:rgb(133, 133, 133); font-size: 12px">
-        Member Since: {{ user.createdAt }}
+        Email: {{user.email}}<br>
+        Phone Number: {{user.phoneNumber}}<br>
+        Member Since:{{formatDate(user.createdAt)}}
       </p>
     </div>
   </div>
@@ -77,5 +79,4 @@
         </div>
       </div>
     </div>
-  </div>
 </div>

@@ -23,6 +23,7 @@ export class AuctionofferViewComponent implements OnInit {
   user: any = {}; //Grab current logged in UserID
   selectedOffer: number;
   private sub: any;
+  disableDeleteBtn: boolean = true;
 
   //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
   constructor(
@@ -67,6 +68,8 @@ export class AuctionofferViewComponent implements OnInit {
           this.auctionStatus = "closed";
           this.buttonDisable = true;
         }
+
+        this.disableDeleteBtn = this.user.id !== this.auction.userId;
       },
       error => console.log("theres been an error")
     );
@@ -86,6 +89,10 @@ export class AuctionofferViewComponent implements OnInit {
   }
   goBack() {
     this.location.back();
+  }
+  async deleteAuctionOffer() {
+    await this.auctionView.deleteAuctionOffer(this.id);
+    this.router.navigateByUrl(`/home`);
   }
   ngOnDestroy() {
     if (this.sub) {

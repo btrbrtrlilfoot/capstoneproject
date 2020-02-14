@@ -1,11 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserProfileService } from "../common/user-profile.service";
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from "@angular/forms";
+import { FormGroup, FormControl } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 
@@ -26,7 +21,6 @@ export class UpdateUserInfoComponent implements OnInit {
 
   async ngOnInit() {
     this.user = await this._userProfileService.getUser();
-    console.log("usor", this.user);
 
     this.userUpdateForm = new FormGroup({
       $key: new FormControl(null),
@@ -42,25 +36,21 @@ export class UpdateUserInfoComponent implements OnInit {
     form.id = this.user.id;
     form.imageUrl = this.imageUrl;
 
-    console.log("formoo", form);
     this.user = await this.http.put(`/api/users/`, form).subscribe(
       (data: any) => {
         this.user = data;
-        console.log("newuser", this.user);
-        // this.router.navigate(["/auction/confirm", { auction: this.auction }]);
       },
       error => {
         console.log("oops", error);
       }
     );
-    this.router.navigate(["/home"]);
+    this.router.navigate(["/profile"]);
   }
   change(evt) {
     this.userUpdateForm[evt.target.id] = evt.target.value;
   }
   onUploadSuccess(event) {
     this.imageUrl = event[1].fileName;
-    console.log("img", this.imageUrl);
   }
 
   onUploadError(event) {

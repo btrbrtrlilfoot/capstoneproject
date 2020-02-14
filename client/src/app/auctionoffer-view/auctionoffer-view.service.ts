@@ -27,4 +27,10 @@ export class AuctionViewService {
   returnAuction() {
     return this.auction;
   }
+
+  async deleteAuctionOffer(auctionId: number) {
+    let url = `${this._url}/${auctionId}`;
+    await this._http.delete<any>(url).toPromise();
+    return;
+  }
 }
