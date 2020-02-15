@@ -8,15 +8,16 @@ async function seed() {
   console.log("db synced!");
   //dummy users
   const user1 = await User.create({
-    name: "Kiana",
+    name: "Kiana W",
     email: "kiana@email.com",
     password: "123",
     location: [40.7050579, -74.0090341],
     phoneNumber: "+17183094307",
+    imageUrl: "default2.png",
     isAdmin: true
   });
   const user2 = await User.create({
-    name: "Rachel",
+    name: "Rachel T",
     email: "rachel@email.com",
     password: "123",
     location: [40.709195, -74.1128613],
@@ -24,19 +25,21 @@ async function seed() {
     phoneNumber: "+19176080434"
   });
   const user3 = await User.create({
-    name: "Tashi",
+    name: "Tashi G",
     email: "tashi@email.com",
     password: "123",
     location: [40.709195, -74.0128613],
     isAdmin: true,
+    imageUrl: "default3.png",
     phoneNumber: "+12409184882"
   });
 
   const user4 = await User.create({
-    name: "John",
-    email: "john@email.com",
+    name: "John Smith",
+    email: "johnsmith@email.com",
     password: "123",
-    location: [40.7350579, -75.0090341],
+    location: [40.7295134, -73.9986496],
+    imageUrl: "default5.jpg",
     isAdmin: false
   });
 
@@ -44,11 +47,58 @@ async function seed() {
     name: "Juan",
     email: "juan@email.com",
     password: "123",
-    location: [40.7050579, -74.0098341],
+    location: [42.3504997, -71.1075878],
+    imageUrl: "default6.jpg",
+    isAdmin: false
+  });
+
+  const user6 = await User.create({
+    name: "Constance Lee",
+    email: "constancel@email.com",
+    password: "123",
+    location: [40.7504225, -73.9903755],
+    imageUrl: "default4.jpg",
+    isAdmin: false
+  });
+
+  const user7 = await User.create({
+    name: "Jennifer Haim",
+    email: "constancel@email.com",
+    password: "123",
+    location: [40.7094112, -73.9253575],
+    imageUrl: "default7.jpg",
+    isAdmin: false
+  });
+
+  const user8 = await User.create({
+    name: "Sarah C",
+    email: "itssarahc@email.com",
+    password: "123",
+    location: [40.721432, -73.9990459],
+    imageUrl: "default8.jpg",
+    isAdmin: false
+  });
+
+  const user9 = await User.create({
+    name: "Elon M",
+    email: "itssarahc@email.com",
+    password: "123",
+    location: [40.762832, -73.9614726],
+    imageUrl: "default9.jpg",
     isAdmin: false
   });
 
   //fake products
+
+  const product27 = await Product.create({
+    name: "Cooking class",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "Fun day learning to cook at home with me! I'm practicing to be a chef and want to get better!",
+    imageUrl: "cooking.jpg"
+  });
+
   const product1 = await Product.create({
     name: "Juicer",
     kind: "item",
@@ -257,7 +307,80 @@ async function seed() {
     imageUrl: "bracelet.jpg"
   });
 
+  const product26 = await Product.create({
+    name: "Borrow a Tesla",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "Old Tesla model, pretend to your friends that you have the money to actually afford one. ",
+    imageUrl: "tesla.jpg"
+  });
+
+  const product28 = await Product.create({
+    name: "Dog Walking",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "I've been walking my friends' dogs lately around Central Park. If you have a furry friend that you need babysat for a bit, I'm your girl!",
+    imageUrl: "dogwalking.jpg"
+  });
+
+  const product29 = await Product.create({
+    name: "Teach you how to Parallel Park",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "A lot of my friends tell me how hard it is for them to practice this, and how much they love learning from me! Wanted to help others out a bit if they're looking to learn!",
+    imageUrl: "parking.jpg"
+  });
+
+  const product30 = await Product.create({
+    name: "Get the Best Produce at a Farmer's Market!",
+    kind: "service",
+    type: "auction (open)",
+    description:
+      "I love going to farmer's markets around the area! I'm really good at picking out the best deals and the freshest produce, and I always know what's in season. I would love to help you navigate the great big world of haggling for a bit!",
+    imageUrl: "market.jpg"
+  });
+
+  const product31 = await Product.create({
+    name: "House Plant Giveaway!",
+    kind: "item",
+    type: "auction (open)",
+    description:
+      "My friend is a plant mom and is trying to give away some of her plants. They're very well taken care of, but she's getting a dog soon and wants to make some space in her apartment for him. You can make blank offers!",
+    imageUrl: "houseplant.jpg"
+  });
+
+  const product32 = await Product.create({
+    name: "Room Lights",
+    kind: "item",
+    type: "auction (open)",
+    description:
+      "I moved out of my college dorm awhile ago, so I have these room lights I used to decorate my walls with. They're still in good condition, they've just been taking up space in my apartment and my boyfriend wants me to get rid of it...",
+    imageUrl: "lights.jpg"
+  });
+
+  const product33 = await Product.create({
+    name: "Old Copy of Moby Dick",
+    kind: "item",
+    type: "auction (open)",
+    description:
+      "I have so many old classic books from when I used to take English! If anyone wants them, pleaset take them off my hands!",
+    imageUrl: "mobydick.jpg"
+  });
+
+  const product34 = await Product.create({
+    name: "Teacups",
+    kind: "item",
+    type: "offer",
+    description:
+      "Antique teacups I got as a homewarming present from a friend. Never used!",
+    imageUrl: "teacups.jpg"
+  });
+
   //offers
+  await user4.addProduct(product34);
   await user2.addProduct(product11);
   await user2.addProduct(product12);
   await user3.addProduct(product13);
@@ -273,6 +396,15 @@ async function seed() {
   await user2.addProduct(product25);
 
   //open auctions
+  await user5.addProduct(product33);
+  await product33.addOffer(product34, { through: { status: "pending" } });
+  await user4.addProduct(product32);
+  await user6.addProduct(product31);
+  await user5.addProduct(product30);
+  await user6.addProduct(product29);
+  await user7.addProduct(product28);
+  await user8.addProduct(product27);
+  await user9.addProduct(product26);
   await user1.addProduct(product1);
   await product1.addOffer(product12, { through: { status: "pending" } });
   await product1.addOffer(product13, { through: { status: "pending" } });
