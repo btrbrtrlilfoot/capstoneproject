@@ -30,9 +30,9 @@
       id="searchbar"
     />
     <br />
-    <div class="row">
+    <div style="padding-left: 10px"  class="row">
       <button
-      *ngFor="let tag of tags" id="btn" style="margin-right: 5px" class="btn btn-primary btn-sm badge "
+      *ngFor="let tag of tags" id="btn" class="btn btn-primary btn-sm badge "
     (click)="onTagClicked(tag)">{{tag}}</button>
     </div>
   </div>
