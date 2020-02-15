@@ -147,3 +147,13 @@ a.scrollBox {
   width: 100%;
   object-fit: cover;
 }
+
+#btn {
+  background-color: #ff906b;
+  border: 0px;
+  color: white;
+  margin: 5px;
+}
+#btn:hover {
+  background-color: #ffb899;
+}

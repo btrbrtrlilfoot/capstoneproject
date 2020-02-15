@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   onClick(bid) {
     this.router.navigate([`../auction/${bid.id}`]);
   }
+
   onTagClicked(tag) {
     console.log("It is being clicked");
     console.log(tag);

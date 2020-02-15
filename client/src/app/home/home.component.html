@@ -31,8 +31,9 @@
     />
     <br />
     <div class="row">
-      <button            type="button"
-      *ngFor="let tag of tags" class="badge badge-danger" (click)="onTagClicked(tag)">{{tag}}</button>
+      <button
+      *ngFor="let tag of tags" id="btn" class="btn btn-primary btn-sm badge "
+    (click)="onTagClicked(tag)">{{tag}}</button>
     </div>
   </div>
 </div>
