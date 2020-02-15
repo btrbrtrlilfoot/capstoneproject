@@ -31,6 +31,7 @@ export class AuctionViewService {
   async deleteAuctionOffer(auctionId: number) {
     let url = `${this._url}/${auctionId}`;
     await this._http.delete<any>(url).toPromise();
+    this.auction = {};
     return;
   }
 }

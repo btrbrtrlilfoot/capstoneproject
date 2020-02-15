@@ -27,10 +27,11 @@ router.put("/:id", async (req, res, next) => {
     const selectedId = req.body.offerId;
     const products = await Product.findOne({
       where: { id: auctionId },
-      include: { model: Product, as: "Offer" }
+      include: [{ model: Product, as: "Offer" }, { model: User }]
     });
     products.type = "auction (closed)"; //updates an auction as closed, necessary for differentiating auction states.
     products.save();
+    console.log("this is auction owner", products.user);
     for (let idx in products.Offer) {
       //search for accepted offer based on offerId sent in body, updates entire array of offers
       let product = products.Offer[idx];
@@ -41,7 +42,9 @@ router.put("/:id", async (req, res, next) => {
           user.phoneNumber,
           `Congrats! Your offer of ${product.name} on ${
             products.name
-          } has been accepted!`
+          } has been accepted! You may contact ${products.user.name} at ${
+            products.user.email
+          } or ${products.user.phoneNumber}. Happy Bartering!`
         );
       } else {
         product.offer.status = "rejected";
