@@ -244,7 +244,7 @@ async function seed() {
     type: "offer",
     description:
       "I am currently in culinary school and am looking to practice my skills on different dishes. Provide the necessary ingredients & cookware and I will make you whatever you want!",
-    imageUrl: "service.png"
+    imageUrl: "lunch.jpg"
   });
 
   const product19 = await Product.create({
@@ -253,7 +253,7 @@ async function seed() {
     type: "offer",
     description:
       "I am a student an engineering student at Brooklyn College. I can help with any high school level math, calculus, or physics class.",
-    imageUrl: "service.png"
+    imageUrl: "homework.jpg"
   });
   const product20 = await Product.create({
     name: "Teach German",
