@@ -25,6 +25,7 @@ export class PostAuctionComponent implements OnInit {
   imageUrl: string;
   kind: string = "item";
   user: any;
+  name: string;
 
   public config: DropzoneConfigInterface = {
     clickable: true,
@@ -71,6 +72,7 @@ export class PostAuctionComponent implements OnInit {
     this.http.post("/api/products", form).subscribe(
       (data: any) => {
         this.auction = data;
+        this.name = data.name;
       },
       error => {
         console.log("oops", error);
