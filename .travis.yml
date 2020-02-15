@@ -13,16 +13,18 @@ notifications:
 install:
   - npm ci # faster, goes only from package-lock
 before_script:
-  - psql -c 'create database "boilermaker-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
+  - psql -c 'create database "barterapp-test";' -U postgres # remember to change this name if you change it elsewhere (e.g. package.json)
 script:
-  - npm test             # test the code
+  - npm test # test the code
   - npm run build-client # make the bundle
-
-# before_deploy:
-#   - rm -rf node_modules # omit from the tarball, since we skip cleanup
-# deploy:
-#   skip_cleanup: true # prevents travis from deleting the build
-#   provider: heroku
-#   app: YOUR-HEROKU-APP-NAME-HERE # see README
-#   api_key:
-#     secure: YOUR-***ENCRYPTED***-API-KEY-HERE # see README
+before_deploy: # omit node_modules, since we set skip_cleanup below
+  - rm -rf node_modules
+deploy: # see README for details on these keys
+  # prevents travis from deleting the build
+  skip_cleanup: true
+  provider: heroku
+  # app should be your heroku app name; see README
+  app: btr-bartr
+  # the secure key indicates an encrypted value; see README
+  api_key:
+    secure: ZOKQO7hw06U884KrfkFeBqx77w2K923ZmDhGP/HKg9GB9+pzfDwtc7BdA6bFNdvmm5b9f02lVtCwGo9XWTX8FjTcevnSzYrcVBbsG6yMeSTxzSWQaRMzLh7HFAGhgI4lbyvamTnbeBqEvusmIFQLKMHwMz3Z/RiJMUBGJd6jafQKXxWGplw5D1HuadojX20VQAUxKCbuCngHJ/B4qsXNDrzgBxijt5Zg2LKK/TuH2PlyFAxndPK7eMnU78KfGENfh7LjRvYCdUPG/5330g5Gf+zfD80HUTvNoPd2PLskJS5yRInQL7ushanj3GZ+SDDwa1qYCp/UEX5bVoZvu42NMdIIsEze0yH2qpJNWwGfuRjm9JRsSgnKOlQG0D6S1gltOaqjw2DX9DL7Yp1Vx5OZ5mjajnChqGiyiMU8gBomOXG3UHta66KngQaKYOxQtcSwDEo3+VA34chTe9ziYrkCao4Q/GbyCeThbn6kB47BFHHB3CNPzBDHo8C6Fu0Y6/YnPOEuAqwglcirDWRwAXnLoswRUGz0lH8aL75YtwanAkPOBpbzejTeDbOd6ShLXjsb5W7kxh/CXaRhtmzA+Km/YHG9dRGwzetqshBjvb+KEZmOzRUujRAOCydfTuDGcjibvSQe3Ermys99SDRUZ7hVF2rHcVRp/a5YL7a+eBgXDwQ=

@@ -38,18 +38,17 @@
     />
   </div>
     <dropzone
-
     [config]="config"
     [message]="'Upload Profile Picture'"
     (error)="onUploadError($event)"
     (success)="onUploadSuccess($event)"
   ></dropzone>
 
-  
+
     <button
       type="submit"
       class="btn btn-outline-primary"
-      (click)="onSubmit(evt)" 
+      (click)="onSubmit()"
     >
       Submit Changes
     </button>

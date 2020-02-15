@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   bids: any;
   latlng: any;
   private sub: Subscription = new Subscription();
-
+  searchText: string;
   constructor(
     private route: ActivatedRoute,
     private _userProfileService: UserProfileService,

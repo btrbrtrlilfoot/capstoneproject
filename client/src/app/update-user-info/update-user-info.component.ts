@@ -3,6 +3,11 @@ import { UserProfileService } from "../common/user-profile.service";
 import { FormGroup, FormControl } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import {
+  DropzoneComponent,
+  DropzoneDirective,
+  DropzoneConfigInterface
+} from "ngx-dropzone-wrapper";
 
 @Component({
   selector: "app-update-user-info",
@@ -13,6 +18,15 @@ export class UpdateUserInfoComponent implements OnInit {
   user: any;
   imageUrl: string;
   userUpdateForm: FormGroup;
+
+  public config: DropzoneConfigInterface = {
+    clickable: true,
+    maxFiles: 1,
+    autoReset: null,
+    errorReset: null,
+    cancelReset: null
+  };
+
   constructor(
     private router: Router,
     private _userProfileService: UserProfileService,
