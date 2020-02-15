@@ -1,5 +1,5 @@
 <div class="header">
-  <h1 id="welcome">Welcome, {{ currentUser.name }}!</h1>
+  <h1 id="welcome"  *ngIf="currentUser.name">Welcome, {{ currentUser.name }}!</h1>
 
   <div class="jumbotron" id="frontpg">
     <div id="utility">
@@ -30,7 +30,7 @@
       id="searchbar"
     />
     <br />
-    <div class="row">
+    <div style="padding-left: 10px"  class="row">
       <button
       *ngFor="let tag of tags" id="btn" class="btn btn-primary btn-sm badge "
     (click)="onTagClicked(tag)">{{tag}}</button>
