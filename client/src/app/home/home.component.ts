@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
   currentUser: any = {};
   bids: any;
   latlng: any;
+  tags = ["technology", "game", "plants", "clothes", "art", "music"];
   private sub: Subscription = new Subscription();
   searchText: string;
   constructor(
@@ -27,6 +28,11 @@ export class HomeComponent implements OnInit {
 
   onClick(bid) {
     this.router.navigate([`../auction/${bid.id}`]);
+  }
+  onTagClicked(tag) {
+    console.log("It is being clicked");
+    console.log(tag);
+    this.searchText = tag;
   }
 
   gotoTop() {
