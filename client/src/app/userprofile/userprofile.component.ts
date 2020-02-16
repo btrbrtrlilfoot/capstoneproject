@@ -53,6 +53,11 @@ export class UserProfileComponent implements OnInit {
     const updated = await this._userProfileService.changePic(event[1].fileName);
     this.user = updated;
   }
+
+  auctionClick(auction) {
+    this.router.navigate([`../auction/${auction.id}`]);
+  }
+
   async onClick(id: number) {
     await this._userProfileService.deleteUserAuction(id);
     //also need to remove the deleted item from userAuctions

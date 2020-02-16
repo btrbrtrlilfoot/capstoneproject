@@ -44,10 +44,10 @@
     <h3
       style="color: #ffb899; font-family: Open Sans, sans-serif; font-weight: 800; font-size: 25px"
     >
-      Currently Active Bids
+      Currently Active Auctions
     </h3>
     <div *ngFor="let userAuction of userAuctions">
-      <div div class="card">
+      <div div class="card" (click)="auctionClick(userAuction)">
         <img src="{{ userAuction.imageUrl }}" class="card-img-top h-50" />
         <div class="card-body">
           <h5
