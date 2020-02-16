@@ -37,13 +37,11 @@ export class UserProfileComponent implements OnInit {
     this.userAuctions = userAuctions.filter(
       auction => auction.userId === this.user.id
     );
-    console.log("UserProfileComponent:ngOnInit:", user);
     let openAuctions = await this._userProfileService.getAllOpenAuctions();
     this.userAuctions = openAuctions.filter(
       auction => auction.userId === this.user.id
     );
     this.clicked = false;
-    console.log("active auctions", this.userAuctions);
   }
 
   popUp() {
@@ -54,10 +52,11 @@ export class UserProfileComponent implements OnInit {
     console.log("event", event);
     const updated = await this._userProfileService.changePic(event[1].fileName);
     this.user = updated;
-    console.log("userururur", this.user);
   }
-  onClick(id: number) {
-    this._userProfileService.deleteUserAuction(id);
+  async onClick(id: number) {
+    await this._userProfileService.deleteUserAuction(id);
+    //also need to remove the deleted item from userAuctions
+    this.userAuctions = this.userAuctions.filter(auction => auction.id !== id);
   }
   formatDate(dateString) {
     let date = new Date(dateString);
