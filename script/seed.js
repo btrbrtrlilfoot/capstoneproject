@@ -17,16 +17,16 @@ async function seed() {
     isAdmin: true
   });
   const user2 = await User.create({
-    name: "Rachel T",
-    email: "rachel@email.com",
+    name: "Jasmine",
+    email: "jasmine@email.com",
     password: "123",
     location: [40.709195, -74.1128613],
     isAdmin: true,
     phoneNumber: "+19176080434"
   });
   const user3 = await User.create({
-    name: "Tashi G",
-    email: "tashi@email.com",
+    name: "Ariel",
+    email: "ariel@email.com",
     password: "123",
     location: [40.709195, -74.0128613],
     isAdmin: true,
