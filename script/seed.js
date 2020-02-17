@@ -63,7 +63,7 @@ async function seed() {
 
   const user7 = await User.create({
     name: "Jennifer Haim",
-    email: "constancel@email.com",
+    email: "jennifer@email.com",
     password: "123",
     location: [40.7094112, -73.9253575],
     imageUrl: "default7.jpg",
@@ -81,7 +81,7 @@ async function seed() {
 
   const user9 = await User.create({
     name: "Elon M",
-    email: "itssarahc@email.com",
+    email: "elon@email.com",
     password: "123",
     location: [40.762832, -73.9614726],
     imageUrl: "default9.jpg",
