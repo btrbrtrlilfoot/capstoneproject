@@ -17,8 +17,6 @@ export class TransactionHistoryComponent implements OnInit {
   allProducts = [];
 
   constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
     private router: Router,
     private _userProfileService: UserProfileService
   ) {}
@@ -33,13 +31,11 @@ export class TransactionHistoryComponent implements OnInit {
     if (user.id !== undefined) {
       const userId = user.id;
       this.allProducts = await this._userProfileService.getAllProducts();
-      console.log(this.allProducts, "---------> THIS IS ALL PRODUCTS");
       this.userProducts = this.allProducts.filter(product => {
         return product.userId === userId;
       });
 
       this.userOffers = this.userProducts.filter(product => {
-        console.log(product);
         return product.type === "offer";
       });
       const userAuctions = this.userProducts.filter(product => {

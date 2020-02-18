@@ -22,8 +22,6 @@ export class SingleOfferComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private http: HttpClient,
-    private router: Router,
     private _singleOfferService: SingleOfferService,
     private location: Location,
     private _userProfileService: UserProfileService
@@ -32,9 +30,7 @@ export class SingleOfferComponent implements OnInit {
   async ngOnInit() {
     const user = await this._userProfileService.getUser();
     this.currentUser = user;
-    // setup a callback for when angular knows the route
     this.sub = this.route.params.subscribe(async params => {
-      // params is the route information
       let auctionId = params["auctionId"];
       this.auctionId = auctionId;
       let offerId = params["id"];

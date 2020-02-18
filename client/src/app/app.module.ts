@@ -18,13 +18,11 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
-import { LogoutComponent } from "./logout/logout.component";
 import { DropzoneModule } from "ngx-dropzone-wrapper";
 import { DROPZONE_CONFIG } from "ngx-dropzone-wrapper";
 import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 import { FrontpageComponent } from "./frontpage/frontpage.component";
-import { LoggedOutComponent } from "./logged-out/logged-out.component";
 
 const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
   url: "/file",
@@ -44,12 +42,10 @@ const DEFAULT_DROPZONE_CONFIG: DropzoneConfigInterface = {
     AuctionofferViewComponent,
     SingleOfferComponent,
     AuctionClosedPageComponent,
-    LogoutComponent,
     UserProfileComponent,
     TransactionHistoryComponent,
     UpdateUserInfoComponent,
-    FrontpageComponent,
-    LoggedOutComponent
+    FrontpageComponent
   ],
   imports: [
     BrowserModule,

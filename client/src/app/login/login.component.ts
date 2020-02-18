@@ -4,7 +4,6 @@ import { HttpClient } from "@angular/common/http";
 import { UserProfileService } from "../common/user-profile.service";
 import { Router } from "@angular/router";
 
-//set user info here
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -27,7 +26,6 @@ export class LoginComponent implements OnInit {
   async ngOnInit() {
     const checkUser = await this._userProfileService.getUser();
     if (checkUser.id) {
-      console.log("user is already logged in");
       this.router.navigate(["home"]);
     }
   }

@@ -1,18 +1,13 @@
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormControl } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Location } from "@angular/common";
 
-import {
-  DropzoneComponent,
-  DropzoneDirective,
-  DropzoneConfigInterface
-} from "ngx-dropzone-wrapper";
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 import { UserProfileService } from "../common/user-profile.service";
 
-//create bid instance here
 @Component({
   selector: "app-post-auction",
   templateUrl: "./post-auction.component.html",
@@ -37,10 +32,8 @@ export class PostAuctionComponent implements OnInit {
 
   constructor(
     private _userProfileService: UserProfileService,
-    private route: ActivatedRoute,
     private http: HttpClient,
-    private router: Router,
-    private location: Location
+    private router: Router
   ) {}
 
   auctionForm = new FormGroup({

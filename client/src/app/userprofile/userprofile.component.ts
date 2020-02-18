@@ -1,8 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { UserProfileService } from "../common/user-profile.service";
 import { Router } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-userprofile",
@@ -15,11 +13,8 @@ export class UserProfileComponent implements OnInit {
   clicked: boolean;
   userAuctions: any;
   user: any = {};
-  private sub: any;
 
   constructor(
-    private route: ActivatedRoute,
-    private http: HttpClient,
     private router: Router,
     private _userProfileService: UserProfileService
   ) {}
@@ -49,7 +44,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   async onUploadSuccess(event) {
-    console.log("event", event);
     const updated = await this._userProfileService.changePic(event[1].fileName);
     this.user = updated;
   }
@@ -60,7 +54,6 @@ export class UserProfileComponent implements OnInit {
 
   async onClick(id: number) {
     await this._userProfileService.deleteUserAuction(id);
-    //also need to remove the deleted item from userAuctions
     this.userAuctions = this.userAuctions.filter(auction => auction.id !== id);
   }
   formatDate(dateString) {

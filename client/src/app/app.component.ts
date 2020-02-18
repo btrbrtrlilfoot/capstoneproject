@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { UserProfileService } from "./common/user-profile.service";
 import { HttpClient } from "@angular/common/http";
-import { Router, Event, NavigationEnd } from "@angular/router";
+import { Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -22,7 +22,6 @@ export class AppComponent implements OnInit {
       this.isLoggedIn = value;
     });
     this.navigationSubscription = this.router.events.subscribe((e: any) => {
-      // If it is a NavigationEnd event re-initalise the component
       if (e instanceof NavigationEnd) {
         this.initialiseApp();
       }
@@ -43,8 +42,6 @@ export class AppComponent implements OnInit {
     const user = await this._userProfileService.getUser();
 
     this.currentUser = user;
-
-    console.log("curuserrrr", this.currentUser);
   }
   ngOnDestroy() {
     this.userSub.unsubscribe();

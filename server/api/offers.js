@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { Offer, Product, User } = require("../db/models");
 
-//get all offers on an auction
 router.get("/:auctionId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
@@ -15,7 +14,6 @@ router.get("/:auctionId", async (req, res, next) => {
 });
 
 router.post("/:auctionId", async (req, res, next) => {
-  // create a new offer
   try {
     const auctionProduct = await Product.findByPk(req.params.auctionId);
     const product = await Product.create({
@@ -40,7 +38,6 @@ router.post("/:auctionId", async (req, res, next) => {
   }
 });
 
-//verify exchange has been made
 router.put("/:auctionId/:offerId", async (req, res, next) => {
   try {
     const auctionId = req.params.auctionId;
