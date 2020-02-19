@@ -10,7 +10,6 @@ export class AuctionViewService {
   empty: boolean = true;
   constructor(private _http: HttpClient) {}
 
-  //Returns Auction and Products in an Object
   getAuctionProducts(id: number) {
     let url = `${this._url}/${id}`;
     this.auction = this._http.get<any>(url);

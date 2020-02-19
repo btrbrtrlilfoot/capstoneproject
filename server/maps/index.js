@@ -23,12 +23,7 @@ router.put("/sort", async (req, res, next) => {
             if (!err) {
               bid.distance = response.json.rows[0].elements[0].distance.value;
               result.push(bid);
-              console.log(
-                "got distance",
-                bid.user.location,
-                bid.user.id,
-                bid.distance
-              );
+
               if (result.length === bids.length) {
                 resolve();
               }

@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const { User, Product } = require("../db/models");
 
-//using this route in user-profile service file
 router.get("/allproducts", async (req, res, next) => {
   try {
     const products = await Product.findAll({
@@ -13,7 +12,6 @@ router.get("/allproducts", async (req, res, next) => {
   }
 });
 
-//get open auctions
 router.get("/", async (req, res, next) => {
   try {
     const products = await Product.findAll({

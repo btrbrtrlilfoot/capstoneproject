@@ -12,7 +12,6 @@ import { Location } from "@angular/common";
   styleUrls: ["./auctionoffer-view.component.css"]
 })
 export class AuctionofferViewComponent implements OnInit {
-  //These Are States, you can call them in your HTML as their variable names
   id: number;
   auctionOwnerId: any;
   offers: any = [];
@@ -20,12 +19,11 @@ export class AuctionofferViewComponent implements OnInit {
   auctionStatus: string;
   buttonDisable: boolean;
   userId: any;
-  user: any = {}; //Grab current logged in UserID
+  user: any = {};
   selectedOffer: number;
   private sub: any;
   disableDeleteBtn: boolean = true;
 
-  //Activated Route is to pull the link name of a component and any exported information .... i think. I think you need Router for some reason.
   constructor(
     private route: ActivatedRoute,
     private http: HttpClient,
@@ -38,19 +36,14 @@ export class AuctionofferViewComponent implements OnInit {
   async ngOnInit() {
     this.user = await this.userProfileService.getUser();
 
-    //This is to pull the id of the auction from the link.
     this.sub = this.route.params.subscribe(params => {
       this.id = +params["id"];
-      //the + is to coerce it from string to numerical
-    }); //Get URL Id
+    });
 
     await this.auctionView.getAuctionProducts(this.id).subscribe(
       data => {
-        //service function. lets me access the data returned by my http req
         this.auction = data;
-        console.log("this is auction--------->", this.auction);
         this.auctionOwnerId = this.auction.userId;
-        //This redirects the user away from looking up offers under the Auction url
         if (
           this.auction.type !== "auction (closed)" &&
           this.auction.type !== "auction (open)"
@@ -58,9 +51,7 @@ export class AuctionofferViewComponent implements OnInit {
           this.router.navigateByUrl("/");
         }
 
-        this.offers = data.Offer; //offers array on auction
-
-        //this checks to see if the auction is open, and if so, allows you to select
+        this.offers = data.Offer;
         if (this.auction.type === "auction (open)") {
           this.auctionStatus = "open";
           this.buttonDisable = false;
@@ -74,12 +65,11 @@ export class AuctionofferViewComponent implements OnInit {
       error => console.log("theres been an error")
     );
   }
-  //confirms offer as submitted when button is click
   onSubmit(offerId) {
     this.sub = this.auctionView.selectOffer(this.id, offerId).subscribe(
       data => {
-        this.offers = data.Offer; //should be updated
-        this.auction = data; //should be updatd
+        this.offers = data.Offer;
+        this.auction = data;
         this.auctionStatus = "closed";
         this.buttonDisable = true;
         this.router.navigateByUrl(`/auction/${this.id}/success`);

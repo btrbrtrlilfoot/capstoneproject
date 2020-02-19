@@ -3,11 +3,7 @@ import { UserProfileService } from "../common/user-profile.service";
 import { FormGroup, FormControl } from "@angular/forms";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import {
-  DropzoneComponent,
-  DropzoneDirective,
-  DropzoneConfigInterface
-} from "ngx-dropzone-wrapper";
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 
 @Component({
   selector: "app-update-user-info",

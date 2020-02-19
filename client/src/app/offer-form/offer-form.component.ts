@@ -5,11 +5,7 @@ import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
 import { UserProfileService } from "../common/user-profile.service";
-import {
-  DropzoneComponent,
-  DropzoneDirective,
-  DropzoneConfigInterface
-} from "ngx-dropzone-wrapper";
+import { DropzoneConfigInterface } from "ngx-dropzone-wrapper";
 
 @Component({
   selector: "app-offer-form",
@@ -34,9 +30,7 @@ export class OfferFormComponent {
   constructor(
     private route: ActivatedRoute,
     private _offerService: OffersService,
-    private location: Location,
-    private router: Router,
-    private userProfileService: UserProfileService
+    private location: Location
   ) {}
 
   async ngOnInit() {
@@ -56,7 +50,6 @@ export class OfferFormComponent {
         data => this.location.back(),
         error => console.log("There was an error")
       );
-    console.log(this.offerModel);
   }
 
   onUploadSuccess(event) {

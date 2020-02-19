@@ -1,6 +1,5 @@
 <div class="header">
   <h1 id="welcome"  *ngIf="currentUser.name">Welcome, {{ currentUser.name }}!</h1>
-
   <div class="jumbotron" id="frontpg">
     <div id="utility">
       <h3 style="font-family: Open Sans, sans-serif; font-weight: 200;">
@@ -29,18 +28,18 @@
       placeholder="Start searching for an auction"
       id="searchbar"
     />
-    <br />
+    <br/>
     <div style="padding-left: 10px"  class="row">
       <button
-      *ngFor="let tag of tags" id="btn" class="btn btn-primary btn-sm badge "
-    (click)="onTagClicked(tag)">{{tag}}</button>
+        *ngFor="let tag of tags" id="btn" class="btn btn-primary btn-sm badge "
+        (click)="onTagClicked(tag)">{{tag}}</button>
     </div>
   </div>
 </div>
 
 <div class="container">
   <div *ngIf="bids">
-    <br />
+    <br/>
     <div class="row row-cols-1 row-cols-md-3">
       <div
         className=" scrollBox"
@@ -71,8 +70,8 @@
               <span
                 class="badge badge-secondary"
                 style="background-color:#ff906b; color:white;"
-                >{{ bid.kind }}</span
-              >
+                >{{ bid.kind }}
+              </span>
             </h5>
             <p id="distance">{{ bid.distance ? bid.distance : 0 }}m away</p>
             <p class="card-text" id="card-txt">{{ bid.description }}</p>

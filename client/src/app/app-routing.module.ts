@@ -10,11 +10,9 @@ import { SingleOfferComponent } from "./single-offer/single-offer.component";
 import { AuctionofferViewComponent } from "./auctionoffer-view/auctionoffer-view.component";
 import { UserProfileComponent } from "./userprofile/userprofile.component";
 import { TransactionHistoryComponent } from "./transaction-history/transaction-history.component";
-import { LogoutComponent } from "./logout/logout.component";
 import { UpdateUserInfoComponent } from "./update-user-info/update-user-info.component";
 import { FrontpageComponent } from "./frontpage/frontpage.component";
 import { AuctionClosedPageComponent } from "./auction-closed-page/auction-closed-page.component";
-import { LoggedOutComponent } from "./logged-out/logged-out.component";
 
 const routes: Routes = [
   {
@@ -23,9 +21,7 @@ const routes: Routes = [
     pathMatch: "full",
     runGuardsAndResolvers: "always"
   },
-  { path: "logout", component: LogoutComponent },
   { path: "login", component: LoginComponent },
-  { path: "loggedOut", component: LoggedOutComponent },
   { path: "signup", component: SignupComponent },
   { path: "home", component: HomeComponent },
   { path: "auction", component: PostAuctionComponent, pathMatch: "full" },

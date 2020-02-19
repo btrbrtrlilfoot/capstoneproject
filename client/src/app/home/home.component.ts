@@ -1,11 +1,9 @@
-import { Component, OnInit, Input } from "@angular/core";
-import { AppComponent } from "../app.component";
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { ActivatedRoute } from "@angular/router";
-import { LoginComponent } from "../login/login.component";
 import { UserProfileService } from "../common/user-profile.service";
-import { BehaviorSubject, Subscription } from "rxjs";
+import { Subscription } from "rxjs";
 
 @Component({
   selector: "app-home",
@@ -31,8 +29,6 @@ export class HomeComponent implements OnInit {
   }
 
   onTagClicked(tag) {
-    console.log("It is being clicked");
-    console.log(tag);
     this.searchText = tag;
   }
 
@@ -47,10 +43,9 @@ export class HomeComponent implements OnInit {
   async ngOnInit() {
     console.group("userinhomee", this.currentUser);
 
-    this._userProfileService.getUser().then(
+    await this._userProfileService.getUser().then(
       (data: any) => {
         this.currentUser = data;
-        console.group("userinhomee", this.currentUser);
       },
       error => {
         console.log("oops", error);
@@ -82,7 +77,6 @@ export class HomeComponent implements OnInit {
             bids: this.bids
           })
           .subscribe(data => {
-            console.log("this is bids", data);
             this.bids = data;
           })
       );
@@ -90,7 +84,6 @@ export class HomeComponent implements OnInit {
   }
 
   sortAuctions() {
-    console.log("sorting", this.bids);
     this.bids.sort((a, b) => {
       if (a.distance < b.distance) {
         return -1;
@@ -100,8 +93,6 @@ export class HomeComponent implements OnInit {
       }
       return 0;
     });
-
-    console.log("bids", this.bids);
   }
   ngOnDestroy() {
     this.sub.unsubscribe();
