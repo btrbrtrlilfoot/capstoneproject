@@ -6,9 +6,9 @@ BettrBartr is a web application built with Angular, Typescript, Bootstraps, Node
 
 You can check out the deployed version of our app [here!](https://btr-bartr.herokuapp.com/)
 
-## Installation
+## Setup
 
-1. Please run 
+1. Install
 
 ```
 npm install 
