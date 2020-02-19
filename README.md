@@ -56,9 +56,9 @@ Users can:
 
 ## Team
 
-** [Tashi Gyeltshen](https://github.com/JSAssassin)
-** [Kiana Wong](https://github.com/kianawong)
-** [Rachel Taverna](https://github.com/rtaverna)
+* [Tashi Gyeltshen](https://github.com/JSAssassin)
+* [Kiana Wong](https://github.com/kianawong)
+* [Rachel Taverna](https://github.com/rtaverna)
 
 ## Thanks for Checking Out BettrBartr! 
 
