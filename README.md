@@ -5,6 +5,8 @@
 BettrBartr is a web application built with Angular, Typescript, Bootstraps, Node.js, Express, Javascript, Sequelize and PostgreSQL. It aims to give users the ability to "barter" with their local community, recycling items and services amongst themselves through an auction-based system. This served as our team's Capstone Project while studying at GraceHopper's 17-week Fullstacks Immersive. 
 
 You can check out the deployed version of our app [here!](https://btr-bartr.herokuapp.com/)
+A PDF overview of our stack decisions can be found [here](https://drive.google.com/open?id=1uQspLne4Dvr4XZmLwqk7aKtflp14iFsj)
+And a general overview of the application and a bit about our thoughts [here!](https://drive.google.com/open?id=1jsQBbTnK25lH8nazl6-PnLHy86AIJOri)
 
 ## Setup
 
