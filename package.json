@@ -117,7 +117,7 @@
     "npm-merge-driver": "^2.3.5",
     "prettier": "1.11.1",
     "protractor": "~5.4.0",
-    "simple-git": "^1.121.0",
+    "simple-git": "^3.5.0",
     "supertest": "^4.0.2",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0",
